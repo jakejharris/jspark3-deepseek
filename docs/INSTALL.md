@@ -1,6 +1,6 @@
 # Install Tempo
 
-Version: **v2.0.0-rc.2** · experimental · fresh source build: PENDING; fresh install: PENDING; fresh runtime smoke: PENDING.
+Version: **v2.0.0** · experimental · fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS.
 
 This is the single installation guide shared by GitHub, the website and Hugging Face. Commands below are run from a checkout of this exact candidate. An unpublished candidate may be supplied as a local archive; public clone URLs become usable only after publication.
 
@@ -45,7 +45,7 @@ The final command must return the Docker server version without a password promp
 **Controller**, an empty directory:
 
 ```bash
-git clone --branch v2.0.0-rc.2 https://github.com/jakejharris/jspark3-deepseek.git
+git clone --branch v2.0.0 https://github.com/jakejharris/jspark3-deepseek.git
 cd jspark3-deepseek
 python3 tools/release_check.py
 cp recipe/config.example.json config.json
@@ -86,7 +86,7 @@ Checkpoint: `python3 tools/release_check.py` passes on all three hosts. Recovery
 
 ```bash
 python3 tools/fetch_sources.py --destination /srv/tempo/build-inputs
-python3 tools/build_image.py --inputs /srv/tempo/build-inputs --work /srv/tempo/image-build
+python3 tools/build_image.py --inputs /srv/tempo/build-inputs --work /srv/tempo/image-build --tag jspark3-tempo:v2.0.0
 ```
 
 Use your chosen absolute paths. The downloader verifies all eight public inputs and rehashes existing files before reuse. It never substitutes a newer revision. Partial archive downloads are restarted; completed archives are retained. Build stages have no network access; base-image pull happens first. Expected stages: vLLM stable extension → FlashInfer → MXFP8 JIT → sparse MLA JIT → cuda-exl3 → 15 final source overlays. Compiler output is retained in `/receipts/stageN.build.log` in each successful image layer. Docker build output marks each checkpoint. A failed stage stops; retrying the same unchanged build reuses completed Docker layers. Changes to the stage wrapper or compiler inputs invalidate those layers and require recompilation.

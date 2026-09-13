@@ -4,7 +4,7 @@ DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. Our current three-Spark daily dr
 
 Built on **tonyd2wild and Kai's Spark serving work**, and **bot-lab-21's EXL3 experts using WestWaters' Pollard method**.
 
-Version: **v2.0.0-rc.2** · experimental · public release pending. Historical measurements are complete. Validation: fresh source build: PENDING; fresh install: PENDING; fresh runtime smoke: PENDING. Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
+Version: **v2.0.0** · experimental · public release published. Historical measurements are complete. Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS. Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
 
 ## Fit check
 

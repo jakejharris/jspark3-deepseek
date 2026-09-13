@@ -4,7 +4,7 @@
     "project": "JSPARK3",
     "name": "Tempo",
     "version": "v2",
-    "candidate": "v2.0.0-rc.2",
+    "candidate": "v2.0.0",
     "status": "experimental",
     "current_daily_driver": true,
     "model": "DeepSeek-V4.1 Flash",
@@ -12,7 +12,7 @@
   },
   "release_commit": null,
   "commit_binding": "External candidate/tag receipt binds this manifest checksum to the Git commit after freeze; no self-reference.",
-  "status": "ready-for-installer",
+  "status": "validated",
   "upstream": {
     "target": {
       "repo": "deepseek-ai/DeepSeek-V4.1-Flash",
@@ -234,19 +234,19 @@
     "historical": "L5-P measured September 13, 2026; experimental daily driver with unresolved code 2/4 and inverse-arrival 40.458 s limits",
     "local": "CPU source/preparation/failure checks; public inputs verified",
     "fresh_source_build": {
-      "status": "PENDING",
-      "evidence": null,
-      "evidence_sha256": null
+      "status": "PASS",
+      "evidence": "evidence/fresh-install-20260913.json",
+      "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
     },
     "fresh_install": {
-      "status": "PENDING",
-      "evidence": null,
-      "evidence_sha256": null
+      "status": "PASS",
+      "evidence": "evidence/fresh-install-20260913.json",
+      "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
     },
     "fresh_runtime_smoke": {
-      "status": "PENDING",
-      "evidence": null,
-      "evidence_sha256": null
+      "status": "PASS",
+      "evidence": "evidence/fresh-install-20260913.json",
+      "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
     },
     "independent_hardware_reproduction": false
   },
@@ -257,7 +257,7 @@
   },
   "notices": "THIRD_PARTY_NOTICES.md",
   "publication": {
-    "status": "pending",
+    "status": "published",
     "github": "jakejharris/jspark3-deepseek",
     "huggingface": "jakejharris/jspark3-tempo",
     "weights_uploaded": false
@@ -268,9 +268,9 @@
     ".gitignore": "2a32f942916f6312468f9c0d1ae4fd8bd762f11cd75c13c54097c9a0f4049598",
     "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
     "NOTICE": "0c98b596b8b6ae664801b31957f20e5016de18b0f6d598111e2d49133582c91b",
-    "README.md": "a484420a18e8d5f4b0d482cef9a3417ef678d8138e860466dc8117a3db9303de",
+    "README.md": "dc59d1546023875534637cb5dd967bee547f6517eea0ef4a205a1a42e69ba3c7",
     "THIRD_PARTY_NOTICES.md": "18b640cb7e6a7082ccb0e9ba49513d8c7592a574da7d280520bc180c2c6e7817",
-    "benchmarks/README.md": "80da9cd5d84a38e1563da26e09f45de91d1ccc790ae339c78d429f85221b6140",
+    "benchmarks/README.md": "c2b90b5c659d2c4a9ed296999c323cf3da22260b19322e41000bf9a13ace4107",
     "benchmarks/historical/ENGINE-ADAPTERS.md": "b4fb2e0c067e08e2478056e65aad577185b209541b7435e3f23bacf4e592d2b6",
     "benchmarks/historical/FIXTURES.json": "b44e3be058b873936733dd0f161457f769093f932422203d9b1310ed76703722",
     "benchmarks/historical/HELD-OUT-TASKS.json": "2e78e77370ee5362672cf6da5bd231ff013a05d22e216e5ee6bc626f2acd298b",
@@ -298,16 +298,17 @@
     "build/Dockerfile": "dd73a43445e8311dc83eaceb7ff8379db012910a54e2d2476a2a807bf99b6a16",
     "build/run_stage.sh": "ca7f8373fc05763d09322ec381c432782218a6226599892935caef4bfcb75e23",
     "build/stage.py": "4d039b3f5749fb6299d3f66334dfd19c18c9c8efac2be205f8da4c9fd6fc659c",
-    "docs/BENCHMARKS.md": "9669241d85fcb8f2362d21b588c54207b66d941480598c3253f5ac8888c4cd1f",
-    "docs/INSTALL.md": "1ef5088d7310136641d6c64a73500466b23552102e59eeceb62f59c25bd82138",
-    "docs/OPERATIONS.md": "54f1afe541fa3cfa1d7231111e4e95b16ac59423263b41a2112d8cacea61a11d",
-    "docs/PI.md": "c3e52630d0d05795b117b229aaa840a2294ae0a5d7ab65f83cf6e73a034b5ff2",
-    "docs/PROVENANCE.md": "b9e093f335387b423c7bc3c6568444c9e57e81cde964527fb247da6caa1d4d79",
+    "docs/BENCHMARKS.md": "48e81f51f41e911903b1c8b4786ea7d9ecc55c50b4e9ae2356459d0dbf88dd0d",
+    "docs/INSTALL.md": "361252c22ebdcffafcd3471279b84a3a0553c0a378b168938f5948ab5d28f743",
+    "docs/OPERATIONS.md": "b2866b936406fb1babd09302dbac1350450822390a6c55a00575c3392b22b853",
+    "docs/PI.md": "8bb73bd9684afa837439c81b2412ce96e74a2b8f4fe0b4c6fc8673b41c0f2ae7",
+    "docs/PROVENANCE.md": "ded46f937894f0d7e8238f1fcb4186d73a743a94301c53ea3944d04fdd5d6482",
     "docs/RELEASE.md": "9bd645937071880e7dff979d71e6fae479335350fc7f463c3ab92832cded1031",
-    "docs/TROUBLESHOOTING.md": "fc531ba8193a6d00bbaaf2bb6371886bd095b41ba0eb4b2bad05a5835d49343e",
+    "docs/TROUBLESHOOTING.md": "9e1002babb6917f6bc5d5b40d959e3e0252da75499080730e9ee5261189cb0ac",
+    "evidence/fresh-install-20260913.json": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373",
     "evidence/local-validation.json": "8b0670cb7a14c3d2357815b672cf16c53eb160d6354c28c0b7f0c36c2a5d58ef",
     "evidence/selected-measurements.json": "79c1b1e4859c570f92d5863c8d61b04de5eff6586f36f40f2558365dcca3a656",
-    "huggingface/README.md": "4064837b493ce7317b967922fa33d211925d66ef158aefcfc44f3798502dd62d",
+    "huggingface/README.md": "a7383ff30bfde4ed265892c2678722f19366d79759547479ac4b86a9c002ac38",
     "licenses/DeepSeek-MIT.txt": "f2c6c602815669d292889e5be8c802f2ed950653b77999b1584e8e6aed25d040",
     "licenses/EXL3-UPSTREAM-NOTICES.md": "80a1850b11ee15817e1aae8cf12271e028112b82a3bf5222207331295062be1d",
     "licenses/Tony-MIT.txt": "808957bc283a0f8baf160b85800483a3f80bd10e8d38ea8a7045e385286b5d4f",
@@ -337,7 +338,7 @@
     "recipe/entrypoint.sh": "4fb90eb662fbf5b66b9f7a42ecbb7c4b0ec2cf67bae4d1fc85ce6068c6bfefc0",
     "release/benchmarks.json": "cbd5c88565cca540923a53282c007772b718a7b0187a2d80d68dca63a25e741d",
     "release/engram-ranges.json": "28ea8efa242c3b171c0f1778d5192fa30e01c26d84b868e84de2b823cc44adc5",
-    "release/identity.json": "e0691663e4c3fa0b80e742b97e5c554df6b4229aa59e1b636004fae0eab97929",
+    "release/identity.json": "58fbd5d5b5b86ba647fbb32324e4d71ba7284df92a4c55407062fb7d1fa83ed2",
     "release/metadata-files.json": "cd715079f7a96d73f2efb034e86568064565ba2e1325ec889947fb1cee10e2e0",
     "release/model-files.json": "44d75e3d0f4fff1a52173668db66f0d355173c6e8747cb606f4b667ddaf84ca2",
     "release/native-historical.json": "324d9e504147e0bb7d613ee3fe77bfec4b211bfae1a8f01f08c3566ce01efa31",
@@ -346,7 +347,7 @@
     "release/runtime.json": "b7787ddd7263fef08c81cbe113b4cc947c66509006d5d3b6b629cf44244d039a",
     "release/shards.json": "c52cecb7f218e7f562828cdb35e0d6937a35819dae726bc7fde633250465da65",
     "release/sources.json": "8af6331c3860c22f326f07810f06098aeb246fcec62a8794851e54b618f84e52",
-    "release/summary.json": "b75b36422f74ae9be0b7e22f2f0209b2628361be5d053d07ad685616c85c00ec",
+    "release/summary.json": "49c315ec001fda897efac760b9582e33ada39c15f5dc643bc01eae72195ad534",
     "release/weights-metadata.json": "019997a1067b5ef21d314b85362836a42c2941862da20f763db9db18b046bbd5",
     "tests/conftest.py": "d6bd034f44b354b16014388d510163a11d7a81f33a22357d1f67059abb4ba0b4",
     "tests/guardhelpers.py": "ad5902c41e76fbdafde0d427a9af72e5d26add1d36aaeab3b99a9cd22e651389",

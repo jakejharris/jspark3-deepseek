@@ -1,6 +1,6 @@
 # Tempo measured results
 
-Version: v2.0.0-rc.2 · historical L5-P cohort, September 13, 2026.
+Version: v2.0.0 · historical L5-P cohort, September 13, 2026.
 
 | Measurement | Result | Conditions |
 |---|---:|---|

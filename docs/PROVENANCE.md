@@ -1,6 +1,6 @@
 # Tempo provenance and reproduction scope
 
-Version: v2.0.0-rc.2.
+Version: v2.0.0.
 
 The final L5-P runtime is the source of this release. `release/patches.json` lists15 final file overlays, each with its pinned upstream preimage SHA256 (or explicit expected absence) and final SHA256. All15 public-source preimages were checked against the pinned vLLM/cuda-exl3 archives. All15 final files also match the archived serving implementation. `apply_patches.py` verifies the entire preimage set before writing any overlay. There is no need for a private parent boot or incremental patch chain.
 
@@ -24,3 +24,9 @@ Runtime defaults: TP3, GMU0.80 with automatic KV sizing, configured context30000
 Historical results describe one fleet, not independent-hardware reproduction. The original cohort's full-HTTP prose32.21–35.34/code63.54–68.22tok/s differs from the seven streaming companions' post-first-output prose33.21–34.28/code67.31–75.64tok/s. Work uses a fixed180-second denominator and includes unfinished output; C6short is a distinct eight-category mean. Model quality was not scored by Work. Code correctness remained2/4, and short-behind-long latency40.458s remains unresolved. Native vision,300K capacity and C8 load are not certified by these results.
 
 `release/manifest.json` hashes an explicit public artifact list. It does not hash itself or claim a commit that creates itself. The candidate/tag receipt binds the manifest checksum and actual Git commit externally after the freeze. Runtime/default changes bump the candidate and invalidate affected receipts; documentation fixes update hashes and receive a recorded validation delta. Final publication remains owned by the release coordinator.
+
+## Fresh release validation
+
+The [September 13 fresh-install receipt](../evidence/fresh-install-20260913.json) binds the tested candidate commit, manifest and source-built image. All five build stages, 46 CPU checks, three-rank native/source checks, five API smoke requests, two representative examples and a first request passed. An additional Pi 0.84.2 smoke completed Python, file-write and file-read tool calls.
+
+This is a fresh reconstruction on the same fleet using rehashed cached inputs. The full historical benchmark campaign was not rerun. The final publication adds documentation and evidence to the tested candidate; its serving source, build inputs, model and runtime defaults are unchanged. See the receipt for deviations, timing boundaries and sampled resource minima.

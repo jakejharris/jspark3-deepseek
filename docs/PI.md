@@ -1,6 +1,6 @@
 # Optional Pi companion
 
-Version: v2.0.0-rc.2 · separate from core throughput qualification.
+Version: v2.0.0 · separate from core throughput qualification.
 
 Core Tempo serves an OpenAI-compatible API and requires no Pi install, desktop or Library. Configure your existing Pi provider for the configured rank0 endpoint plus `/v1`, model ID `deepseek-v4.1-flash`, and the OpenAI completions API. Use your installed Pi version's provider configuration format; the template below contains only connection/capability values, not a loadable model definition:
 

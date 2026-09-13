@@ -13,11 +13,11 @@ DeepSeek-V4.1 Flash on three DGX Sparks. Our current three-Spark daily driver.
 
 Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts using WestWaters' Pollard method; credit also to DeepSeek, vLLM, turboderp and cuda-exl3 contributors.
 
-Version: v2.0.0-rc.2 · experimental · publication pending.
+Version: v2.0.0 · experimental · publication published.
 
-Validation: fresh source build: PENDING; fresh install: PENDING; fresh runtime smoke: PENDING.
+Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS.
 
-**[Start here / Install](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.2/docs/INSTALL.md)** · [GitHub source](https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.0-rc.2) · [Full evidence](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.2/docs/BENCHMARKS.md)
+**[Start here / Install](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0/docs/INSTALL.md)** · [GitHub source](https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.0) · [Full evidence](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0/docs/BENCHMARKS.md)
 
 Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a management network and dual-port RoCE triangle. Weights, sparse Engram and packed rows occupy approximately 400 GB per host. Budget at least 550 GB free local storage per host including preparation headroom, plus an additional 100 GB for image build/cache on the build host. See the exact fit check before downloading.
 
@@ -38,4 +38,4 @@ Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a managem
 - Work counts unfinished output and does not score quality. Mia active cap 4 differs from Tempo cap 8.
 - Native vision and optional Pi desktop use are separate from the throughput cohort.
 
-Recipe code is Apache-2.0; this does not relicense upstream code or weights. [License boundaries](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.2/THIRD_PARTY_NOTICES.md). The identical release archive and SHA256SUMS accompany this card at publication.
+Recipe code is Apache-2.0; this does not relicense upstream code or weights. [License boundaries](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0/THIRD_PARTY_NOTICES.md). The identical release archive and SHA256SUMS accompany this card at publication.

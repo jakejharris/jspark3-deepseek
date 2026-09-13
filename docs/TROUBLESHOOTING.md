@@ -1,18 +1,20 @@
 # Tempo troubleshooting
 
-Version: v2.0.0-rc.2.
+Version: v2.0.0.
 
 ## Fit and preflight
 
 Missing route/NIC/GID or giant latency: validate both direct-leg RoCE interfaces, per-leg IPv4 subnets, MTU 9000, IPv4 GID index 3, and reciprocal routes. Check `rdma link` and `show_gids`; management reachability does not prove RDMA. Use your host networking procedure to repair fabric, then repeat preflight. A memory admission refusal while another model is loaded is expected; coordinate its stop before the resource gate. Do not weaken the floor.
 
-Missing user manager/Docker permission: check `systemctl --user status`, `loginctl show-user "$USER" -p Linger`, and `systemd-run --user --wait --pipe docker info`. Ensure the user's manager sees Docker group membership. Fix host setup, then retry; do not replace persistent guards with an SSH-background process.
+Missing user manager/Docker permission: check `systemctl --user status`, `loginctl show-user "$USER" -p Linger`, and `systemd-run --user --wait --pipe sg docker -c "docker info"`. The public launcher uses `sg docker` for user managers with stale supplementary groups; the user must already belong to the Docker group. Fix host setup, then retry; do not replace persistent guards with an SSH-background process.
 
 ## Build or loading stopped
 
 Build: the command streams each stage's compiler log. Each stage has a 7200-second timeout, a 32 GiB memory cap and single-job compilation. Check the failing stage and host memory/disk; retain completed Docker layers and retry the same public command. Missing/inaccessible pinned inputs fail closed. Never install a newer FlashInfer or vLLM to bypass a pin.
 
 Loading: inspect exact per-rank Docker logs, guard status and cgroup OOM/swap counters. Startup normally progresses through Engram payload lines, model loading, KV profiling and graph capture. A failed rendezvous often appears as a worker timeout or NCCL error; validate the fabric before a new start. If a guard tripped, stop remaining owned ranks and investigate; do not restart archived containers.
+
+The pinned EXL3 extension can report that `exl3_moe_glu_had_in` has no `limit` argument. The shipped overlay then clamps in Torch before invoking the kernel. The fresh install and historical L5-P both used this path on all three ranks. Rebuilding the same pinned sources will not add that argument; retain the pinned behavior for reproduction.
 
 ## Hash mismatch
 

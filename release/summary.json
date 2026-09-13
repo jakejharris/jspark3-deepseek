@@ -4,13 +4,13 @@
     "project": "JSPARK3",
     "name": "Tempo",
     "version": "v2",
-    "candidate": "v2.0.0-rc.2",
+    "candidate": "v2.0.0",
     "status": "experimental",
     "current_daily_driver": true,
     "model": "DeepSeek-V4.1 Flash",
     "hardware": "3 × NVIDIA DGX Spark (GB10, 128 GB each)"
   },
-  "publication_status": "pending",
+  "publication_status": "published",
   "limitations": [
     "Experimental serving recipe; historical measurements come from one three-Spark fleet.",
     "Functional code passed 2/4 tasks; this is not a broad quality ranking.",
@@ -22,26 +22,26 @@
   ],
   "validation": {
     "fresh_source_build": {
-      "status": "PENDING",
-      "evidence": null,
-      "evidence_sha256": null
+      "status": "PASS",
+      "evidence": "evidence/fresh-install-20260913.json",
+      "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
     },
     "fresh_install": {
-      "status": "PENDING",
-      "evidence": null,
-      "evidence_sha256": null
+      "status": "PASS",
+      "evidence": "evidence/fresh-install-20260913.json",
+      "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
     },
     "fresh_runtime_smoke": {
-      "status": "PENDING",
-      "evidence": null,
-      "evidence_sha256": null
+      "status": "PASS",
+      "evidence": "evidence/fresh-install-20260913.json",
+      "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
     }
   },
   "links": {
-    "install": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.2/docs/INSTALL.md",
-    "source": "https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.0-rc.2",
-    "release": "https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.0-rc.2",
-    "evidence": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.2/docs/BENCHMARKS.md",
+    "install": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0/docs/INSTALL.md",
+    "source": "https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.0",
+    "release": "https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.0",
+    "evidence": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0/docs/BENCHMARKS.md",
     "huggingface": "https://huggingface.co/jakejharris/jspark3-tempo",
     "website": "https://jakejh.com/jspark3/deepseek/"
   },

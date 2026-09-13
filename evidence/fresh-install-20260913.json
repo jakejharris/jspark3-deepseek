@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "validated_candidate": "v2.0.0-rc.2",
+  "validated_commit": "96347fc286f4153e320f0bc3f67842b9e17c3ca1",
+  "validated_manifest_sha256": "66b8cd6e7ebdc587905801d2b62d4817419f8df548f7645231e954490668acb2",
+  "validated_archive_sha256": "9b1ef19e3adc76d9532303cba246e982d0b78cc7d8496c79ff378d5fe9deb7ae",
+  "checks": {
+    "fresh_source_build": "PASS",
+    "fresh_install": "PASS",
+    "fresh_runtime_smoke": "PASS"
+  },
+  "scope": "Fresh source build and new guarded deployment on the same three-Spark fleet, from the frozen public archive. Declared cached upstream inputs were fully rehashed. This is not independent-hardware reproduction or a rerun of historical performance cohorts.",
+  "date": "2026-09-13",
+  "installer": "Fresh Astra High agent using public instructions and declared host inventory; release coordinator ran the optional Work smoke after handback.",
+  "release_checks": {
+    "cpu_tests_passed": 46,
+    "source_overlays_verified_each_rank": 15,
+    "model_files_verified_each_rank": 52,
+    "packed_payloads_verified": 6,
+    "all_three_exact_image_ids_match": true,
+    "all_three_native_inventories_match": true
+  },
+  "source_build": {
+    "started_utc": "2026-09-13T07:26:49Z",
+    "finished_utc": "2026-09-13T07:54:41Z",
+    "image_id": "sha256:9f4667cb434de9b6fdb7d43371b8626175fda6238da2fbe4309482a9f0a956a4",
+    "image_id_kind": "Locally source-built Docker image ID; not a downloadable registry digest",
+    "image_export_sha256": "91e0fa358867816b6fd9192cd9705032adfd57a94212e153ceb5e3e72ee73934",
+    "embedded_manifest_sha256": "66b8cd6e7ebdc587905801d2b62d4817419f8df548f7645231e954490668acb2",
+    "stages": [
+      {
+        "stage": 1,
+        "kind": "vllm-stable",
+        "completed_utc": "2026-09-13T07:46:47.111870+00:00",
+        "memory_peak_bytes": 10298703872
+      },
+      {
+        "stage": 2,
+        "kind": "flashinfer-pinned",
+        "completed_utc": "2026-09-13T07:47:58.292542+00:00",
+        "memory_peak_bytes": 14988853248
+      },
+      {
+        "stage": 3,
+        "kind": "mxfp8-jit",
+        "completed_utc": "2026-09-13T07:51:48.311060+00:00",
+        "memory_peak_bytes": 7171969024
+      },
+      {
+        "stage": 4,
+        "kind": "sparse-mla-jit",
+        "completed_utc": "2026-09-13T07:52:24.174390+00:00",
+        "memory_peak_bytes": 804716544
+      },
+      {
+        "stage": 5,
+        "kind": "cuda-exl3",
+        "completed_utc": "2026-09-13T07:54:39.301122+00:00",
+        "memory_peak_bytes": 3024060416
+      }
+    ],
+    "native_sha256": {
+      "mxfp8_gemm_cutlass_sm120.so": "544a630219a2334f269c7970f99ac32dbc252615b13052a577cf133f81d33d26",
+      "sparse_mla_sm120.so": "27ae3297f26d3b3fb7f3bfff6063bfbaaa99ed0b4a2b343ead0837d1f18f9d11",
+      "_C_stable_libtorch.abi3.so": "bf9d3bc34854bef02d8ef6cfacd87f383837c80bd0ad62e56400d3e28a6b9e01",
+      "_moe_C_stable_libtorch.abi3.so": "77e8b7cb24ae86fb13fe7458497d5b5ecbd0723ddd75dcec4ae2f2f46dc14b11",
+      "_C.cpython-312-aarch64-linux-gnu.so": "98b58bccc5b906680fc8bb3a90200948e8b124d1dd230f2e8be042a5f3455b02",
+      "deepseek_v41.py": "f1dcd5bc934c8c1207975c1ccd2d3b87334c10a30838dfdf4d584ac15c31f755",
+      "deepseekv41_engine_tool_parser.py": "40be82cf9b9d7f3384694fc11c6b1fbd132bbc503a0c7499f50cd041accdc52f",
+      "deepseek_v41_engine_reasoning_parser.py": "483ab75009234bb16487f5f4425dd2ade554f889ee414cd17357f1af87d932a6"
+    },
+    "note": "Fresh native binary hashes differ from the historical image. The inherited Torch clamp fallback is present in both this build and historical L5-P on all ranks."
+  },
+  "smoke": {
+    "first_request_2_plus_2": "PASS",
+    "requests": [
+      {
+        "name": "generation",
+        "terminal": "COMPLETE",
+        "ttft_s": 0.17331257998012006,
+        "http_s": 0.6678918758407235,
+        "completion_tokens": 40,
+        "finish_reason": "stop",
+        "done": true,
+        "end_to_end_tok_s": 59.889933456143815,
+        "post_first_output_tok_s": 78.85489814557887
+      },
+      {
+        "name": "uncached_prefix",
+        "terminal": "COMPLETE",
+        "ttft_s": 8.764543789904565,
+        "http_s": 8.857428647112101,
+        "completion_tokens": 3,
+        "finish_reason": "stop",
+        "done": true,
+        "end_to_end_tok_s": 0.33869874875911393,
+        "post_first_output_tok_s": 21.532035039159425
+      },
+      {
+        "name": "repeated_prefix",
+        "terminal": "COMPLETE",
+        "ttft_s": 0.6057280520908535,
+        "http_s": 0.6972234619315714,
+        "completion_tokens": 3,
+        "finish_reason": "stop",
+        "done": true,
+        "end_to_end_tok_s": 4.302781193978859,
+        "post_first_output_tok_s": 21.859020069769077
+      },
+      {
+        "name": "tool_call",
+        "terminal": "COMPLETE",
+        "ttft_s": 0.7350074558053166,
+        "http_s": 1.6666646469384432,
+        "completion_tokens": 49,
+        "finish_reason": "tool_calls",
+        "done": true,
+        "end_to_end_tok_s": 29.40003562804904,
+        "post_first_output_tok_s": 51.5210964470956
+      },
+      {
+        "name": "tool_continuation",
+        "terminal": "COMPLETE",
+        "ttft_s": 0.7597012571059167,
+        "http_s": 0.8638013531453907,
+        "completion_tokens": 2,
+        "finish_reason": "stop",
+        "done": true,
+        "end_to_end_tok_s": 2.315347148643989,
+        "post_first_output_tok_s": 9.606139072348283
+      }
+    ],
+    "isolated_prefix_hit_token_delta": 4096.0,
+    "reuse_accounting": "Observed engine counter delta across the isolated suite; not inferred from latency",
+    "representative_scope": "Two representative completed examples, no quality-superiority or general performance claim. Public smoke.stream: C1, thinking off, temperature0, max192 output tokens, 180-second read/wall budget. Rates are full HTTP and post-first-output, not GPU-only decode.",
+    "representative_requests": [
+      {
+        "name": "prose",
+        "terminal": "COMPLETE",
+        "ttft_s": 0.4425244191661477,
+        "http_s": 2.8138209781609476,
+        "completion_tokens": 61,
+        "finish_reason": "stop",
+        "done": true,
+        "end_to_end_tok_s": 21.678706809510064,
+        "post_first_output_tok_s": 25.302613362469597
+      },
+      {
+        "name": "code",
+        "terminal": "COMPLETE",
+        "ttft_s": 0.24470279016532004,
+        "http_s": 1.0671471611130983,
+        "completion_tokens": 55,
+        "finish_reason": "stop",
+        "done": true,
+        "end_to_end_tok_s": 51.539283431754356,
+        "post_first_output_tok_s": 65.65793615654617
+      }
+    ],
+    "representative_review": "Both complete and readable. Prose contains an imprecise staleness example; code adds a Markdown fence despite the only-code instruction. These checks do not certify answer quality."
+  },
+  "runtime_resource_samples": [
+    {
+      "rank": 0,
+      "guard_samples": 929,
+      "first_utc": "2026-09-13T08:03:37.080801+00:00",
+      "last_utc": "2026-09-13T08:19:05.082350+00:00",
+      "min_host_memavailable_bytes": 7833931776,
+      "max_candidate_swap_bytes": 0,
+      "oom_events": 0,
+      "restart_count": 0,
+      "trips": 0
+    },
+    {
+      "rank": 1,
+      "guard_samples": 930,
+      "first_utc": "2026-09-13T08:03:36.238768+00:00",
+      "last_utc": "2026-09-13T08:19:05.239162+00:00",
+      "min_host_memavailable_bytes": 6605705216,
+      "max_candidate_swap_bytes": 0,
+      "oom_events": 0,
+      "restart_count": 0,
+      "trips": 0
+    },
+    {
+      "rank": 2,
+      "guard_samples": 932,
+      "first_utc": "2026-09-13T08:03:35.201348+00:00",
+      "last_utc": "2026-09-13T08:19:06.205541+00:00",
+      "min_host_memavailable_bytes": 5858394112,
+      "max_candidate_swap_bytes": 0,
+      "oom_events": 0,
+      "restart_count": 0,
+      "trips": 0
+    }
+  ],
+  "resource_scope": "Candidate cgroup swap/OOM and exact-rank restarts were zero. Host-wide swap already existed and is not claimed zero. Sampled minima do not certify future workloads.",
+  "optional_work_smoke": {
+    "status": "PASS",
+    "pi_version": "0.84.2",
+    "node_version": "22.12.0",
+    "client_platform": "Linux x86_64 client, separate from ARM64 serving hosts",
+    "fixture": "Pinned public Cadence fixture and supplied Pi adapter/observer",
+    "observation_window_s": 45,
+    "agent_elapsed_s": 11.104658613970969,
+    "requests": 4,
+    "completed_tool_calls": 3,
+    "tool_errors": 0,
+    "model_errors": [],
+    "file_value": "56",
+    "engine_generated_tokens": 185.0,
+    "output_cap": 65536,
+    "thinking": "high mapped to xhigh by shipped adapter",
+    "resource_faults": [],
+    "scope": "Bounded transport/tool smoke only; the full 180-second C3/C6 Work campaign was not repeated."
+  },
+  "deviations": [
+    "Frozen archive used before publication instead of clone URL.",
+    "Verified cached model, Engram and source downloads reused; weights were not redownloaded or repacked.",
+    "Owned NumPy virtual environments, user lingering and controller SSH trust were provisioned as documented host prerequisites.",
+    "The persistent controller runs on rank 0; the original client had no systemd user manager.",
+    "rc.1 was superseded before GPU launch to fix public build-log and guard portability; full rc.2 source build succeeded.",
+    "The rc.2 build command omitted the optional friendly tag, which retained the rc.1 default; exact built image ID and embedded rc.2 manifest establish provenance. Final install instructions pass the explicit release tag."
+  ],
+  "publication_delta": "v2.0.0 updates release identity, evidence, generated docs/website data, explicit friendly build tag in instructions and troubleshooting notes. Serving code, compiler inputs, model files, configuration defaults and historical benchmark bytes remain identical to the validated rc.2 candidate."
+}
