@@ -1,0 +1,236 @@
+[
+  {
+    "layer": 1,
+    "rank": 0,
+    "row_range": [
+      0,
+      128000880
+    ],
+    "sha256": "965948be69a76a3b9aca3728fd288fb94e6462ea5aa609fee81183911c384267",
+    "status": "passed",
+    "hash_scope": "canonical JSON of owned weight and scale range descriptors, each with full-range SHA256",
+    "ranges": [
+      {
+        "layer": 1,
+        "tensor": "layers.1.engram.embed.weight",
+        "kind": "weight",
+        "shard": "model-00047-of-00048.safetensors",
+        "row_start": 0,
+        "row_end": 128000880,
+        "rows": 128000880,
+        "row_bytes": 256,
+        "file_offset": 664,
+        "bytes": 32768225280,
+        "sha256": "4670123982aa71a39863148c42714005bb093bc6cd2bf950a73324eb98106609"
+      },
+      {
+        "layer": 1,
+        "tensor": "layers.1.engram.embed.scale",
+        "kind": "scale",
+        "shard": "model-00047-of-00048.safetensors",
+        "row_start": 0,
+        "row_end": 128000880,
+        "rows": 128000880,
+        "row_bytes": 8,
+        "file_offset": 98305579672,
+        "bytes": 1024007040,
+        "sha256": "7bdd6ac4ceeb672f3405d294d4afbf547c53cebbb0e66c5d4b3715693242a2ae"
+      }
+    ]
+  },
+  {
+    "layer": 1,
+    "rank": 1,
+    "row_range": [
+      128000880,
+      256002934
+    ],
+    "sha256": "b844d988a2f0f4a81d09a354c5bf754bca59dd68329e11d51c595e92937902f2",
+    "status": "passed",
+    "hash_scope": "canonical JSON of owned weight and scale range descriptors, each with full-range SHA256",
+    "ranges": [
+      {
+        "layer": 1,
+        "tensor": "layers.1.engram.embed.weight",
+        "kind": "weight",
+        "shard": "model-00047-of-00048.safetensors",
+        "row_start": 128000880,
+        "row_end": 256002934,
+        "rows": 128002054,
+        "row_bytes": 256,
+        "file_offset": 32768225944,
+        "bytes": 32768525824,
+        "sha256": "8e3b7db48762d640224c022a94819f3a823fbcf851240e1862718c1102e933fa"
+      },
+      {
+        "layer": 1,
+        "tensor": "layers.1.engram.embed.scale",
+        "kind": "scale",
+        "shard": "model-00047-of-00048.safetensors",
+        "row_start": 128000880,
+        "row_end": 256002934,
+        "rows": 128002054,
+        "row_bytes": 8,
+        "file_offset": 99329586712,
+        "bytes": 1024016432,
+        "sha256": "6dabb124a3797a5e9962a703a204bc24b80c439309b7d71fe83842daa510a86c"
+      }
+    ]
+  },
+  {
+    "layer": 1,
+    "rank": 2,
+    "row_range": [
+      256002934,
+      384006168
+    ],
+    "sha256": "598560ed9c0065859f2359aad315c3a53d144a6b52bdd41ab25a117f4119e6dd",
+    "status": "passed",
+    "hash_scope": "canonical JSON of owned weight and scale range descriptors, each with full-range SHA256",
+    "ranges": [
+      {
+        "layer": 1,
+        "tensor": "layers.1.engram.embed.weight",
+        "kind": "weight",
+        "shard": "model-00047-of-00048.safetensors",
+        "row_start": 256002934,
+        "row_end": 384006168,
+        "rows": 128003234,
+        "row_bytes": 256,
+        "file_offset": 65536751768,
+        "bytes": 32768827904,
+        "sha256": "764dc65045d06269f6aa106594ccdc25b6e860d167488df0056436b0acb57eaf"
+      },
+      {
+        "layer": 1,
+        "tensor": "layers.1.engram.embed.scale",
+        "kind": "scale",
+        "shard": "model-00047-of-00048.safetensors",
+        "row_start": 256002934,
+        "row_end": 384006168,
+        "rows": 128003234,
+        "row_bytes": 8,
+        "file_offset": 100353603144,
+        "bytes": 1024025872,
+        "sha256": "f374c042768725cd6c0beda76934999a64e407ffebe6e6d20462eeaf7df9a609"
+      }
+    ]
+  },
+  {
+    "layer": 14,
+    "rank": 0,
+    "row_range": [
+      0,
+      128004290
+    ],
+    "sha256": "3a48888dde0d2c22c9c97e1389eaf2bba88ed580f3582b37aeff1a8a7844807a",
+    "status": "passed",
+    "hash_scope": "canonical JSON of owned weight and scale range descriptors, each with full-range SHA256",
+    "ranges": [
+      {
+        "layer": 14,
+        "tensor": "layers.14.engram.embed.weight",
+        "kind": "weight",
+        "shard": "model-00048-of-00048.safetensors",
+        "row_start": 0,
+        "row_end": 128004290,
+        "rows": 128004290,
+        "row_bytes": 256,
+        "file_offset": 672,
+        "bytes": 32769098240,
+        "sha256": "0183d3ede6fd3fb17508f7f01684085064ee19606017fad2ecb01b44f6e5677f"
+      },
+      {
+        "layer": 14,
+        "tensor": "layers.14.engram.embed.scale",
+        "kind": "scale",
+        "shard": "model-00048-of-00048.safetensors",
+        "row_start": 0,
+        "row_end": 128004290,
+        "rows": 128004290,
+        "row_bytes": 8,
+        "file_offset": 98308271264,
+        "bytes": 1024034320,
+        "sha256": "32ca8119997a892deab07e77121b977f8b5b1b9a435f4ab4149a0adee021c5f7"
+      }
+    ]
+  },
+  {
+    "layer": 14,
+    "rank": 1,
+    "row_range": [
+      128004290,
+      256009984
+    ],
+    "sha256": "d47fb37ab17c840185d19ca82d26bfc9d8babc67f2a1790eedfe3d73a268e4eb",
+    "status": "passed",
+    "hash_scope": "canonical JSON of owned weight and scale range descriptors, each with full-range SHA256",
+    "ranges": [
+      {
+        "layer": 14,
+        "tensor": "layers.14.engram.embed.weight",
+        "kind": "weight",
+        "shard": "model-00048-of-00048.safetensors",
+        "row_start": 128004290,
+        "row_end": 256009984,
+        "rows": 128005694,
+        "row_bytes": 256,
+        "file_offset": 32769098912,
+        "bytes": 32769457664,
+        "sha256": "5ff6fdccb5ced4cf02475cf1f7b5d7fac33311205f6e529d6d26ddd0afbd7535"
+      },
+      {
+        "layer": 14,
+        "tensor": "layers.14.engram.embed.scale",
+        "kind": "scale",
+        "shard": "model-00048-of-00048.safetensors",
+        "row_start": 128004290,
+        "row_end": 256009984,
+        "rows": 128005694,
+        "row_bytes": 8,
+        "file_offset": 99332305584,
+        "bytes": 1024045552,
+        "sha256": "088e011e9b35c2fdd3f3427ce9c18c65250bb7628074334522f1584fb217a896"
+      }
+    ]
+  },
+  {
+    "layer": 14,
+    "rank": 2,
+    "row_range": [
+      256009984,
+      384016682
+    ],
+    "sha256": "fcba825d07e316edb2e5efe952ecfecb3ccd860eb9f19560663fc8c6e1a5e92b",
+    "status": "passed",
+    "hash_scope": "canonical JSON of owned weight and scale range descriptors, each with full-range SHA256",
+    "ranges": [
+      {
+        "layer": 14,
+        "tensor": "layers.14.engram.embed.weight",
+        "kind": "weight",
+        "shard": "model-00048-of-00048.safetensors",
+        "row_start": 256009984,
+        "row_end": 384016682,
+        "rows": 128006698,
+        "row_bytes": 256,
+        "file_offset": 65538556576,
+        "bytes": 32769714688,
+        "sha256": "47c3ef33122b1ce113c4f209372f9980090068f6d389d759051a39c17aa3b326"
+      },
+      {
+        "layer": 14,
+        "tensor": "layers.14.engram.embed.scale",
+        "kind": "scale",
+        "shard": "model-00048-of-00048.safetensors",
+        "row_start": 256009984,
+        "row_end": 384016682,
+        "rows": 128006698,
+        "row_bytes": 8,
+        "file_offset": 100356351136,
+        "bytes": 1024053584,
+        "sha256": "afa27a9fbd8d41409e0a1846966bdd0789b2ca6962b946fcfc1248cc173cc827"
+      }
+    ]
+  }
+]

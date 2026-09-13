@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "deployment": "tempo-rc1-001",
+  "image_id": "REPLACE_WITH_VERIFIED_SHA256_IMAGE_ID",
+  "image_provenance": "source-build",
+  "api_port": 8888,
+  "master_port": 29541,
+  "endpoint": "http://192.0.2.11:8888",
+  "state_dir": "/absolute/controller/tempo-state",
+  "hosts": [
+    {"rank": 0, "ssh": "spark-a", "ip": "192.0.2.11", "interface": "enP7s7", "hca": "rocep1s0f1,rocep1s0f0", "fabric_subnets": ["10.10.12.0/24", "10.10.13.0/24"], "recipe": "/opt/tempo", "model": "/srv/tempo/model-tp3", "engram": "/srv/tempo/engram", "packed": "/srv/tempo/engram-packed", "work": "/srv/tempo/runtime"},
+    {"rank": 1, "ssh": "spark-b", "ip": "192.0.2.12", "interface": "enP7s7", "hca": "rocep1s0f1,rocep1s0f0", "fabric_subnets": ["10.10.12.0/24", "10.10.23.0/24"], "recipe": "/opt/tempo", "model": "/srv/tempo/model-tp3", "engram": "/srv/tempo/engram", "packed": "/srv/tempo/engram-packed", "work": "/srv/tempo/runtime"},
+    {"rank": 2, "ssh": "spark-c", "ip": "192.0.2.13", "interface": "enP7s7", "hca": "rocep1s0f1,rocep1s0f0", "fabric_subnets": ["10.10.13.0/24", "10.10.23.0/24"], "recipe": "/opt/tempo", "model": "/srv/tempo/model-tp3", "engram": "/srv/tempo/engram", "packed": "/srv/tempo/engram-packed", "work": "/srv/tempo/runtime"}
+  ]
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "file": "patches/sparse_swa.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/mla/sparse_swa.py",
+    "preimage_sha256": "cc4c5f3d5dd914ce05f491b03b3bd7c45ba532bd7e566e2b12af348768acecbe",
+    "sha256": "356b4693d174ee5bd714275be96422d542bfd6f18139693ed4e3000b4e240f34"
+  },
+  {
+    "file": "patches/flashinfer_sparse.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/flashinfer_sparse.py",
+    "preimage_sha256": "19c8c2ebcffacd2e8fc370c005c7a2b619585597dfc1152e8010c7fecfd215c1",
+    "sha256": "ab7712f977aa59db6e357310f20e38e1a506170a61ebaa6a2495d59d8a07ccc3"
+  },
+  {
+    "file": "patches/weight_utils.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/model_loader/weight_utils.py",
+    "preimage_sha256": "494b07cd6b4e4fb40314dec1d0e0c3b433fe62a135a3a9d6d9e4058059054e4a",
+    "sha256": "6ad34626eec89f69257d211e17c02191eeec180782cdd388169843e3b0000701"
+  },
+  {
+    "file": "patches/model_state.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/model_state.py",
+    "preimage_sha256": "a2475c04990a17532e93618a58e5bb06a20215b3538ef140d01fe72a1fe9e3ab",
+    "sha256": "8cf3ff42fa9993a6539b26dc5ff0ca525df13192ce9b266a0519a238bbdffbcd"
+  },
+  {
+    "file": "patches/sparse_attn_indexer.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/sparse_attn_indexer.py",
+    "preimage_sha256": "5b094c4280ea615eb79db26734dd8633978bed1cc1189cf278e6a229894900a4",
+    "sha256": "8a8a1502357e11204a8ce49f207c70cd2b888518a1cea7c49790adb57aeac517"
+  },
+  {
+    "file": "patches/attention.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/attention.py",
+    "preimage_sha256": "ef13a8503b54172a63cca6932e2ee5a6d5d6ced81445949067f01b3f61ab6e5e",
+    "sha256": "952087f3098f0b6e4e60144f17e4d7304ba10aee09475ec4105b7b4ed913cafa"
+  },
+  {
+    "file": "patches/virtual_heads.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/virtual_heads.py",
+    "preimage_sha256": null,
+    "sha256": "003fd8e7f40703fa8c740c321a1a03d19407cb4e3bd9829f861398498d65427a"
+  },
+  {
+    "file": "patches/exl3_config.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/cuda_exl3/config.py",
+    "preimage_sha256": "57f2ed8be4b2823f86979baa10d7ad7f9ff8944c8b827a20ffa53132e0edee93",
+    "sha256": "e5fef3b46a83bf90579048f5966fa96e5c45090d973df46c4b478b91a9ec6603"
+  },
+  {
+    "file": "patches/exl3_moe.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/cuda_exl3/moe.py",
+    "preimage_sha256": "a28dbfb63873481502cddc3147270e1a77fb086df9b912b6fb8c7508fdb644ff",
+    "sha256": "8348f8b0c4f7e3bf10c1bd10ed960f2709431e171984851ab7790c8718ff138e"
+  },
+  {
+    "file": "patches/vocab_parallel_embedding.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/vocab_parallel_embedding.py",
+    "preimage_sha256": "a187d541a61455d6967b98ff3b9837a752e4f5bd5ab9c91de4aeca881f612c3a",
+    "sha256": "88e710639dde4186bd9e944d0edaf27d2d5027fabf208d5567116b4f2fc1a5ee"
+  },
+  {
+    "file": "patches/vl_model.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/vl_model.py",
+    "preimage_sha256": "ab698e56c83a345ea73e41359cab79b5e484ccfc116ed131347d50cdfe896251",
+    "sha256": "ec75f8079298399c384db1cc75dde05ea7eec3006f98d4b09530a659790a7c66"
+  },
+  {
+    "file": "patches/dsv4_nvidia_model.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4/nvidia/model.py",
+    "preimage_sha256": "d716afd62aa696b25071bbe18133a3ddf41fae83587dfa8c2e66add1680c11d1",
+    "sha256": "021197e1160b7c4f257307bb3f43352c1e38d725ce706a7a4d06f008d520527a"
+  },
+  {
+    "file": "patches/kv_cache_coordinator.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/core/kv_cache_coordinator.py",
+    "preimage_sha256": "d7bbe8cd7d9fc1aa639fba5c5a4445fa23601394ff4fa9f2aeaac9606e78352c",
+    "sha256": "f6f9b702761ac2746f161a90c4c317cbcf9362d4cf6f7403897086ab672a4521"
+  },
+  {
+    "file": "patches/scheduler.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/core/sched/scheduler.py",
+    "preimage_sha256": "e5e1c18b1d7a6ea73adbb4921f64a35b00a96abe673691bf6a7f57281a524519",
+    "sha256": "18c87ade70914f0e0be61d28e295f54db9233834dbe51c5e71e5a8a59ce21952"
+  },
+  {
+    "file": "patches/engram.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/common/engram.py",
+    "preimage_sha256": "ac787367615f7e8f25511ea81cb4286c9a3211fe8d27af08a502bf54ea1244c3",
+    "sha256": "4f98e3cfb208c49c9a27ed2f3cd91280a5de1c8933eab42008f88358bf90a5a6"
+  }
+]

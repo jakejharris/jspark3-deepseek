@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "candidate": "v2.0.0-rc.1",
+  "date_utc": "2026-09-13",
+  "scope": "Public source/preparation and CPU failure-path validation; no service transition or fresh runtime test",
+  "source_preimages": {"passed": 15, "method": "SHA256 of source members in pinned public vLLM and cuda-exl3 archives versus release/patches.json"},
+  "final_overlays": {"passed": 15, "method": "SHA256 against archived L5-P deployment manifest; coordinator additionally checked all15 actual serving files on all3 ranks"},
+  "public_build_inputs": {"passed": 8, "method": "Coordinator used shipped fetch_sources.py; every archive/wheel was downloaded and SHA256 verified"},
+  "public_model_metadata": {"passed": 5, "method": "Shipped downloader fetched and SHA256 verified exact pinned public metadata"},
+  "projection_sidecar": {"status": "PASS", "bytes": 315044840, "sha256": "4e27faf4eb8d7c1a6b59a5806e07629501f46dc7c4ad3efe5a8822f63fc3895f", "method": "Fresh anonymous strict HTTP206 extraction of8 projection tensors; matches historical model-file pin"},
+  "derived_index": {"status": "PASS", "sha256": "463aa6b33c2573a87193c86c8349eb5f5c829153cdeacb9a89853789ba6c05ac", "method": "Shipped filter_index.py on freshly downloaded upstream index; matches historical model-file pin"},
+  "derived_config": {"status": "PASS", "sha256": "99e153589ed29935c33611f39c4a425cbdd57d9b914201036db647cfd01398af", "method": "TP3 transform of freshly downloaded original config; matches historical model-file pin"},
+  "tests": {"command": "python3 -m pytest -q tests", "passed": 40, "failed": 0, "scope": ["EXL3 guard limits and exact-ID refusals", "packed byte equivalence and overwrite refusal", "preimage failure before any mutation", "relay stale/future/incarnation/swap/floor/restart/trip refusal", "SSE missing DONE/error/length/missing usage refusal", "diagnostics allowlist redaction", "final overlay and graph identity"]},
+  "fresh_source_image_build": "PENDING",
+  "fresh_full_weight_and_packed_preparation": "PENDING; existing declared cache must be fully reverified by installer",
+  "fresh_service_transition_and_smoke": "PENDING",
+  "independent_hardware_reproduction": false
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "Historical compiled binary hashes; fresh source builds may differ and require new native/runtime receipts.",
+  "files": {
+    "/root/.cache/flashinfer/0.7.0rc1/121a/cached_ops/mxfp8_gemm_cutlass_sm120/mxfp8_gemm_cutlass_sm120.so": "3341828a092a2842d27e536803ab3c3853ba8f64d16318674918af9dca62d23a",
+    "/root/.cache/flashinfer/0.7.0rc1/121a/cached_ops/sparse_mla_sm120/sparse_mla_sm120.so": "7f98cfa28e46cc13a9039f3b015fac14f2611725f2ca6c49022f8dd3915db464",
+    "/usr/local/lib/python3.12/dist-packages/vllm/_C_stable_libtorch.abi3.so": "29b1cee9ee16151591cc4b6ae47feca30555bfa81dc97d026135c2a42f8937a8",
+    "/usr/local/lib/python3.12/dist-packages/vllm/_moe_C_stable_libtorch.abi3.so": "77e8b7cb24ae86fb13fe7458497d5b5ecbd0723ddd75dcec4ae2f2f46dc14b11",
+    "/usr/local/lib/python3.12/dist-packages/cuda_exl3/_C.cpython-312-aarch64-linux-gnu.so": "81db75d97383739ab7ea928022212ac3c333f2159cbe8bc0b3fe02bd030bcdc8"
+  },
+  "parsers": {
+    "/usr/local/lib/python3.12/dist-packages/vllm/parser/deepseek_v41.py": "f1dcd5bc934c8c1207975c1ccd2d3b87334c10a30838dfdf4d584ac15c31f755",
+    "/usr/local/lib/python3.12/dist-packages/vllm/tool_parsers/deepseekv41_engine_tool_parser.py": "40be82cf9b9d7f3384694fc11c6b1fbd132bbc503a0c7499f50cd041accdc52f",
+    "/usr/local/lib/python3.12/dist-packages/vllm/reasoning/deepseek_v41_engine_reasoning_parser.py": "483ab75009234bb16487f5f4425dd2ade554f889ee414cd17357f1af87d932a6"
+  }
+}

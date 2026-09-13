@@ -1,0 +1,16 @@
+{
+  "schema": "range-store-shards/1",
+  "note": "Pinned source selection; verify fetched ranges against release/engram-ranges.json. Whole shard hash is not claimed for sparse files.",
+  "shards": {
+    "model-00047-of-00048.safetensors": {
+      "url": "https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/resolve/b60193e0609147553145d1538d935925f2763c1d/model-00047-of-00048.safetensors",
+      "size": 101535150936,
+      "lfs_sha256": "824db4881320407ac340736d14dcee5ecd748c27d0f5836b8127ecc2e3781b0f"
+    },
+    "model-00048-of-00048.safetensors": {
+      "url": "https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/resolve/b60193e0609147553145d1538d935925f2763c1d/model-00048-of-00048.safetensors",
+      "size": 101537926640,
+      "lfs_sha256": "976330f4954338e1ad8b508c32aa912032c7ad908959fd53c8307650fe4520ed"
+    }
+  }
+}

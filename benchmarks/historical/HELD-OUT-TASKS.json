@@ -1,0 +1,619 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-09-12T02:05:44.882871Z",
+  "selection_timing": "FROZEN_DURING_PREP_BEFORE_ANY_EXL3_OUTPUT_WAS_SEEN",
+  "selection_author": "prep-fixtures worker",
+  "global_request_contract": {
+    "temperature": 0,
+    "reasoning_setting": "off",
+    "max_tokens": 1024
+  },
+  "preservation_rule": "Preserve every response and validator result for every engine, including failures.",
+  "tasks": [
+    {
+      "id": "held-arithmetic-integer",
+      "category": "arithmetic",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "A fully explicit integer answer catches silent arithmetic regressions without prose judgment.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Compute 37×48 − 19×23 + 125. Reply with only the base-10 integer, with no punctuation."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 32
+      },
+      "expected": "1464",
+      "validator": {
+        "type": "exact_text",
+        "value": "1464"
+      },
+      "validator_sha256": "27a257f42ee12562235edea2c83a9179f47946878e6ef6852cb211f9cc9c6738",
+      "task_sha256": "d370fac0ed784d7e648672cced7e359f27bdf18422b971a8408fea140e036c42"
+    },
+    {
+      "id": "held-arithmetic-fraction",
+      "category": "arithmetic",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Requires exact rational arithmetic and a frozen reduced answer.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Compute (17/24 + 5/18) ÷ (7/9). Reduce the result completely. Reply only as p/q."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 32
+      },
+      "expected": "71/56",
+      "validator": {
+        "type": "exact_text",
+        "value": "71/56"
+      },
+      "validator_sha256": "7c2d96e7da56a00dd96d7764da1a21a9f58bcd6fe70be50d07ff269a84588454",
+      "task_sha256": "fdf505eb143f235c8e1c42eaca35858851ca21061bed00dc1fc2190f16c63c9d"
+    },
+    {
+      "id": "held-arithmetic-modular",
+      "category": "arithmetic",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Exercises multi-step modular reasoning with an unambiguous machine-checkable answer.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "What are the last three digits of 7^222? Preserve leading zeros if needed and reply with exactly three digits."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 32
+      },
+      "expected": "049",
+      "validator": {
+        "type": "exact_text",
+        "value": "049"
+      },
+      "validator_sha256": "c89b20e3f2e2850df469b0f7114b75fccf300e3f02be55fd4070662ec8c04d73",
+      "task_sha256": "831c1e855ffa9ab776bb23b11d4c45db6cdf19b8ce4c51b2c591dad0058e3398"
+    },
+    {
+      "id": "held-reasoning-dependency-chain",
+      "category": "long_dependency_constraints",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Covers a long dependency graph, earliest-wave placement, closure, and deterministic tie-breaking.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Tasks have these prerequisites: A=[], B=[], C=[A], D=[A,B], E=[B], F=[C,D], G=[D,E], H=[F], I=[F,G], J=[H,I], K=[G], L=[J,K]. Place every task in its earliest parallel wave. Also give every direct or indirect prerequisite of L and one longest direct-edge chain ending at L; if tied choose the lexicographically smallest complete chain. Return only JSON with keys waves, prerequisites_of_L, longest_chain_to_L in that order. Each value is an array; waves is an array of lexicographically sorted arrays."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 512
+      },
+      "expected": {
+        "waves": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "D",
+            "E"
+          ],
+          [
+            "F",
+            "G"
+          ],
+          [
+            "H",
+            "I",
+            "K"
+          ],
+          [
+            "J"
+          ],
+          [
+            "L"
+          ]
+        ],
+        "prerequisites_of_L": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K"
+        ],
+        "longest_chain_to_L": [
+          "A",
+          "C",
+          "F",
+          "H",
+          "J",
+          "L"
+        ]
+      },
+      "validator": {
+        "type": "json_exact",
+        "value": {
+          "waves": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "C",
+              "D",
+              "E"
+            ],
+            [
+              "F",
+              "G"
+            ],
+            [
+              "H",
+              "I",
+              "K"
+            ],
+            [
+              "J"
+            ],
+            [
+              "L"
+            ]
+          ],
+          "prerequisites_of_L": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K"
+          ],
+          "longest_chain_to_L": [
+            "A",
+            "C",
+            "F",
+            "H",
+            "J",
+            "L"
+          ]
+        },
+        "key_order_required": true
+      },
+      "validator_sha256": "eeddffe39a47242a64214262c8ed5ff95b5d0494b45492cd4f0fe60b031cbe41",
+      "task_sha256": "9264ffb5288e89f0f4ca31a87620b97a2356de6d395fe095ba5372ff092f5ba4"
+    },
+    {
+      "id": "held-reasoning-color-assignment",
+      "category": "reasoning",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "A compact constraint-satisfaction control with exactly one assignment.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Iris, Jules, Kian, and Lena each choose one different color: amber, blue, coral, denim. Jules chooses blue. Iris chooses neither blue nor coral. Kian chooses neither amber nor denim. Lena chooses neither coral nor amber. Return only a JSON object mapping names to colors, with names in alphabetical order."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 128
+      },
+      "expected": {
+        "Iris": "amber",
+        "Jules": "blue",
+        "Kian": "coral",
+        "Lena": "denim"
+      },
+      "validator": {
+        "type": "json_exact",
+        "value": {
+          "Iris": "amber",
+          "Jules": "blue",
+          "Kian": "coral",
+          "Lena": "denim"
+        },
+        "key_order_required": true
+      },
+      "validator_sha256": "b3794d437e5df8cfdbeee3f29061003672810e9083ec54ff321e9038b5a15cf8",
+      "task_sha256": "dfb9b725f410ca6f45f5c825c8ea5cd3d5a4a78cbf202b24a1019b0da4ffd0f2"
+    },
+    {
+      "id": "held-reasoning-state-trace",
+      "category": "reasoning",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Checks ordered conditional state updates with an explicit answer.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "A register starts at 11. Apply in order: multiply by 3; subtract 8; if odd add 5 otherwise divide by 2; square it; take the remainder modulo 17. Reply only with the final integer."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 32
+      },
+      "expected": "16",
+      "validator": {
+        "type": "exact_text",
+        "value": "16"
+      },
+      "validator_sha256": "8f09d3bc5ab15a62546f04725039096808c934dc0ef3a42dd3e44d8563657e48",
+      "task_sha256": "1084963b413444a40f107d12d2847b5f0e9f02f04618ba54eb63ab1179a3de86"
+    },
+    {
+      "id": "held-tool-order-lookup",
+      "category": "tool_arguments",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Tests preservation of a hyphenated identifier and an explicit false boolean.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Use lookup_order for order A-1047. Do not include archived orders. Do not answer in prose."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "lookup_order",
+              "description": "Look up an order by its exact identifier.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "order_id": {
+                    "type": "string"
+                  },
+                  "include_archived": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "order_id",
+                  "include_archived"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 128
+      },
+      "expected": {
+        "name": "lookup_order",
+        "arguments": {
+          "order_id": "A-1047",
+          "include_archived": false
+        }
+      },
+      "validator": {
+        "type": "exact_tool_call",
+        "calls": [
+          {
+            "name": "lookup_order",
+            "arguments": {
+              "order_id": "A-1047",
+              "include_archived": false
+            }
+          }
+        ]
+      },
+      "validator_sha256": "0e4133c010adf8de0fb9f866742399ccca5526636f0d8b6d7fa3501d374191ba",
+      "task_sha256": "3fcb89853abafeed9a8e13f6a877adadaca86009bef6ea8d6f7861bac6974a42"
+    },
+    {
+      "id": "held-tool-shipping-quote",
+      "category": "tool_arguments",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Checks leading-zero strings, a decimal number, enum selection, and a true boolean.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Quote two-day shipping to postal code 00501 for a 2.75 kg parcel and require a signature. Use the tool only."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "quote_shipping",
+              "description": "Quote a parcel shipment.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "postal_code": {
+                    "type": "string"
+                  },
+                  "weight_kg": {
+                    "type": "number"
+                  },
+                  "service": {
+                    "type": "string",
+                    "enum": [
+                      "ground",
+                      "two_day",
+                      "overnight"
+                    ]
+                  },
+                  "signature": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "postal_code",
+                  "weight_kg",
+                  "service",
+                  "signature"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 128
+      },
+      "expected": {
+        "name": "quote_shipping",
+        "arguments": {
+          "postal_code": "00501",
+          "weight_kg": 2.75,
+          "service": "two_day",
+          "signature": true
+        }
+      },
+      "validator": {
+        "type": "exact_tool_call",
+        "calls": [
+          {
+            "name": "quote_shipping",
+            "arguments": {
+              "postal_code": "00501",
+              "weight_kg": 2.75,
+              "service": "two_day",
+              "signature": true
+            }
+          }
+        ]
+      },
+      "validator_sha256": "5a89d4e51f288a01206b7c2104084901adc6f2f6afb789735195c4a347e1479e",
+      "task_sha256": "5d923ee8f42fe8b3b3b6347135c51ac03016e1081ebaf63c0f3a166e135e10be"
+    },
+    {
+      "id": "held-tool-inventory-filter",
+      "category": "tool_arguments",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Exercises ordered arrays, integer boundaries, and exact enum-like string arguments.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Use filter_inventory for the north and west warehouses, in that order. Require at least 12 units and both tags cold-chain and fragile, in that order. Sort by units descending. Emit one tool call."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "filter_inventory",
+              "description": "Filter inventory using all supplied constraints.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "warehouses": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "minimum_units": {
+                    "type": "integer"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "sort": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "warehouses",
+                  "minimum_units",
+                  "tags",
+                  "sort"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "tool_choice": "auto",
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 192
+      },
+      "expected": {
+        "name": "filter_inventory",
+        "arguments": {
+          "warehouses": [
+            "north",
+            "west"
+          ],
+          "minimum_units": 12,
+          "tags": [
+            "cold-chain",
+            "fragile"
+          ],
+          "sort": "units_desc"
+        }
+      },
+      "validator": {
+        "type": "exact_tool_call",
+        "calls": [
+          {
+            "name": "filter_inventory",
+            "arguments": {
+              "warehouses": [
+                "north",
+                "west"
+              ],
+              "minimum_units": 12,
+              "tags": [
+                "cold-chain",
+                "fragile"
+              ],
+              "sort": "units_desc"
+            }
+          }
+        ]
+      },
+      "validator_sha256": "b91d35efe6dab6da9f4dbee13ce5faff183d24ad2e70312ff69422095d4406d7",
+      "task_sha256": "032d4aa57f96fc2314cce025ef03f6f1e2b844827bc3f184e7398bd3d4155b74"
+    },
+    {
+      "id": "held-code-merge-config",
+      "category": "coding",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Held-out recursive coding task with validation, replacement semantics, and anti-aliasing constraints.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Implement merge_config_layers(layers). layers is a list of dictionaries with string keys. Return a new dictionary formed left-to-right: when both old and new values at a key are dictionaries, merge them recursively; otherwise the new value replaces the old one. Reject with ValueError unless layers is a list of dictionaries and every nested dictionary key is a string. Do not mutate or alias any input container. Return only imports and the function in one Python code block; standard library only."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 1536
+      },
+      "expected": {
+        "entrypoint": "merge_config_layers"
+      },
+      "validator": {
+        "type": "external_code_validator",
+        "path": "held_out_code_validator.py",
+        "sha256": "3c93bd85e014a7baf74f19ab468c16cdc24327eaaea7f0891598c0d77e5d2020",
+        "argv": [
+          "{task}",
+          "{source}"
+        ],
+        "sandbox": "network=none, read-only, 256MiB, 15s"
+      },
+      "validator_sha256": "83eafd817589c2d1b244a24513cb33bed67071f93c5e93b67929ca7b0d7845d6",
+      "task_sha256": "313f47059e0444a8c1d458807239d1c7d31b196434d6da16058481c53dc17f49"
+    },
+    {
+      "id": "held-code-allocate-quota",
+      "category": "coding",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Held-out numeric coding task with deterministic apportionment and tie handling.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Implement allocate_quota(total, weights). total is a nonnegative integer and weights is a nonempty dict from string names to positive integers. Allocate exactly total integer units by largest remainder: take floors of proportional shares, then give leftover units by descending fractional remainder, breaking ties lexicographically. Return a new dict with keys inserted lexicographically. Raise ValueError for invalid inputs and do not mutate weights. Return only imports and the function in one Python code block."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 1536
+      },
+      "expected": {
+        "entrypoint": "allocate_quota"
+      },
+      "validator": {
+        "type": "external_code_validator",
+        "path": "held_out_code_validator.py",
+        "sha256": "3c93bd85e014a7baf74f19ab468c16cdc24327eaaea7f0891598c0d77e5d2020",
+        "argv": [
+          "{task}",
+          "{source}"
+        ],
+        "sandbox": "network=none, read-only, 256MiB, 15s"
+      },
+      "validator_sha256": "83eafd817589c2d1b244a24513cb33bed67071f93c5e93b67929ca7b0d7845d6",
+      "task_sha256": "c93d7073bfc728ec0503a74594096882d28b6fc0bbd11ade17742b5fc057d88e"
+    },
+    {
+      "id": "held-code-event-windows",
+      "category": "coding",
+      "source": "PREP-authored synthetic deterministic task; selected before any EXL3 candidate output was observed",
+      "selection_rationale": "Held-out grouping code task covering half-open boundaries, stable ordering, and validation.",
+      "request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Implement event_windows(events, width). events is a list of unique (label, integer_time) pairs and width is a positive integer. Sort by time then original position. Start a window at the earliest remaining event time t and include every remaining event with time < t+width; the next window starts at the next excluded event. Return dictionaries with keys start, end, labels, where end=start+width and labels retain sorted event order. Raise ValueError for invalid width, non-string labels, or duplicate labels. Do not mutate input. Return only imports and the function in one Python code block."
+          }
+        ],
+        "tools": [],
+        "tool_choice": null,
+        "temperature": 0,
+        "reasoning_setting": "off",
+        "max_tokens": 1536
+      },
+      "expected": {
+        "entrypoint": "event_windows"
+      },
+      "validator": {
+        "type": "external_code_validator",
+        "path": "held_out_code_validator.py",
+        "sha256": "3c93bd85e014a7baf74f19ab468c16cdc24327eaaea7f0891598c0d77e5d2020",
+        "argv": [
+          "{task}",
+          "{source}"
+        ],
+        "sandbox": "network=none, read-only, 256MiB, 15s"
+      },
+      "validator_sha256": "83eafd817589c2d1b244a24513cb33bed67071f93c5e93b67929ca7b0d7845d6",
+      "task_sha256": "851b2c8ec6ccb4a189873bd5feda0036c50e8af3ee7bff1d84457c2b4445a074"
+    }
+  ]
+}

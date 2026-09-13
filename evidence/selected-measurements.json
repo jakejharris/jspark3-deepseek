@@ -1,0 +1,2253 @@
+{
+  "original_source_sha256": "c6b886887598c589797600b79863d01a64790ca9ff6aa2ed57c1a5557d4f2ad5",
+  "long": {
+    "state": "PASSED",
+    "repetitions": 3,
+    "cells": {
+      "65536-cold": {
+        "values": [
+          42.62296821997734,
+          42.768533490016125,
+          42.60825550497975
+        ],
+        "median": 42.62296821997734
+      },
+      "65536-suffix": {
+        "values": [
+          0.6907970379688777,
+          0.7090128429699689,
+          0.6672140319715254
+        ],
+        "median": 0.6907970379688777
+      },
+      "65536-warm": {
+        "values": [
+          0.6873520700028166,
+          0.7077873190282844,
+          0.7220125509775244
+        ],
+        "median": 0.7077873190282844
+      },
+      "76000-cold": {
+        "values": [
+          50.199357914039865,
+          49.65898229397135,
+          49.430427264014725
+        ],
+        "median": 49.65898229397135
+      },
+      "76000-suffix": {
+        "values": [
+          0.47536997497081757,
+          0.4516123969806358,
+          0.4777440389734693
+        ],
+        "median": 0.47536997497081757
+      },
+      "76000-warm": {
+        "values": [
+          0.4747049320139922,
+          0.4705578510183841,
+          0.44246281700907275
+        ],
+        "median": 0.4705578510183841
+      }
+    },
+    "scope": "Full qualification warmed-kernel salted long prompts, separate from rapid screen cohort."
+  },
+  "generation": {
+    "state": "COMPLETE",
+    "updated_at": "2026-09-13T01:10:05.830336+00:00",
+    "helper_sha256": "0433796c10060c51d7be103ae9c1a05cd6362062a8fd4e1b51ede469a8f712d6",
+    "rows": [
+      {
+        "cell": "prose-explanation",
+        "completion_tokens": 426,
+        "ttft_seconds": 0.2163464009645395,
+        "http_seconds": 12.612801469978876,
+        "post_first_output_seconds": 12.396455069014337,
+        "end_to_end_tok_s": 33.775208546171896,
+        "post_first_output_tok_s_estimate": 34.28399470928687,
+        "finish_reason": "stop",
+        "same_application_payload_as_nonstream": true,
+        "same_text_as_nonstream": false,
+        "source_receipt": "REQUESTS/generation-stream-supplement/stream/prose-explanation-1.json"
+      },
+      {
+        "cell": "prose-memo",
+        "completion_tokens": 478,
+        "ttft_seconds": 0.23674003704218194,
+        "http_seconds": 14.264044167997781,
+        "post_first_output_seconds": 14.0273041309556,
+        "end_to_end_tok_s": 33.51083285849752,
+        "post_first_output_tok_s_estimate": 34.00510857587749,
+        "finish_reason": "stop",
+        "same_application_payload_as_nonstream": true,
+        "same_text_as_nonstream": false,
+        "source_receipt": "REQUESTS/generation-stream-supplement/stream/prose-memo-1.json"
+      },
+      {
+        "cell": "prose-story",
+        "completion_tokens": 546,
+        "ttft_seconds": 0.2204168289899826,
+        "http_seconds": 16.628979613014963,
+        "post_first_output_seconds": 16.40856278402498,
+        "end_to_end_tok_s": 32.83424555843845,
+        "post_first_output_tok_s_estimate": 33.21436540015559,
+        "finish_reason": "stop",
+        "same_application_payload_as_nonstream": true,
+        "same_text_as_nonstream": false,
+        "source_receipt": "REQUESTS/generation-stream-supplement/stream/prose-story-1.json"
+      },
+      {
+        "cell": "ttl_lru_cache",
+        "completion_tokens": 430,
+        "ttft_seconds": 0.4250866969814524,
+        "http_seconds": 6.096798536018468,
+        "post_first_output_seconds": 5.671711839037016,
+        "end_to_end_tok_s": 70.52881893007617,
+        "post_first_output_tok_s_estimate": 75.63853950535659,
+        "finish_reason": "stop",
+        "same_application_payload_as_nonstream": true,
+        "same_text_as_nonstream": false,
+        "source_receipt": "REQUESTS/generation-stream-supplement/stream/ttl_lru_cache-1.json"
+      },
+      {
+        "cell": "interval_rooms",
+        "completion_tokens": 432,
+        "ttft_seconds": 0.42603880196111277,
+        "http_seconds": 6.672927314997651,
+        "post_first_output_seconds": 6.246888513036538,
+        "end_to_end_tok_s": 64.73920359196241,
+        "post_first_output_tok_s_estimate": 68.99434800229787,
+        "finish_reason": "stop",
+        "same_application_payload_as_nonstream": true,
+        "same_text_as_nonstream": false,
+        "source_receipt": "REQUESTS/generation-stream-supplement/stream/interval_rooms-1.json"
+      },
+      {
+        "cell": "structured_log_summary",
+        "completion_tokens": 562,
+        "ttft_seconds": 0.41133702802471817,
+        "http_seconds": 8.24816425802419,
+        "post_first_output_seconds": 7.8368272299994715,
+        "end_to_end_tok_s": 68.13637343039827,
+        "post_first_output_tok_s_estimate": 71.5850922236087,
+        "finish_reason": "stop",
+        "same_application_payload_as_nonstream": true,
+        "same_text_as_nonstream": false,
+        "source_receipt": "REQUESTS/generation-stream-supplement/stream/structured_log_summary-1.json"
+      },
+      {
+        "cell": "dependency_waves",
+        "completion_tokens": 541,
+        "ttft_seconds": 0.39601313398452476,
+        "http_seconds": 8.418591692985501,
+        "post_first_output_seconds": 8.022578559000976,
+        "end_to_end_tok_s": 64.26252985410487,
+        "post_first_output_tok_s_estimate": 67.3100295657615,
+        "finish_reason": "stop",
+        "same_application_payload_as_nonstream": true,
+        "same_text_as_nonstream": false,
+        "source_receipt": "REQUESTS/generation-stream-supplement/stream/dependency_waves-1.json"
+      }
+    ],
+    "scope": "Seven full-answer streaming companions. Original nonstream quality cohort remains the historical comparison. Post-first-output rate uses (completion_tokens-1)/(HTTP time-TTFT), matching the recorded Tony convention. It includes transport and finalization; speculative chunks can contain multiple tokens. This is not GPU-only decode timing. A transport pass is not a functional quality pass."
+  },
+  "short": [
+    {
+      "offered": 1,
+      "active_cap": 8,
+      "mean_8_category_aggregate_endtoend": 49.046305908341104,
+      "categories": {
+        "coding": {
+          "shared_window_tps": 64.04762107726931,
+          "legacy_max_elapsed_tps": 64.04763276762279,
+          "shared_window_seconds": 3.1226764809689485,
+          "all_streams_output_overlap_seconds": 2.9375608199625276,
+          "total_completion_tokens": 200,
+          "mean_ttft": 0.18511566100642085,
+          "max_ttft": 0.18511566100642085,
+          "per_stream_ttft": [
+            0.18511566100642085
+          ],
+          "per_stream_decode": [
+            67.74329139307581
+          ],
+          "finish_reasons": [
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:14:05.586665Z",
+          "end_utc": "2026-09-13T01:14:08.709343Z",
+          "prompt_tokens": [
+            49
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "json": {
+          "shared_window_tps": 61.454335117184634,
+          "legacy_max_elapsed_tps": 61.454364344912,
+          "shared_window_seconds": 1.8713081799796782,
+          "all_streams_output_overlap_seconds": 1.6510970710078254,
+          "total_completion_tokens": 115,
+          "mean_ttft": 0.2202111089718528,
+          "max_ttft": 0.2202111089718528,
+          "per_stream_ttft": [
+            0.2202111089718528
+          ],
+          "per_stream_decode": [
+            69.04503887234405
+          ],
+          "finish_reasons": [
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:14:11.883488Z",
+          "end_utc": "2026-09-13T01:14:13.754800Z",
+          "prompt_tokens": [
+            67
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "math": {
+          "shared_window_tps": 58.61437643887425,
+          "legacy_max_elapsed_tps": 58.61438537202092,
+          "shared_window_seconds": 3.412132179015316,
+          "all_streams_output_overlap_seconds": 3.179124122019857,
+          "total_completion_tokens": 200,
+          "mean_ttft": 0.2330080569954589,
+          "max_ttft": 0.2330080569954589,
+          "per_stream_ttft": [
+            0.2330080569954589
+          ],
+          "per_stream_decode": [
+            62.5958675766084
+          ],
+          "finish_reasons": [
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:14:31.057911Z",
+          "end_utc": "2026-09-13T01:14:34.470045Z",
+          "prompt_tokens": [
+            72
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "reasoning": {
+          "shared_window_tps": 52.39315415176566,
+          "legacy_max_elapsed_tps": 52.39316307322356,
+          "shared_window_seconds": 3.817292606981937,
+          "all_streams_output_overlap_seconds": 3.58910374797415,
+          "total_completion_tokens": 200,
+          "mean_ttft": 0.22818885900778696,
+          "max_ttft": 0.22818885900778696,
+          "per_stream_ttft": [
+            0.22818885900778696
+          ],
+          "per_stream_decode": [
+            55.44560704110141
+          ],
+          "finish_reasons": [
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:14:37.602668Z",
+          "end_utc": "2026-09-13T01:14:41.419964Z",
+          "prompt_tokens": [
+            66
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "format": {
+          "shared_window_tps": 57.68789936012202,
+          "legacy_max_elapsed_tps": 57.687913272235775,
+          "shared_window_seconds": 2.114828263001982,
+          "all_streams_output_overlap_seconds": 1.8630245020030998,
+          "total_completion_tokens": 122,
+          "mean_ttft": 0.25180376099888235,
+          "max_ttft": 0.25180376099888235,
+          "per_stream_ttft": [
+            0.25180376099888235
+          ],
+          "per_stream_decode": [
+            64.94817056591454
+          ],
+          "finish_reasons": [
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:14:51.317358Z",
+          "end_utc": "2026-09-13T01:14:53.432186Z",
+          "prompt_tokens": [
+            87
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "summary": {
+          "shared_window_tps": 30.63492836424984,
+          "legacy_max_elapsed_tps": 30.634932253652835,
+          "shared_window_seconds": 3.6233151479973458,
+          "all_streams_output_overlap_seconds": 3.2070514220395125,
+          "total_completion_tokens": 111,
+          "mean_ttft": 0.41626372595783323,
+          "max_ttft": 0.41626372595783323,
+          "per_stream_ttft": [
+            0.41626372595783323
+          ],
+          "per_stream_decode": [
+            34.299423770480196
+          ],
+          "finish_reasons": [
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:14:44.643645Z",
+          "end_utc": "2026-09-13T01:14:48.266962Z",
+          "prompt_tokens": [
+            305
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "prose": {
+          "shared_window_tps": 36.24650601438967,
+          "legacy_max_elapsed_tps": 36.246511749315665,
+          "shared_window_seconds": 3.476197125040926,
+          "all_streams_output_overlap_seconds": 3.2736166900140233,
+          "total_completion_tokens": 126,
+          "mean_ttft": 0.2025804350269027,
+          "max_ttft": 0.2025804350269027,
+          "per_stream_ttft": [
+            0.2025804350269027
+          ],
+          "per_stream_decode": [
+            38.18407371354922
+          ],
+          "finish_reasons": [
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:14:24.380666Z",
+          "end_utc": "2026-09-13T01:14:27.856865Z",
+          "prompt_tokens": [
+            38
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "narrative": {
+          "shared_window_tps": 31.291626742873476,
+          "legacy_max_elapsed_tps": 31.29163017338783,
+          "shared_window_seconds": 4.378168035997078,
+          "all_streams_output_overlap_seconds": 4.187051935005002,
+          "total_completion_tokens": 137,
+          "mean_ttft": 0.1911161009920761,
+          "max_ttft": 0.1911161009920761,
+          "per_stream_ttft": [
+            0.1911161009920761
+          ],
+          "per_stream_decode": [
+            32.48109115945889
+          ],
+          "finish_reasons": [
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:14:16.862708Z",
+          "end_utc": "2026-09-13T01:14:21.240877Z",
+          "prompt_tokens": [
+            41
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        },
+        "ceiling_count": {
+          "shared_window_tps": 73.36474116756517,
+          "legacy_max_elapsed_tps": 73.36475490540315,
+          "shared_window_seconds": 3.2576956750126556,
+          "all_streams_output_overlap_seconds": 3.0757979580084793,
+          "total_completion_tokens": 239,
+          "mean_ttft": 0.18189771700417623,
+          "max_ttft": 0.18189771700417623,
+          "per_stream_ttft": [
+            0.18189771700417623
+          ],
+          "per_stream_decode": [
+            77.37830977562963
+          ],
+          "finish_reasons": [
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:14:56.591288Z",
+          "end_utc": "2026-09-13T01:14:59.848985Z",
+          "prompt_tokens": [
+            32
+          ],
+          "sampled_running_max": 1.0,
+          "sampled_waiting_max": 0.0
+        }
+      }
+    },
+    {
+      "offered": 2,
+      "active_cap": 8,
+      "mean_8_category_aggregate_endtoend": 73.54692132752501,
+      "categories": {
+        "coding": {
+          "shared_window_tps": 97.61809286006059,
+          "legacy_max_elapsed_tps": 97.61810405761997,
+          "shared_window_seconds": 4.097601052024402,
+          "all_streams_output_overlap_seconds": 3.532767169002909,
+          "total_completion_tokens": 400,
+          "mean_ttft": 0.32325573652633466,
+          "max_ttft": 0.44713305501500145,
+          "per_stream_ttft": [
+            0.19937841803766787,
+            0.44713305501500145
+          ],
+          "per_stream_decode": [
+            52.64056509964249,
+            54.51356532528659
+          ],
+          "finish_reasons": [
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:15:02.981678Z",
+          "end_utc": "2026-09-13T01:15:07.079281Z",
+          "prompt_tokens": [
+            49,
+            49
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "json": {
+          "shared_window_tps": 93.73922919424324,
+          "legacy_max_elapsed_tps": 93.73934977808585,
+          "shared_window_seconds": 2.4642831180244684,
+          "all_streams_output_overlap_seconds": 2.033877036010381,
+          "total_completion_tokens": 231,
+          "mean_ttft": 0.32118471449939534,
+          "max_ttft": 0.4302817530115135,
+          "per_stream_ttft": [
+            0.21208767598727718,
+            0.4302817530115135
+          ],
+          "per_stream_decode": [
+            51.068875041017506,
+            56.04724737657368
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:15:11.253979Z",
+          "end_utc": "2026-09-13T01:15:13.718266Z",
+          "prompt_tokens": [
+            67,
+            67
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "math": {
+          "shared_window_tps": 90.12761735839304,
+          "legacy_max_elapsed_tps": 90.12763390459777,
+          "shared_window_seconds": 4.194052956008818,
+          "all_streams_output_overlap_seconds": 3.3053082330152392,
+          "total_completion_tokens": 378,
+          "mean_ttft": 0.3622374664992094,
+          "max_ttft": 0.5048022160190158,
+          "per_stream_ttft": [
+            0.21967271697940305,
+            0.5048022160190158
+          ],
+          "per_stream_decode": [
+            49.300046188376044,
+            53.94050325057873
+          ],
+          "finish_reasons": [
+            "stop",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:15:35.134088Z",
+          "end_utc": "2026-09-13T01:15:39.328144Z",
+          "prompt_tokens": [
+            72,
+            72
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "reasoning": {
+          "shared_window_tps": 78.60382601419539,
+          "legacy_max_elapsed_tps": 78.6095329938548,
+          "shared_window_seconds": 5.08881081599975,
+          "all_streams_output_overlap_seconds": 4.265350606990978,
+          "total_completion_tokens": 400,
+          "mean_ttft": 0.3590665075171273,
+          "max_ttft": 0.49819759803358465,
+          "per_stream_ttft": [
+            0.49819759803358465,
+            0.21993541700066999
+          ],
+          "per_stream_decode": [
+            43.352817356727385,
+            43.794203650149036
+          ],
+          "finish_reasons": [
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:15:42.518426Z",
+          "end_utc": "2026-09-13T01:15:47.607239Z",
+          "prompt_tokens": [
+            66,
+            66
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "format": {
+          "shared_window_tps": 90.21086495515053,
+          "legacy_max_elapsed_tps": 90.22233014302864,
+          "shared_window_seconds": 2.6936888380441815,
+          "all_streams_output_overlap_seconds": 2.0465676979511045,
+          "total_completion_tokens": 243,
+          "mean_ttft": 0.40510118403472006,
+          "max_ttft": 0.5540753650129773,
+          "per_stream_ttft": [
+            0.5540753650129773,
+            0.25612700305646285
+          ],
+          "per_stream_decode": [
+            56.09387059089563,
+            51.60228779847272
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:15:58.305891Z",
+          "end_utc": "2026-09-13T01:16:00.999583Z",
+          "prompt_tokens": [
+            87,
+            87
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "summary": {
+          "shared_window_tps": 46.21797911550518,
+          "legacy_max_elapsed_tps": 46.21798860974106,
+          "shared_window_seconds": 4.2840471130330116,
+          "all_streams_output_overlap_seconds": 3.2922262090141885,
+          "total_completion_tokens": 198,
+          "mean_ttft": 0.6111858225194737,
+          "max_ttft": 0.8330106330104172,
+          "per_stream_ttft": [
+            0.38936101202853024,
+            0.8330106330104172
+          ],
+          "per_stream_decode": [
+            26.501280189837622,
+            28.107504889412013
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:15:50.912480Z",
+          "end_utc": "2026-09-13T01:15:55.196530Z",
+          "prompt_tokens": [
+            305,
+            305
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "prose": {
+          "shared_window_tps": 48.388388801425755,
+          "legacy_max_elapsed_tps": 48.388393934299394,
+          "shared_window_seconds": 5.37318985897582,
+          "all_streams_output_overlap_seconds": 4.541316065995488,
+          "total_completion_tokens": 260,
+          "mean_ttft": 0.30650324598536827,
+          "max_ttft": 0.4231230589793995,
+          "per_stream_ttft": [
+            0.18988343299133703,
+            0.4231230589793995
+          ],
+          "per_stream_decode": [
+            25.762582884065402,
+            27.272362373879492
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:15:26.565221Z",
+          "end_utc": "2026-09-13T01:15:31.938413Z",
+          "prompt_tokens": [
+            38,
+            38
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "narrative": {
+          "shared_window_tps": 43.46937232122635,
+          "legacy_max_elapsed_tps": 43.4711168971895,
+          "shared_window_seconds": 6.55634035600815,
+          "all_streams_output_overlap_seconds": 5.878357756999321,
+          "total_completion_tokens": 285,
+          "mean_ttft": 0.29058315049041994,
+          "max_ttft": 0.41204203898087144,
+          "per_stream_ttft": [
+            0.16912426199996844,
+            0.41204203898087144
+          ],
+          "per_stream_decode": [
+            23.17223886823451,
+            22.965600109791936
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:15:16.842094Z",
+          "end_utc": "2026-09-13T01:15:23.398435Z",
+          "prompt_tokens": [
+            41,
+            41
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        },
+        "ceiling_count": {
+          "shared_window_tps": 122.31918931341393,
+          "legacy_max_elapsed_tps": 122.3246526843641,
+          "shared_window_seconds": 3.9078087639645673,
+          "all_streams_output_overlap_seconds": 3.520303737022914,
+          "total_completion_tokens": 478,
+          "mean_ttft": 0.2335260804684367,
+          "max_ttft": 0.3154261089512147,
+          "per_stream_ttft": [
+            0.3154261089512147,
+            0.1516260519856587
+          ],
+          "per_stream_decode": [
+            66.25451309645987,
+            64.59884518258635
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:16:04.289061Z",
+          "end_utc": "2026-09-13T01:16:08.196873Z",
+          "prompt_tokens": [
+            32,
+            32
+          ],
+          "sampled_running_max": 2.0,
+          "sampled_waiting_max": 0.0
+        }
+      }
+    },
+    {
+      "offered": 3,
+      "active_cap": 8,
+      "mean_8_category_aggregate_endtoend": 97.2142640835259,
+      "categories": {
+        "coding": {
+          "shared_window_tps": 136.54922488366884,
+          "legacy_max_elapsed_tps": 136.5492556489381,
+          "shared_window_seconds": 4.394019816012587,
+          "all_streams_output_overlap_seconds": 3.7914366149925627,
+          "total_completion_tokens": 600,
+          "mean_ttft": 0.3728061383202051,
+          "max_ttft": 0.46561376797035336,
+          "per_stream_ttft": [
+            0.46554759598802775,
+            0.18725705100223422,
+            0.46561376797035336
+          ],
+          "per_stream_decode": [
+            50.659851270750856,
+            48.900911143742334,
+            50.656690707695525
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:16:11.313314Z",
+          "end_utc": "2026-09-13T01:16:15.707333Z",
+          "prompt_tokens": [
+            49,
+            49,
+            49
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "json": {
+          "shared_window_tps": 103.62248878876615,
+          "legacy_max_elapsed_tps": 103.62739008364899,
+          "shared_window_seconds": 3.522401404043194,
+          "all_streams_output_overlap_seconds": 2.184904071968049,
+          "total_completion_tokens": 365,
+          "mean_ttft": 0.44478258199524134,
+          "max_ttft": 0.6723418009933084,
+          "per_stream_ttft": [
+            0.43999279296258464,
+            0.6723418009933084,
+            0.22201315202983096
+          ],
+          "per_stream_decode": [
+            43.1504078926513,
+            46.71940700908826,
+            43.6328548785011
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:16:18.888570Z",
+          "end_utc": "2026-09-13T01:16:22.410974Z",
+          "prompt_tokens": [
+            67,
+            67,
+            67
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "math": {
+          "shared_window_tps": 127.20894050927147,
+          "legacy_max_elapsed_tps": 127.20896406269345,
+          "shared_window_seconds": 4.15851274196757,
+          "all_streams_output_overlap_seconds": 3.441301801998634,
+          "total_completion_tokens": 529,
+          "mean_ttft": 0.4354577063350007,
+          "max_ttft": 0.5437528740148991,
+          "per_stream_ttft": [
+            0.5435068479855545,
+            0.21911339700454846,
+            0.5437528740148991
+          ],
+          "per_stream_decode": [
+            48.970553705135984,
+            47.00155998996964,
+            47.58270062755624
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:16:45.272916Z",
+          "end_utc": "2026-09-13T01:16:49.431430Z",
+          "prompt_tokens": [
+            72,
+            72,
+            72
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "reasoning": {
+          "shared_window_tps": 104.08651264340698,
+          "legacy_max_elapsed_tps": 104.08652311593607,
+          "shared_window_seconds": 5.764435609977227,
+          "all_streams_output_overlap_seconds": 5.049375909962691,
+          "total_completion_tokens": 600,
+          "mean_ttft": 0.3937083216539274,
+          "max_ttft": 0.47706326900515705,
+          "per_stream_ttft": [
+            0.47677656199084595,
+            0.2272851339657791,
+            0.47706326900515705
+          ],
+          "per_stream_decode": [
+            39.410150893499136,
+            36.90726979879443,
+            37.63684662163878
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:16:53.126072Z",
+          "end_utc": "2026-09-13T01:16:58.890508Z",
+          "prompt_tokens": [
+            66,
+            66,
+            66
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "format": {
+          "shared_window_tps": 124.59086418111387,
+          "legacy_max_elapsed_tps": 124.59089403304725,
+          "shared_window_seconds": 2.9215625270153396,
+          "all_streams_output_overlap_seconds": 2.1406893939711154,
+          "total_completion_tokens": 364,
+          "mean_ttft": 0.44016839635636035,
+          "max_ttft": 0.5374808260239661,
+          "per_stream_ttft": [
+            0.5373769720317796,
+            0.24564739101333544,
+            0.5374808260239661
+          ],
+          "per_stream_decode": [
+            53.510273424360825,
+            49.33785307917355,
+            50.753309115736855
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:17:11.219329Z",
+          "end_utc": "2026-09-13T01:17:14.140894Z",
+          "prompt_tokens": [
+            87,
+            87,
+            87
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "summary": {
+          "shared_window_tps": 61.5678853356872,
+          "legacy_max_elapsed_tps": 61.57439924369255,
+          "shared_window_seconds": 5.960899874975439,
+          "all_streams_output_overlap_seconds": 4.485976828029379,
+          "total_completion_tokens": 367,
+          "mean_ttft": 0.7787976893014275,
+          "max_ttft": 0.9692215789691545,
+          "per_stream_ttft": [
+            0.39866443997016177,
+            0.9685070489649661,
+            0.9692215789691545
+          ],
+          "per_stream_decode": [
+            23.33743811050427,
+            26.243237165956618,
+            23.74960607087526
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:17:02.109937Z",
+          "end_utc": "2026-09-13T01:17:08.070837Z",
+          "prompt_tokens": [
+            305,
+            305,
+            305
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "prose": {
+          "shared_window_tps": 64.49985330368902,
+          "legacy_max_elapsed_tps": 64.50600190769428,
+          "shared_window_seconds": 5.782958888972644,
+          "all_streams_output_overlap_seconds": 4.501947970013134,
+          "total_completion_tokens": 373,
+          "mean_ttft": 0.3798692623192134,
+          "max_ttft": 0.4686200479627587,
+          "per_stream_ttft": [
+            0.4684049360221252,
+            0.4686200479627587,
+            0.20258280297275633
+          ],
+          "per_stream_decode": [
+            24.087304143314004,
+            24.974694850247847,
+            23.698072637778306
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:16:36.264678Z",
+          "end_utc": "2026-09-13T01:16:42.047639Z",
+          "prompt_tokens": [
+            38,
+            38,
+            38
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "narrative": {
+          "shared_window_tps": 55.58834302260367,
+          "legacy_max_elapsed_tps": 55.589604387539694,
+          "shared_window_seconds": 7.537551529996563,
+          "all_streams_output_overlap_seconds": 5.976155357959215,
+          "total_completion_tokens": 419,
+          "mean_ttft": 0.35797143399637815,
+          "max_ttft": 0.4519952629925683,
+          "per_stream_ttft": [
+            0.4519952629925683,
+            0.45182450499851257,
+            0.17009453399805352
+          ],
+          "per_stream_decode": [
+            20.464660027853704,
+            21.585786238860283,
+            20.54764050433471
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:16:25.573941Z",
+          "end_utc": "2026-09-13T01:16:33.111494Z",
+          "prompt_tokens": [
+            41,
+            41,
+            41
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        },
+        "ceiling_count": {
+          "shared_window_tps": 164.22706239435084,
+          "legacy_max_elapsed_tps": 164.23403282167325,
+          "shared_window_seconds": 4.365906504972372,
+          "all_streams_output_overlap_seconds": 3.784601128019858,
+          "total_completion_tokens": 717,
+          "mean_ttft": 0.34182909431789693,
+          "max_ttft": 0.4241432849667035,
+          "per_stream_ttft": [
+            0.4241432849667035,
+            0.42367794300662354,
+            0.1776660549803637
+          ],
+          "per_stream_decode": [
+            60.38190915111677,
+            60.38334321798972,
+            59.03858195532395
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:17:17.344042Z",
+          "end_utc": "2026-09-13T01:17:21.709948Z",
+          "prompt_tokens": [
+            32,
+            32,
+            32
+          ],
+          "sampled_running_max": 3.0,
+          "sampled_waiting_max": 0.0
+        }
+      }
+    },
+    {
+      "offered": 4,
+      "active_cap": 8,
+      "mean_8_category_aggregate_endtoend": 114.15613945125249,
+      "categories": {
+        "coding": {
+          "shared_window_tps": 158.7043784317317,
+          "legacy_max_elapsed_tps": 158.70984144465316,
+          "shared_window_seconds": 5.040818709006999,
+          "all_streams_output_overlap_seconds": 4.196106737013906,
+          "total_completion_tokens": 800,
+          "mean_ttft": 0.44575600075768307,
+          "max_ttft": 0.6066474730032496,
+          "per_stream_ttft": [
+            0.1947654919931665,
+            0.3758403069805354,
+            0.6057707310537808,
+            0.6066474730032496
+          ],
+          "per_stream_decode": [
+            42.45978031729305,
+            44.9543925049181,
+            44.87787494092033,
+            44.880492139518566
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:17:24.889686Z",
+          "end_utc": "2026-09-13T01:17:29.930505Z",
+          "prompt_tokens": [
+            49,
+            49,
+            49,
+            49
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "json": {
+          "shared_window_tps": 137.79248519508053,
+          "legacy_max_elapsed_tps": 137.81292658145748,
+          "shared_window_seconds": 3.7375042570056394,
+          "all_streams_output_overlap_seconds": 2.426256246981211,
+          "total_completion_tokens": 515,
+          "mean_ttft": 0.48254448850639164,
+          "max_ttft": 0.5708727579913102,
+          "per_stream_ttft": [
+            0.21853628399549052,
+            0.5703382610226981,
+            0.5704306510160677,
+            0.5708727579913102
+          ],
+          "per_stream_decode": [
+            41.389250282982985,
+            44.14485870531662,
+            41.68615135057948,
+            42.689706564834715
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:17:33.156293Z",
+          "end_utc": "2026-09-13T01:17:36.893800Z",
+          "prompt_tokens": [
+            67,
+            67,
+            67,
+            67
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "math": {
+          "shared_window_tps": 143.26478627611348,
+          "legacy_max_elapsed_tps": 143.27082310450538,
+          "shared_window_seconds": 5.081499919993803,
+          "all_streams_output_overlap_seconds": 3.820028022979386,
+          "total_completion_tokens": 728,
+          "mean_ttft": 0.48405913249007426,
+          "max_ttft": 0.5719937550020404,
+          "per_stream_ttft": [
+            0.571708156960085,
+            0.5719937550020404,
+            0.5715994790080003,
+            0.22093513899017125
+          ],
+          "per_stream_decode": [
+            43.136535313694175,
+            44.13109590257125,
+            43.13932176728825,
+            40.99373185395395
+          ],
+          "finish_reasons": [
+            "stop",
+            "length",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:18:01.239297Z",
+          "end_utc": "2026-09-13T01:18:06.320798Z",
+          "prompt_tokens": [
+            72,
+            72,
+            72,
+            72
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "reasoning": {
+          "shared_window_tps": 119.5363063071765,
+          "legacy_max_elapsed_tps": 119.53981636088818,
+          "shared_window_seconds": 6.692527356033679,
+          "all_streams_output_overlap_seconds": 5.59858718997566,
+          "total_completion_tokens": 800,
+          "mean_ttft": 0.49677159026032314,
+          "max_ttft": 0.5844463410321623,
+          "per_stream_ttft": [
+            0.5843605989939533,
+            0.584171547961887,
+            0.5844463410321623,
+            0.23410787305328995
+          ],
+          "per_stream_decode": [
+            32.58060231264973,
+            33.05543257952027,
+            35.54468493922713,
+            30.81342978179377
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:18:09.564088Z",
+          "end_utc": "2026-09-13T01:18:16.256615Z",
+          "prompt_tokens": [
+            66,
+            66,
+            66,
+            66
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "format": {
+          "shared_window_tps": 140.78602062976609,
+          "legacy_max_elapsed_tps": 140.79507564324965,
+          "shared_window_seconds": 3.4520472830045037,
+          "all_streams_output_overlap_seconds": 2.4053412720095366,
+          "total_completion_tokens": 486,
+          "mean_ttft": 0.533858347509522,
+          "max_ttft": 0.6307401119847782,
+          "per_stream_ttft": [
+            0.6302595560555346,
+            0.6302657760097645,
+            0.24416794598801062,
+            0.6307401119847782
+          ],
+          "per_stream_decode": [
+            46.374023095160744,
+            42.884086001655604,
+            42.99053095910542,
+            45.20418334218812
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:18:29.295925Z",
+          "end_utc": "2026-09-13T01:18:32.747974Z",
+          "prompt_tokens": [
+            87,
+            87,
+            87,
+            87
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "summary": {
+          "shared_window_tps": 64.8229711927516,
+          "legacy_max_elapsed_tps": 64.82960118465839,
+          "shared_window_seconds": 6.571744431974366,
+          "all_streams_output_overlap_seconds": 4.359247802989557,
+          "total_completion_tokens": 426,
+          "mean_ttft": 0.9382233575161081,
+          "max_ttft": 1.1170574850402772,
+          "per_stream_ttft": [
+            1.1169426330015995,
+            1.1170574850402772,
+            1.1166915700305253,
+            0.4022017419920303
+          ],
+          "per_stream_decode": [
+            21.61559517353938,
+            20.784943266901163,
+            21.81732532714568,
+            19.903513430531007
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:18:19.521135Z",
+          "end_utc": "2026-09-13T01:18:26.092882Z",
+          "prompt_tokens": [
+            305,
+            305,
+            305,
+            305
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "prose": {
+          "shared_window_tps": 78.26775041659417,
+          "legacy_max_elapsed_tps": 78.27664926018431,
+          "shared_window_seconds": 6.464987141021993,
+          "all_streams_output_overlap_seconds": 5.093535361986142,
+          "total_completion_tokens": 506,
+          "mean_ttft": 0.3567093090096023,
+          "max_ttft": 0.4978154100244865,
+          "per_stream_ttft": [
+            0.2161354130366817,
+            0.21571891196072102,
+            0.49716750101651996,
+            0.4978154100244865
+          ],
+          "per_stream_decode": [
+            21.61989407748017,
+            23.998994216630134,
+            19.942736957950643,
+            22.753130833239936
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:17:51.620455Z",
+          "end_utc": "2026-09-13T01:17:58.085442Z",
+          "prompt_tokens": [
+            38,
+            38,
+            38,
+            38
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "narrative": {
+          "shared_window_tps": 70.0744171608058,
+          "legacy_max_elapsed_tps": 70.07889510508826,
+          "shared_window_seconds": 8.31972670799587,
+          "all_streams_output_overlap_seconds": 7.319127991970163,
+          "total_completion_tokens": 583,
+          "mean_ttft": 0.39810439899156336,
+          "max_ttft": 0.4697775629465468,
+          "per_stream_ttft": [
+            0.4697775629465468,
+            0.46926569199422374,
+            0.46972799801733345,
+            0.18364634300814942
+          ],
+          "per_stream_decode": [
+            17.663475837017064,
+            19.490621158781476,
+            20.084363148664217,
+            18.518518108519324
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:17:40.070435Z",
+          "end_utc": "2026-09-13T01:17:48.390164Z",
+          "prompt_tokens": [
+            41,
+            41,
+            41,
+            41
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        },
+        "ceiling_count": {
+          "shared_window_tps": 207.53084090662873,
+          "legacy_max_elapsed_tps": 207.540750548012,
+          "shared_window_seconds": 4.60654424095992,
+          "all_streams_output_overlap_seconds": 4.012843561999034,
+          "total_completion_tokens": 956,
+          "mean_ttft": 0.3603396567486925,
+          "max_ttft": 0.4278376970323734,
+          "per_stream_ttft": [
+            0.4278376970323734,
+            0.42757976398570463,
+            0.42760073399404064,
+            0.15834043198265135
+          ],
+          "per_stream_decode": [
+            56.95842138496051,
+            56.96147187615973,
+            56.95930408300686,
+            55.57220835665256
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:18:35.976336Z",
+          "end_utc": "2026-09-13T01:18:40.582880Z",
+          "prompt_tokens": [
+            32,
+            32,
+            32,
+            32
+          ],
+          "sampled_running_max": 4.0,
+          "sampled_waiting_max": 0.0
+        }
+      }
+    },
+    {
+      "offered": 5,
+      "active_cap": 8,
+      "mean_8_category_aggregate_endtoend": 131.4637424686464,
+      "categories": {
+        "coding": {
+          "shared_window_tps": 198.06344834098505,
+          "legacy_max_elapsed_tps": 198.07240640473796,
+          "shared_window_seconds": 5.048887153971009,
+          "all_streams_output_overlap_seconds": 4.250497331027873,
+          "total_completion_tokens": 1000,
+          "mean_ttft": 0.47823726359056307,
+          "max_ttft": 0.5465488369809464,
+          "per_stream_ttft": [
+            0.5465488369809464,
+            0.5464857760234736,
+            0.5465145269990899,
+            0.5461618959670886,
+            0.20547528198221698
+          ],
+          "per_stream_decode": [
+            44.20149687730337,
+            44.849719976616534,
+            44.20349346710291,
+            44.84975532441347,
+            43.335469956518345
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:18:43.743339Z",
+          "end_utc": "2026-09-13T01:18:48.792226Z",
+          "prompt_tokens": [
+            49,
+            49,
+            49,
+            49,
+            49
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "json": {
+          "shared_window_tps": 126.28421547598383,
+          "legacy_max_elapsed_tps": 126.29406896332826,
+          "shared_window_seconds": 4.006834885047283,
+          "all_streams_output_overlap_seconds": 2.5939001530059613,
+          "total_completion_tokens": 506,
+          "mean_ttft": 0.518320572806988,
+          "max_ttft": 0.5889656180515885,
+          "per_stream_ttft": [
+            0.23787267901934683,
+            0.5878155939863063,
+            0.58847059099935,
+            0.5884783819783479,
+            0.5889656180515885
+          ],
+          "per_stream_decode": [
+            35.0258087883767,
+            34.52224191686583,
+            26.881743834553735,
+            31.224712861464756,
+            27.920703044573482
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:18:51.988035Z",
+          "end_utc": "2026-09-13T01:18:55.994869Z",
+          "prompt_tokens": [
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "math": {
+          "shared_window_tps": 182.18754505321496,
+          "legacy_max_elapsed_tps": 182.1980728731528,
+          "shared_window_seconds": 4.819209785957355,
+          "all_streams_output_overlap_seconds": 3.9847934379940853,
+          "total_completion_tokens": 878,
+          "mean_ttft": 0.5067765819956549,
+          "max_ttft": 0.5789830290013924,
+          "per_stream_ttft": [
+            0.577875351998955,
+            0.5784911399823613,
+            0.5783030799939297,
+            0.22023030900163576,
+            0.5789830290013924
+          ],
+          "per_stream_decode": [
+            41.742953643873136,
+            41.740949628538694,
+            41.756556047339046,
+            40.7543239460381,
+            42.90939346444109
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:19:23.030348Z",
+          "end_utc": "2026-09-13T01:19:27.849558Z",
+          "prompt_tokens": [
+            72,
+            72,
+            72,
+            72,
+            72
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "reasoning": {
+          "shared_window_tps": 132.15207579395192,
+          "legacy_max_elapsed_tps": 132.16248632428614,
+          "shared_window_seconds": 7.567039669957012,
+          "all_streams_output_overlap_seconds": 6.3772534059826285,
+          "total_completion_tokens": 1000,
+          "mean_ttft": 0.5632539437967352,
+          "max_ttft": 0.7231782620074227,
+          "per_stream_ttft": [
+            0.722764185979031,
+            0.7231782620074227,
+            0.4286579050240107,
+            0.7230555290007032,
+            0.21861383697250858
+          ],
+          "per_stream_decode": [
+            30.052263067725058,
+            29.33740888695982,
+            27.879794694412958,
+            30.589752379431925,
+            28.914957735651363
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:19:31.161583Z",
+          "end_utc": "2026-09-13T01:19:38.728625Z",
+          "prompt_tokens": [
+            66,
+            66,
+            66,
+            66,
+            66
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "format": {
+          "shared_window_tps": 177.3996309446551,
+          "legacy_max_elapsed_tps": 177.4322927884984,
+          "shared_window_seconds": 3.421653116005473,
+          "all_streams_output_overlap_seconds": 2.5150495609850623,
+          "total_completion_tokens": 607,
+          "mean_ttft": 0.5630339212017134,
+          "max_ttft": 0.642465672979597,
+          "per_stream_ttft": [
+            0.642465672979597,
+            0.6409003549488261,
+            0.6416755130048841,
+            0.6418408240424469,
+            0.24828724103281274
+          ],
+          "per_stream_decode": [
+            45.887787719336536,
+            44.77067459402558,
+            45.87448888379409,
+            43.53798390755852,
+            41.24521465678599
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:19:52.867832Z",
+          "end_utc": "2026-09-13T01:19:56.289488Z",
+          "prompt_tokens": [
+            87,
+            87,
+            87,
+            87,
+            87
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "summary": {
+          "shared_window_tps": 70.90071767646822,
+          "legacy_max_elapsed_tps": 70.90448844764019,
+          "shared_window_seconds": 7.686805124976672,
+          "all_streams_output_overlap_seconds": 4.975715362990741,
+          "total_completion_tokens": 545,
+          "mean_ttft": 1.0821673445985653,
+          "max_ttft": 1.2535341570037417,
+          "per_stream_ttft": [
+            1.2531503009959124,
+            1.2535341570037417,
+            1.2530826610163786,
+            1.2527723439852707,
+            0.3982972599915229
+          ],
+          "per_stream_decode": [
+            17.720447722995367,
+            17.575332386947547,
+            19.51429152816442,
+            18.263967521560943,
+            16.80606029510971
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:19:41.995948Z",
+          "end_utc": "2026-09-13T01:19:49.682755Z",
+          "prompt_tokens": [
+            305,
+            305,
+            305,
+            305,
+            305
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "prose": {
+          "shared_window_tps": 88.94111200771168,
+          "legacy_max_elapsed_tps": 88.9431780647518,
+          "shared_window_seconds": 7.049608284025453,
+          "all_streams_output_overlap_seconds": 5.443191146012396,
+          "total_completion_tokens": 627,
+          "mean_ttft": 0.40076164179481566,
+          "max_ttft": 0.5225331979454495,
+          "per_stream_ttft": [
+            0.21865056897513568,
+            0.5220264800009318,
+            0.5225331979454495,
+            0.5218807760393247,
+            0.21871718601323664
+          ],
+          "per_stream_decode": [
+            18.738670899630858,
+            18.934091785177813,
+            19.43408149036016,
+            19.890176513636728,
+            21.74831931904035
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:19:12.411591Z",
+          "end_utc": "2026-09-13T01:19:19.461202Z",
+          "prompt_tokens": [
+            38,
+            38,
+            38,
+            38,
+            38
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "narrative": {
+          "shared_window_tps": 75.78119445620035,
+          "legacy_max_elapsed_tps": 75.78387397792471,
+          "shared_window_seconds": 9.382274917967152,
+          "all_streams_output_overlap_seconds": 7.971409883000888,
+          "total_completion_tokens": 711,
+          "mean_ttft": 0.3977250008145347,
+          "max_ttft": 0.5140101489960216,
+          "per_stream_ttft": [
+            0.224131319031585,
+            0.5136033840244636,
+            0.5132488990202546,
+            0.2236312530003488,
+            0.5140101489960216
+          ],
+          "per_stream_decode": [
+            17.286432432706214,
+            15.673734105759934,
+            15.931515046297433,
+            16.462820404484127,
+            16.406284075643143
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:18:59.794600Z",
+          "end_utc": "2026-09-13T01:19:09.176876Z",
+          "prompt_tokens": [
+            41,
+            41,
+            41,
+            41,
+            41
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        },
+        "ceiling_count": {
+          "shared_window_tps": 235.007932192757,
+          "legacy_max_elapsed_tps": 235.01606205209927,
+          "shared_window_seconds": 5.084934746031649,
+          "all_streams_output_overlap_seconds": 4.420539957005531,
+          "total_completion_tokens": 1195,
+          "mean_ttft": 0.4143586096004583,
+          "max_ttft": 0.4707078899955377,
+          "per_stream_ttft": [
+            0.19089300802443177,
+            0.4697351399809122,
+            0.47019667201675475,
+            0.47026033798465505,
+            0.4707078899955377
+          ],
+          "per_stream_decode": [
+            50.63713734442457,
+            51.58252889357785,
+            51.57640631281439,
+            52.60456999044321,
+            51.58157167591853
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:19:59.464132Z",
+          "end_utc": "2026-09-13T01:20:04.549066Z",
+          "prompt_tokens": [
+            32,
+            32,
+            32,
+            32,
+            32
+          ],
+          "sampled_running_max": 5.0,
+          "sampled_waiting_max": 0.0
+        }
+      }
+    },
+    {
+      "offered": 6,
+      "active_cap": 8,
+      "mean_8_category_aggregate_endtoend": 146.11735191073768,
+      "categories": {
+        "coding": {
+          "shared_window_tps": 213.70349121990927,
+          "legacy_max_elapsed_tps": 213.73735160864143,
+          "shared_window_seconds": 5.61525688302936,
+          "all_streams_output_overlap_seconds": 4.707359523978084,
+          "total_completion_tokens": 1200,
+          "mean_ttft": 0.5343030694930349,
+          "max_ttft": 0.6588814299902879,
+          "per_stream_ttft": [
+            0.19187721196794882,
+            0.6586248149978928,
+            0.657828425988555,
+            0.6588814299902879,
+            0.6583920320263132,
+            0.3802145019872114
+          ],
+          "per_stream_decode": [
+            38.45761184569284,
+            41.41261260976271,
+            40.148983921803215,
+            40.64969709823632,
+            41.412507133156744,
+            39.13929525526348
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length",
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:20:07.726356Z",
+          "end_utc": "2026-09-13T01:20:13.341614Z",
+          "prompt_tokens": [
+            49,
+            49,
+            49,
+            49,
+            49,
+            49
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "json": {
+          "shared_window_tps": 155.1560244453746,
+          "legacy_max_elapsed_tps": 155.17480452555398,
+          "shared_window_seconds": 4.150660615996458,
+          "all_streams_output_overlap_seconds": 2.610738001007121,
+          "total_completion_tokens": 644,
+          "mean_ttft": 0.5384065311712524,
+          "max_ttft": 0.6018745799665339,
+          "per_stream_ttft": [
+            0.6014137539896183,
+            0.6006083740503527,
+            0.6013201620080508,
+            0.6018745799665339,
+            0.6018193759955466,
+            0.22340294101741165
+          ],
+          "per_stream_decode": [
+            37.47804300612187,
+            31.019794327638675,
+            38.405637527605464,
+            36.434259691111464,
+            31.020407587364986,
+            35.215856859771144
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:20:16.571722Z",
+          "end_utc": "2026-09-13T01:20:20.722384Z",
+          "prompt_tokens": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "math": {
+          "shared_window_tps": 189.24734109877642,
+          "legacy_max_elapsed_tps": 189.2646100745636,
+          "shared_window_seconds": 5.812499100982677,
+          "all_streams_output_overlap_seconds": 4.553760846029036,
+          "total_completion_tokens": 1100,
+          "mean_ttft": 0.5494073838344775,
+          "max_ttft": 0.6129793510190211,
+          "per_stream_ttft": [
+            0.6129793510190211,
+            0.612531084974762,
+            0.23388686298858374,
+            0.6117620319710113,
+            0.6124431030475534,
+            0.6128418690059334
+          ],
+          "per_stream_decode": [
+            38.867846407594726,
+            35.72796447100392,
+            36.15011667885296,
+            37.542210716048736,
+            38.27272204375019,
+            37.542659485235525
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "length",
+            "stop",
+            "length",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:20:48.227756Z",
+          "end_utc": "2026-09-13T01:20:54.040257Z",
+          "prompt_tokens": [
+            72,
+            72,
+            72,
+            72,
+            72,
+            72
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "reasoning": {
+          "shared_window_tps": 164.22378402764258,
+          "legacy_max_elapsed_tps": 164.23208126085348,
+          "shared_window_seconds": 7.307102360995486,
+          "all_streams_output_overlap_seconds": 6.376428317045793,
+          "total_completion_tokens": 1200,
+          "mean_ttft": 0.5277908893379694,
+          "max_ttft": 0.5902587680029683,
+          "per_stream_ttft": [
+            0.21891347301425412,
+            0.5899575339863077,
+            0.5887808080296963,
+            0.5893641959992237,
+            0.5894705569953658,
+            0.5902587680029683
+          ],
+          "per_stream_decode": [
+            29.493806418873334,
+            30.231372930844422,
+            30.23045140847542,
+            29.628654293637943,
+            29.625162911438462,
+            30.232338946194933
+          ],
+          "finish_reasons": [
+            "length",
+            "length",
+            "length",
+            "length",
+            "length",
+            "length"
+          ],
+          "start_utc": "2026-09-13T01:20:57.312908Z",
+          "end_utc": "2026-09-13T01:21:04.620010Z",
+          "prompt_tokens": [
+            66,
+            66,
+            66,
+            66,
+            66,
+            66
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "format": {
+          "shared_window_tps": 174.92744259423515,
+          "legacy_max_elapsed_tps": 174.9538225159104,
+          "shared_window_seconds": 3.995942486973945,
+          "all_streams_output_overlap_seconds": 2.737048113020137,
+          "total_completion_tokens": 699,
+          "mean_ttft": 0.6058902220005015,
+          "max_ttft": 0.6779237580485642,
+          "per_stream_ttft": [
+            0.6779237580485642,
+            0.6776726029929705,
+            0.6772715679835528,
+            0.6766674100072123,
+            0.24795076699228957,
+            0.6778552259784192
+          ],
+          "per_stream_decode": [
+            37.42895296873151,
+            36.47140795479934,
+            37.425906977188625,
+            36.99817888386965,
+            34.32675057880533,
+            37.99133711788643
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:21:18.459792Z",
+          "end_utc": "2026-09-13T01:21:22.455734Z",
+          "prompt_tokens": [
+            87,
+            87,
+            87,
+            87,
+            87,
+            87
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "summary": {
+          "shared_window_tps": 86.51179552397126,
+          "legacy_max_elapsed_tps": 86.5255794452249,
+          "shared_window_seconds": 7.3978351289988495,
+          "all_streams_output_overlap_seconds": 4.949515751039144,
+          "total_completion_tokens": 640,
+          "mean_ttft": 1.2055519330024254,
+          "max_ttft": 1.3669432959868573,
+          "per_stream_ttft": [
+            1.3662332270178013,
+            1.3669432959868573,
+            1.3662372260005213,
+            1.366560277005192,
+            1.3668064399971627,
+            0.40053113200701773
+          ],
+          "per_stream_decode": [
+            18.664576795457815,
+            20.297153768932603,
+            21.059895125547342,
+            19.25908273162787,
+            19.060616790138393,
+            17.070981811413535
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:21:07.836220Z",
+          "end_utc": "2026-09-13T01:21:15.234057Z",
+          "prompt_tokens": [
+            305,
+            305,
+            305,
+            305,
+            305,
+            305
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "prose": {
+          "shared_window_tps": 104.42032128107815,
+          "legacy_max_elapsed_tps": 104.42283394923017,
+          "shared_window_seconds": 7.058013143017888,
+          "all_streams_output_overlap_seconds": 5.350068086991087,
+          "total_completion_tokens": 737,
+          "mean_ttft": 0.46629909617089044,
+          "max_ttft": 0.5224365300382487,
+          "per_stream_ttft": [
+            0.5221470050164498,
+            0.5219393669976853,
+            0.5212556979968213,
+            0.1881228109705262,
+            0.5218931660056114,
+            0.5224365300382487
+          ],
+          "per_stream_decode": [
+            18.97272979244994,
+            20.485450164532175,
+            19.640255422212455,
+            20.407214710454472,
+            19.98388944606608,
+            19.84025288104883
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:20:37.915743Z",
+          "end_utc": "2026-09-13T01:20:44.973759Z",
+          "prompt_tokens": [
+            38,
+            38,
+            38,
+            38,
+            38,
+            38
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "narrative": {
+          "shared_window_tps": 80.74861509491406,
+          "legacy_max_elapsed_tps": 80.74861872979768,
+          "shared_window_seconds": 10.662721570988651,
+          "all_streams_output_overlap_seconds": 8.448376355983783,
+          "total_completion_tokens": 861,
+          "mean_ttft": 0.4573603223252576,
+          "max_ttft": 0.5131743680103682,
+          "per_stream_ttft": [
+            0.5131743680103682,
+            0.5122205629595555,
+            0.512520898017101,
+            0.5127835209714249,
+            0.5124963779817335,
+            0.18096620601136237
+          ],
+          "per_stream_decode": [
+            14.82471797494332,
+            15.392051366060478,
+            14.988300510408948,
+            15.860577118592259,
+            15.480858805182642,
+            15.55083111448355
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:20:23.946024Z",
+          "end_utc": "2026-09-13T01:20:34.608747Z",
+          "prompt_tokens": [
+            41,
+            41,
+            41,
+            41,
+            41,
+            41
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        },
+        "ceiling_count": {
+          "shared_window_tps": 274.8246736392945,
+          "legacy_max_elapsed_tps": 274.8423079085872,
+          "shared_window_seconds": 5.217872111010365,
+          "all_streams_output_overlap_seconds": 4.5438443049788475,
+          "total_completion_tokens": 1434,
+          "mean_ttft": 0.4407550358349302,
+          "max_ttft": 0.49094143899856135,
+          "per_stream_ttft": [
+            0.49081852700328454,
+            0.4909038220066577,
+            0.49028100998839363,
+            0.49094143899856135,
+            0.490273570001591,
+            0.19131184701109305
+          ],
+          "per_stream_decode": [
+            50.357659820096906,
+            50.354019690407675,
+            50.35516317481932,
+            50.353363338143005,
+            50.354288169541235,
+            49.13419769383038
+          ],
+          "finish_reasons": [
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop",
+            "stop"
+          ],
+          "start_utc": "2026-09-13T01:21:25.710176Z",
+          "end_utc": "2026-09-13T01:21:30.928047Z",
+          "prompt_tokens": [
+            32,
+            32,
+            32,
+            32,
+            32,
+            32
+          ],
+          "sampled_running_max": 6.0,
+          "sampled_waiting_max": 0.0
+        }
+      }
+    }
+  ],
+  "work": [
+    {
+      "round": "c3-first",
+      "offered": 3,
+      "window_s": 180,
+      "summary": {
+        "backend_generated_tokens": 14422.0,
+        "backend_tok_s_per_180s": 80.12222222222222,
+        "backend_rate_note": "Service-wide counter, includes unfinished streams and any health probes; snapshot interval includes small launch/drain overhead, not a pure decode rate.",
+        "completed_message_tokens": 5056,
+        "mean_first_request_ttft_s": 2.1220765286125243,
+        "mean_first_tool_s": 6.323634519649204,
+        "mean_pi_launch_to_output_s": 3.6918471826550863,
+        "subsequent_ttft_median_s": 1.274189302843297,
+        "requests": 19,
+        "tools": 26,
+        "tool_errors": 0,
+        "nonzero_bash_exits": 1,
+        "prefix_hits": 302464.0,
+        "prefix_queries": 341224.0,
+        "cache_hit_ratio": 0.886408927859705,
+        "accepted_drafts_per_step": 2.5425061425061424,
+        "output_characters": 50689,
+        "requests_censored_before_first_output": 0,
+        "max_censored_ttft_lower_bound_s": null,
+        "first_output_observed_agents": 3,
+        "first_request_ttft_max_s": 2.831428216479253,
+        "preemptions": 0.0,
+        "sglang_cached_tokens_total": null,
+        "sglang_prompt_tokens_total": null,
+        "sglang_cache_counter_note": "Not applicable to this vLLM recipe; use native prefix_hits and prefix_queries above.",
+        "sglang_spec_verify_calls_total": null,
+        "model_errors": 0,
+        "partial_decode_tokens": null,
+        "partial_decode_note": null,
+        "sampled_running_max": 3.0,
+        "sampled_waiting_max": 0.0,
+        "sampled_native_retracted_reqs_max": null,
+        "preemption_counter_note": "Native cumulative vLLM preemption counter delta; sampled SGLang retraction gauge is not applicable."
+      }
+    },
+    {
+      "round": "c3-repeat",
+      "offered": 3,
+      "window_s": 180,
+      "summary": {
+        "backend_generated_tokens": 14756.0,
+        "backend_tok_s_per_180s": 81.97777777777777,
+        "backend_rate_note": "Service-wide counter, includes unfinished streams and any health probes; snapshot interval includes small launch/drain overhead, not a pure decode rate.",
+        "completed_message_tokens": 4833,
+        "mean_first_request_ttft_s": 0.599331289898449,
+        "mean_first_tool_s": 4.18442899165287,
+        "mean_pi_launch_to_output_s": 2.094808807344331,
+        "subsequent_ttft_median_s": 1.3551235707709566,
+        "requests": 20,
+        "tools": 25,
+        "tool_errors": 0,
+        "nonzero_bash_exits": 0,
+        "prefix_hits": 226432.0,
+        "prefix_queries": 254335.0,
+        "cache_hit_ratio": 0.8902903650696915,
+        "accepted_drafts_per_step": 2.3739707227813356,
+        "output_characters": 49156,
+        "requests_censored_before_first_output": 0,
+        "max_censored_ttft_lower_bound_s": null,
+        "first_output_observed_agents": 3,
+        "first_request_ttft_max_s": 0.7563605506438762,
+        "preemptions": 0.0,
+        "sglang_cached_tokens_total": null,
+        "sglang_prompt_tokens_total": null,
+        "sglang_cache_counter_note": "Not applicable to this vLLM recipe; use native prefix_hits and prefix_queries above.",
+        "sglang_spec_verify_calls_total": null,
+        "model_errors": 0,
+        "partial_decode_tokens": null,
+        "partial_decode_note": null,
+        "sampled_running_max": 3.0,
+        "sampled_waiting_max": 0.0,
+        "sampled_native_retracted_reqs_max": null,
+        "preemption_counter_note": "Native cumulative vLLM preemption counter delta; sampled SGLang retraction gauge is not applicable."
+      }
+    },
+    {
+      "round": "c6-first",
+      "offered": 6,
+      "window_s": 180,
+      "summary": {
+        "backend_generated_tokens": 18502.0,
+        "backend_tok_s_per_180s": 102.78888888888889,
+        "backend_rate_note": "Service-wide counter, includes unfinished streams and any health probes; snapshot interval includes small launch/drain overhead, not a pure decode rate.",
+        "completed_message_tokens": 6318,
+        "mean_first_request_ttft_s": 2.283253417883922,
+        "mean_first_tool_s": 7.589577406664223,
+        "mean_pi_launch_to_output_s": 3.8981148664897773,
+        "subsequent_ttft_median_s": 1.6550802944111638,
+        "requests": 37,
+        "tools": 45,
+        "tool_errors": 0,
+        "nonzero_bash_exits": 1,
+        "prefix_hits": 371584.0,
+        "prefix_queries": 423298.0,
+        "cache_hit_ratio": 0.8778307480781861,
+        "accepted_drafts_per_step": 2.4189314106119433,
+        "output_characters": 57570,
+        "requests_censored_before_first_output": 0,
+        "max_censored_ttft_lower_bound_s": null,
+        "first_output_observed_agents": 6,
+        "first_request_ttft_max_s": 2.943932454334572,
+        "preemptions": 0.0,
+        "sglang_cached_tokens_total": null,
+        "sglang_prompt_tokens_total": null,
+        "sglang_cache_counter_note": "Not applicable to this vLLM recipe; use native prefix_hits and prefix_queries above.",
+        "sglang_spec_verify_calls_total": null,
+        "model_errors": 0,
+        "partial_decode_tokens": null,
+        "partial_decode_note": null,
+        "sampled_running_max": 6.0,
+        "sampled_waiting_max": 3.0,
+        "sampled_native_retracted_reqs_max": null,
+        "preemption_counter_note": "Native cumulative vLLM preemption counter delta; sampled SGLang retraction gauge is not applicable."
+      }
+    },
+    {
+      "round": "c6-repeat",
+      "offered": 6,
+      "window_s": 180,
+      "summary": {
+        "backend_generated_tokens": 19888.0,
+        "backend_tok_s_per_180s": 110.4888888888889,
+        "backend_rate_note": "Service-wide counter, includes unfinished streams and any health probes; snapshot interval includes small launch/drain overhead, not a pure decode rate.",
+        "completed_message_tokens": 5690,
+        "mean_first_request_ttft_s": 0.8640496282217404,
+        "mean_first_tool_s": 4.934008838182005,
+        "mean_pi_launch_to_output_s": 2.4558788486756384,
+        "subsequent_ttft_median_s": 1.5184288029558957,
+        "requests": 33,
+        "tools": 42,
+        "tool_errors": 0,
+        "nonzero_bash_exits": 1,
+        "prefix_hits": 314752.0,
+        "prefix_queries": 359347.0,
+        "cache_hit_ratio": 0.8758998962006084,
+        "accepted_drafts_per_step": 2.5266985985453254,
+        "output_characters": 62368,
+        "requests_censored_before_first_output": 0,
+        "max_censored_ttft_lower_bound_s": null,
+        "first_output_observed_agents": 6,
+        "first_request_ttft_max_s": 1.0299983013537712,
+        "preemptions": 0.0,
+        "sglang_cached_tokens_total": null,
+        "sglang_prompt_tokens_total": null,
+        "sglang_cache_counter_note": "Not applicable to this vLLM recipe; use native prefix_hits and prefix_queries above.",
+        "sglang_spec_verify_calls_total": null,
+        "model_errors": 0,
+        "partial_decode_tokens": null,
+        "partial_decode_note": null,
+        "sampled_running_max": 6.0,
+        "sampled_waiting_max": 1.0,
+        "sampled_native_retracted_reqs_max": null,
+        "preemption_counter_note": "Native cumulative vLLM preemption counter delta; sampled SGLang retraction gauge is not applicable."
+      }
+    }
+  ]
+}

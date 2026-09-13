@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 0,
+    "layer": 1,
+    "row_start": 0,
+    "row_end": 128000880,
+    "payload_sha256": "2c2c8747472697be9d5d9c1a9ec2bcbc7eaf843efbffe442875f1716328193c4"
+  },
+  {
+    "rank": 0,
+    "layer": 14,
+    "row_start": 0,
+    "row_end": 128004290,
+    "payload_sha256": "3b6ac26ebfb2ca46fb95a4ccb6f5850f28a9028111175d84e87a2aff0dd3c284"
+  },
+  {
+    "rank": 1,
+    "layer": 1,
+    "row_start": 128000880,
+    "row_end": 256002934,
+    "payload_sha256": "8d4a0a80461e89aca0be5551982007b1eab4261e56c5484f3e468e2fdf9cfc67"
+  },
+  {
+    "rank": 1,
+    "layer": 14,
+    "row_start": 128004290,
+    "row_end": 256009984,
+    "payload_sha256": "cf68241e94779ea0072d1c906b30046d568be38904447c6e5e067bdbef40231e"
+  },
+  {
+    "rank": 2,
+    "layer": 1,
+    "row_start": 256002934,
+    "row_end": 384006168,
+    "payload_sha256": "fe3ac21f350e44134db847d800d61d674ee7fe32b53b49d836f369253a9736fb"
+  },
+  {
+    "rank": 2,
+    "layer": 14,
+    "row_start": 256009984,
+    "row_end": 384016682,
+    "payload_sha256": "1eb79e0b92097bf4461416f23c498dd21d5c9763b62a3846dadc45d30701dae7"
+  }
+]

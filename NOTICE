@@ -1,0 +1,8 @@
+JSPARK3 v2 — Tempo
+Copyright 2026 Jake Harris
+
+Serving and preparation work derived from tonyd2wild / Tech2wild and Kai,
+vLLM project contributors and Zeuss5/cuda-exl3 contributors. EXL3 expert
+weights are bot-lab-21's work using WestWaters' Pollard method and
+turboderp's EXL3 format. DeepSeek-AI owns the original model and DSpark work.
+See THIRD_PARTY_NOTICES.md and licenses/ for preserved notices.
