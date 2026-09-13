@@ -5,14 +5,15 @@ Watches ONE exact container ID on ONE host. Never resolves containers by name
 or prefix. The only mutating action it can ever take is `docker stop -t <t>
 <exact-cid>` (and writing its own telemetry/trip/marker files).
 
-Inherited L5-P policy (see docs/OPERATIONS.md):
+Tempo daily-use policy (see docs/OPERATIONS.md):
 
-  emergency stop : host MemAvailable < 4 GiB, or cgroup service swap > 0,
+  emergency stop : host MemAvailable < 4 GiB,
                    or new oom/oom_kill/oom_group_kill in memory.events,
                    or rank death/restart/OOMKilled, or container identity
                    mismatch, or stale/unreachable telemetry past the blind
                    window, or a peer guard's trip file (coupled stop).
-  promotion      : only when the run-window minimum MemAvailable >= 5 GiB
+  swap           : telemetry only; nonzero usage never triggers a stop.
+  promotion      : benchmark qualification only, when the run-window minimum MemAvailable >= 5 GiB
                    and service swap stayed exactly 0 and no trip fired.
                    In [4,5) GiB the band is HOLD: no promotion, owner stops
                    new tests and drains; the 4 GiB floor is never weakened.
@@ -95,7 +96,6 @@ BAND_EMERGENCY = "EMERGENCY"        # < 4 GiB  -> stop
 BAND_HOLD = "HOLD"                  # [4,5) GiB -> no promotion, owner drains
 BAND_PROMOTE_OK = "PROMOTE_OK"      # >= 5 GiB
 
-TRIP_SERVICE_SWAP = "SERVICE_SWAP_NONZERO"
 TRIP_HEADROOM = "HEADROOM_EMERGENCY"
 TRIP_OOM_EVENTS = "CGROUP_OOM_EVENTS"
 TRIP_RANK_DEATH = "RANK_DEATH_OR_RESTART"
@@ -187,8 +187,8 @@ def decide(sample, baseline, thresholds, blind_seconds_elapsed):
         reasons.append(TRIP_RANK_DEATH)
 
     cg = sample.get("cgroup", {})
-    if cg.get("swap_current_bytes", 0) is not None and cg.get("swap_current_bytes", 0) > 0:
-        reasons.append(TRIP_SERVICE_SWAP)
+    # Service swap is telemetry, not an availability fault. Benchmark
+    # qualification below still records whether the run stayed swap-free.
     # OOM events: fail-closed on ANY nonzero oom/oom_kill/oom_group_kill counter.
     # The guard cannot know the container's pre-registration history, so a
     # nonzero counter at first sight counts as a new event (EXL3-SPEC 4:
