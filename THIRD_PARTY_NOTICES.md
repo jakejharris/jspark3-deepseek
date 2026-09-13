@@ -1,6 +1,6 @@
 # Credits and license boundaries
 
-Version: v2.0.0-rc.1.
+Version: v2.0.0.
 
 Tempo builds on **tonyd2wild and Kai's DeepSeek Spark serving recipe**, and **bot-lab-21's EXL3 expert checkpoint using WestWaters' Pollard method**. It also depends on DeepSeek-AI's model and bundled DSpark draft, vLLM, turboderp's EXL3 format, cuda-exl3 contributors, FlashInfer and NVIDIA's kernel/toolchain work.
 
