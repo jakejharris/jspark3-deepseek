@@ -1,6 +1,6 @@
 # Tempo operations
 
-Version: v2.0.0-rc.1.
+Version: v2.0.0-rc.2.
 
 The portable lifecycle creates exactly three labeled containers and records their full IDs and fresh Docker `StartedAt`. Mutations resolve those exact IDs, verify the deployment label and incarnation, and never use broad Docker name patterns. It retains stopped containers, caches and all model/user data. A fresh start needs a fresh namespace because the entrypoint release file is single-use.
 

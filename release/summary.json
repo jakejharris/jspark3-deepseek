@@ -4,7 +4,7 @@
     "project": "JSPARK3",
     "name": "Tempo",
     "version": "v2",
-    "candidate": "v2.0.0-rc.1",
+    "candidate": "v2.0.0-rc.2",
     "status": "experimental",
     "current_daily_driver": true,
     "model": "DeepSeek-V4.1 Flash",
@@ -12,7 +12,7 @@
   },
   "publication_status": "pending",
   "limitations": [
-    "Experimental serving recipe; historical one-fleet evidence, fresh portable installation pending.",
+    "Experimental serving recipe; historical measurements come from one three-Spark fleet.",
     "Functional code passed 2/4 tasks; this is not a broad quality ranking.",
     "A short request arriving two seconds into a 64K prefill waited 40.458 seconds.",
     "300,000 tokens is configured context, not certified usable context or C8 capacity.",
@@ -20,11 +20,28 @@
     "Work counts unfinished output and does not score quality. Mia active cap 4 differs from Tempo cap 8.",
     "Native vision and optional Pi desktop use are separate from the throughput cohort."
   ],
+  "validation": {
+    "fresh_source_build": {
+      "status": "PENDING",
+      "evidence": null,
+      "evidence_sha256": null
+    },
+    "fresh_install": {
+      "status": "PENDING",
+      "evidence": null,
+      "evidence_sha256": null
+    },
+    "fresh_runtime_smoke": {
+      "status": "PENDING",
+      "evidence": null,
+      "evidence_sha256": null
+    }
+  },
   "links": {
-    "install": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.1/docs/INSTALL.md",
-    "source": "https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.0-rc.1",
-    "release": "https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.0-rc.1",
-    "evidence": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.1/docs/BENCHMARKS.md",
+    "install": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.2/docs/INSTALL.md",
+    "source": "https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.0-rc.2",
+    "release": "https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.0-rc.2",
+    "evidence": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0-rc.2/docs/BENCHMARKS.md",
     "huggingface": "https://huggingface.co/jakejharris/jspark3-tempo",
     "website": "https://jakejh.com/jspark3/deepseek/"
   },

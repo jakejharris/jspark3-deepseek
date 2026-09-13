@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Deterministic publication snapshots; --check refuses drift."""
-import argparse,json,hashlib
+import argparse,json,hashlib,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def render():
  i=json.loads((ROOT/'release/identity.json').read_text()); b=json.loads((ROOT/'release/benchmarks.json').read_text());tag=i['identity']['candidate'];base='https://github.com/jakejharris/jspark3-deepseek'
+ validation='; '.join(key.replace('_',' ')+': '+row['status'] for key,row in i['validation'].items())+'.'
  links=dict(install=f'{base}/blob/{tag}/docs/INSTALL.md',source=f'{base}/tree/{tag}',release=f'{base}/releases/tag/{tag}',evidence=f'{base}/blob/{tag}/docs/BENCHMARKS.md',huggingface='https://huggingface.co/jakejharris/jspark3-tempo',website='https://jakejh.com/jspark3/deepseek/')
  summary=dict(**i,links=links,selected_metrics=[{k:m[k] for k in ['id','label','value','unit','conditions','estimator','samples','cohort','cache_state','timing_boundary','concurrency','active_cap']} for m in b['metrics']],benchmarks_sha256=hashlib.sha256((ROOT/'release/benchmarks.json').read_bytes()).hexdigest())
  rows=['| Measurement | Result | Conditions |','|---|---:|---|']
@@ -32,9 +33,11 @@ Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts 
 
 Version: {tag} · experimental · publication {i['publication_status']}.
 
+Validation: {validation}
+
 **[Start here / Install]({links['install']})** · [GitHub source]({links['source']}) · [Full evidence]({links['evidence']})
 
-Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a management network and dual-port RoCE triangle. Allow approximately 400 GB per host for weights, sparse Engram and packed rows, plus build/cache space. See the exact fit check before downloading.
+Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a management network and dual-port RoCE triangle. Weights, sparse Engram and packed rows occupy approximately 400 GB per host. Budget at least 550 GB free local storage per host including preparation headroom, plus an additional 100 GB for image build/cache on the build host. See the exact fit check before downloading.
 
 {hf_table}
 
@@ -45,13 +48,13 @@ DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. Our current three-Spark daily dr
 
 Built on **tonyd2wild and Kai's Spark serving work**, and **bot-lab-21's EXL3 experts using WestWaters' Pollard method**.
 
-Version: **{tag}** · experimental · public release {i['publication_status']}. Historical measurements are complete; fresh portable installation validation is pending. Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
+Version: **{tag}** · experimental · public release {i['publication_status']}. Historical measurements are complete. Validation: {validation} Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
 
 ## Fit check
 
-Exactly three ARM64 DGX Sparks (GB10,128GB unified memory each), local NVMe, dual-port RoCE-v2 triangle with separate IPv4 subnets at MTU9000, management network, Docker/NVIDIA runtime and cgroupv2. Controller: Linux, Python3.10+, SSH, rsync and persistent systemd user services.
+Exactly three ARM64 DGX Sparks (GB10, 128 GB unified memory each), local NVMe, dual-port RoCE-v2 triangle with separate IPv4 subnets at MTU 9000, management network, Docker/NVIDIA runtime and cgroup v2. Controller: Linux, Python 3.10+, SSH, rsync and persistent systemd user services.
 
-Budget at least550GB free storage per host for verified model files, sparse Engram, packed rows and preparation headroom; the build host needs additional image/cache space. CPU compilation requires40GiB available RAM, and serving preflight requires100GiB available per host after the outgoing model stops. See the guide's exact worksheet before downloading.
+Budget at least 550 GB free storage per host for verified model files, sparse Engram, packed rows and preparation headroom; the build host needs additional image/cache space. CPU compilation requires 40 GiB available RAM, and serving preflight requires 100 GiB available per host after the outgoing model stops. See the guide's exact worksheet before downloading.
 
 **[Start here / Install](docs/INSTALL.md)**
 
@@ -63,15 +66,15 @@ Budget at least550GB free storage per host for verified model files, sparse Engr
 
 ## Known limits
 
-- Code correctness passed2/4 small tasks; Work does not grade quality.
-- A short request behind an existing64K prefill waited40.458seconds.
-- Configured300K context, C8 capacity and native vision are not certified by the throughput cohort.
+- Code correctness passed 2/4 small tasks; Work does not grade quality.
+- A short request behind an existing 64K prefill waited 40.458 seconds.
+- Configured 300K context, C8 capacity and native vision are not certified by the throughput cohort.
 - Uncached TTFT uses warmed kernels; post-first-output rates include transport/finalization and speculative chunks.
-- One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke remain separate release gates.
+- One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke are separately recorded release gates.
 
 ## How it works
 
-TP3, DSpark width4, APC with retention512, solo prefill4096/shared mixed cap2048, automatic KV at GMU0.80, active cap8 and buffered264-byte Engram rows with row cache0. The package includes all15 final source overlays, pinned builds/downloads, lossless storage preparation, guarded lifecycle, bounded smoke and redacted diagnostics. It trains nothing and does not change model quantization.
+TP3, DSpark width 4, APC with retention 512, solo prefill 4096/shared mixed cap 2048, automatic KV at GMU 0.80, active cap 8 and buffered 264-byte Engram rows with row cache 0. The package includes all 15 final source overlays, pinned builds/downloads, lossless storage preparation, guarded lifecycle, bounded smoke and redacted diagnostics. It trains nothing and does not change model quantization.
 
 [Provenance](docs/PROVENANCE.md) · [Operations](docs/OPERATIONS.md) · [Troubleshooting](docs/TROUBLESHOOTING.md) · [Research harness](benchmarks/README.md) · [Optional Pi](docs/PI.md)
 
@@ -79,7 +82,13 @@ Weights are downloaded separately from pinned upstream sources. The target, EXL3
 
 Original recipe code and prose are Apache-2.0. Dependencies and weights keep their own terms. Credit to DeepSeek-AI, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries](THIRD_PARTY_NOTICES.md).
 '''
- return {'README.md':readme,'release/summary.json':json.dumps(summary,indent=2,ensure_ascii=False)+'\n','docs/BENCHMARKS.md':md,'huggingface/README.md':hf}
+ outputs={'README.md':readme,'release/summary.json':json.dumps(summary,indent=2,ensure_ascii=False)+'\n','docs/BENCHMARKS.md':md,'huggingface/README.md':hf}
+ # Version references and validation wording follow identity; prose remains editable.
+ for name in ['docs/INSTALL.md','docs/OPERATIONS.md','docs/PROVENANCE.md','docs/TROUBLESHOOTING.md','docs/PI.md','benchmarks/README.md']:
+  body=re.sub(r'v2\.0\.0(?:-rc\.\d+)?',tag,(ROOT/name).read_text())
+  if name=='docs/INSTALL.md':body=re.sub(r'^Version:.*$',f'Version: **{tag}** · experimental · {validation}',body,flags=re.MULTILINE)
+  outputs[name]=body
+ return outputs
 def main():
  p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');a=p.parse_args()
  for name,text in render().items():

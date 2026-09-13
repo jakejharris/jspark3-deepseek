@@ -1,6 +1,6 @@
 # Tempo troubleshooting
 
-Version: v2.0.0-rc.1.
+Version: v2.0.0-rc.2.
 
 ## Fit and preflight
 

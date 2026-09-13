@@ -1,6 +1,6 @@
 # Tempo measured results
 
-Version: v2.0.0-rc.1 · historical L5-P cohort, September 13, 2026.
+Version: v2.0.0-rc.2 · historical L5-P cohort, September 13, 2026.
 
 | Measurement | Result | Conditions |
 |---|---:|---|
@@ -27,7 +27,7 @@ Version: v2.0.0-rc.1 · historical L5-P cohort, September 13, 2026.
 
 Machine definitions and source hashes: [benchmarks.json](../release/benchmarks.json). Selected original observations: [evidence](../evidence/selected-measurements.json). These are historical measurements, not a fresh installation receipt.
 
-- Experimental serving recipe; historical one-fleet evidence, fresh portable installation pending.
+- Experimental serving recipe; historical measurements come from one three-Spark fleet.
 - Functional code passed 2/4 tasks; this is not a broad quality ranking.
 - A short request arriving two seconds into a 64K prefill waited 40.458 seconds.
 - 300,000 tokens is configured context, not certified usable context or C8 capacity.

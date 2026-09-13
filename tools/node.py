@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Host operations invoked over SSH. Exact labels/IDs only; never removes data."""
-import json,os,sys,time,subprocess,platform
+import json,os,sys,time,subprocess,platform,grp,pwd,shlex
 from pathlib import Path
 from common import ROOT,read,write,digest,verify
 
@@ -33,6 +33,15 @@ def argv(cfg,h):
  serve+=['--host','0.0.0.0','--port',str(cfg['api_port'])] if h['rank']==0 else ['--headless']
  return args+[cfg['image_id']]+serve
 
+def docker_group_command(command):
+ """Activate existing membership even when the user manager has stale groups."""
+ user=pwd.getpwuid(os.getuid());group=grp.getgrnam('docker')
+ assert user.pw_uid==0 or user.pw_gid==group.gr_gid or user.pw_name in group.gr_mem, 'Provision this user as a docker group member before starting Tempo'
+ return ['sg','docker','-c',shlex.join([str(x) for x in command])]
+
+def guard_command(unit,payload):
+ return ['systemd-run','--user','--unit',unit,'--property=Restart=no','--property=MemoryMax=128M','--property=MemorySwapMax=0']+docker_group_command(payload)
+
 def action(req):
  cfg=req['config'];h=req['host'];base=Path(h['work'])/cfg['deployment'];kind=req['action'];cid=req.get('cid')
  if kind=='render':return dict(argv=argv(cfg,h))
@@ -40,6 +49,7 @@ def action(req):
   assert platform.machine()=='aarch64';assert Path('/sys/fs/cgroup/cgroup.controllers').exists();assert Path('/dev/infiniband').exists()
   assert json.loads(docker('image','inspect',cfg['image_id']))[0]['Id']==cfg['image_id']
   capture(['systemctl','--user','show-environment'])
+  capture(['systemd-run','--user','--wait','--pipe','--collect']+docker_group_command(['docker','version','--format','{{.Server.Version}}']))
   seal=json.loads((Path(h['work'])/'verified-inputs.json').read_text())
   assert seal['release_sources_sha256']==digest(ROOT/'release/sources.json')
   for name,stamp in seal['files'].items():
@@ -61,7 +71,7 @@ def action(req):
   action(dict(req,action='preflight',resources=True));assert not base.exists(),'Fresh deployment namespace required'
   (base/'cache').mkdir(parents=True);(base/'state').mkdir();os.chmod(ROOT/'recipe/entrypoint.sh',0o755)
   cid=capture(argv(cfg,h));d=owned(cid,cfg);cg,_=resources(cid)
-  unit=cfg['deployment']+'-guard';command=['systemd-run','--user','--unit',unit,'--property=Restart=on-failure','--property=RestartSec=2','python3',ROOT/'tools/exl3_guard.py','--container-id',cid,'--cgroup',cg,'--expected-started-at',d['State']['StartedAt'],'--telemetry',base/'guard.jsonl','--trip-file',base/'trip','--peer-trip-file',base/'peer-trip']
+  unit=cfg['deployment']+'-guard';command=guard_command(unit,['python3','-S',ROOT/'tools/exl3_guard.py','--container-id',cid,'--cgroup',cg,'--expected-started-at',d['State']['StartedAt'],'--telemetry',base/'guard.jsonl','--trip-file',base/'trip','--peer-trip-file',base/'peer-trip'])
   # Receipt is saved before guard launch; a failed guard can still be stopped by exact ID.
   receipt=dict(cid=cid,started_at=d['State']['StartedAt'],image_id=d['Image'],rank=h['rank'],unit=unit)
   write(base/'owned.json',receipt)

@@ -1,12 +1,12 @@
 # Install Tempo
 
-Version: **v2.0.0-rc.1** · experimental release candidate · fresh installation validation pending.
+Version: **v2.0.0-rc.2** · experimental · fresh source build: PENDING; fresh install: PENDING; fresh runtime smoke: PENDING.
 
 This is the single installation guide shared by GitHub, the website and Hugging Face. Commands below are run from a checkout of this exact candidate. An unpublished candidate may be supplied as a local archive; public clone URLs become usable only after publication.
 
 ## 1. Check the fit before downloading
 
-You need exactly three NVIDIA DGX Sparks: ARM64 Linux, GB10 with 128 GB unified memory each, NVIDIA driver and NVIDIA Container Toolkit, Docker, cgroup v2, Python 3.10+ with NumPy (`python3 -c "import numpy"`), local NVMe, `rdma-core`, and systemd user services. The controller needs Linux, Python 3.10+, OpenSSH, rsync, Docker only if distributing an image locally, and an always-on systemd user manager for the guard relay. Each Spark's user manager must have Docker permission. Enable lingering for those users through your normal host administration procedure.
+You need exactly three NVIDIA DGX Sparks: ARM64 Linux, GB10 with 128 GB unified memory each, NVIDIA driver and NVIDIA Container Toolkit, Docker, cgroup v2, Python 3.10+ with NumPy (`python3 -c "import numpy"`), local NVMe, `rdma-core`, and systemd user services. The controller needs Linux, Python 3.10+, OpenSSH, rsync, Docker only if distributing an image locally, and an always-on systemd user manager for the guard relay. Each Spark's serving user must already belong to the `docker` group (or be root); `sg docker` activates that membership inside guard units, including user managers started before the group was granted. Enable lingering for those users through your normal host administration procedure.
 
 Two RoCE-v2 ports on each Spark form a triangle; each direct leg uses a separate IPv4 subnet and MTU 9000. All three hosts also share a management network. RoCE fabric setup is a host prerequisite; the recipe checks configured routes and interfaces but does not rewrite networking. Verify the NIC's GID index 3 is its IPv4 RoCE-v2 GID (`show_gids`), both ports are active, and each direct peer responds to `ping -M do -s 8972 PEER_FABRIC_IP`. Configure direct routes on both ends. A successful management ping alone does not validate fabric.
 
@@ -27,12 +27,25 @@ Source compilation is CPU-only but needs **40 GiB MemAvailable**, with a **32 Gi
 
 Checkpoint: hardware, disk, fabric and user services meet these requirements. Recovery: [fit/preflight failure](TROUBLESHOOTING.md#fit-and-preflight).
 
+The controller may be colocated on rank 0; its relay is lightweight and does not require a fourth machine. Run all **Controller** commands from that Spark's persistent recipe checkout. A WSL shell without an active systemd user manager is suitable for editing/copying files but cannot own the relay. The selected controller must have unattended SSH access to all three configured aliases, including its own alias when colocated. Provision authorized keys and trusted host keys through normal SSH setup; the recipe does not copy credentials or depend on any existing fleet aliases.
+
+Before continuing, run these checks as the serving user on each Spark:
+
+```bash
+id
+getent group docker
+systemctl --user show-environment
+systemd-run --user --wait --pipe --collect sg docker -c 'docker version --format "{{.Server.Version}}"'
+```
+
+The final command must return the Docker server version without a password prompt. If membership is absent, have the host administrator grant it; do not restart the user manager or unrelated services to repair stale supplementary groups. Guards run with `Restart=no`, `MemoryMax=128M`, and `MemorySwapMax=0`; the relay treats stale or missing guard samples as a fleet-stop condition.
+
 ## 2. Get the candidate and fill one worksheet
 
 **Controller**, an empty directory:
 
 ```bash
-git clone --branch v2.0.0-rc.1 https://github.com/jakejharris/jspark3-deepseek.git
+git clone --branch v2.0.0-rc.2 https://github.com/jakejharris/jspark3-deepseek.git
 cd jspark3-deepseek
 python3 tools/release_check.py
 cp recipe/config.example.json config.json
@@ -54,6 +67,8 @@ Edit `config.json`; it is ignored by Git and never included in diagnostics. Set 
 
 The sample uses documentation IPs, not a working fleet. Keep source paths, prepared model paths and work paths separate. All serving defaults (TP3, graphs, DSpark, fabric environment) are fixed in `release/runtime.json`; changing them creates a different runtime requiring a new candidate/receipt. Context 300000 is configured, not a certification.
 
+**Controller:** verify each worksheet alias, including the local rank when colocated, with `ssh -o BatchMode=yes -o ConnectTimeout=10 ALIAS true`. These aliases must resolve from the controller itself, not only from a workstation. Keep the controller checkout and `state_dir` persistent across SSH logout; lingering keeps its user services alive.
+
 **Controller:** copy this checkout and your config to each declared `recipe` directory. Example, repeat with your own aliases and paths:
 
 ```bash
@@ -74,7 +89,7 @@ python3 tools/fetch_sources.py --destination /srv/tempo/build-inputs
 python3 tools/build_image.py --inputs /srv/tempo/build-inputs --work /srv/tempo/image-build
 ```
 
-Use your chosen absolute paths. The downloader verifies all eight public inputs and rehashes existing files before reuse. It never substitutes a newer revision. Partial archive downloads are restarted; completed archives are retained. Build stages have no network access; base-image pull happens first. Expected stages: vLLM stable extension → FlashInfer → MXFP8 JIT → sparse MLA JIT → cuda-exl3 → 15 final source overlays. Compiler output is retained in `/receipts/stageN.log` in each successful image layer. Docker build output marks each checkpoint. A failed stage stops; retrying the same build reuses completed Docker layers.
+Use your chosen absolute paths. The downloader verifies all eight public inputs and rehashes existing files before reuse. It never substitutes a newer revision. Partial archive downloads are restarted; completed archives are retained. Build stages have no network access; base-image pull happens first. Expected stages: vLLM stable extension → FlashInfer → MXFP8 JIT → sparse MLA JIT → cuda-exl3 → 15 final source overlays. Compiler output is retained in `/receipts/stageN.build.log` in each successful image layer. Docker build output marks each checkpoint. A failed stage stops; retrying the same unchanged build reuses completed Docker layers. Changes to the stage wrapper or compiler inputs invalidate those layers and require recompilation.
 
 The base is a pinned public ARM64 image digest. A fresh build may have a new image ID and native binary hashes; record them rather than claiming bit-identical compiled output. Exact Python source overlays must match. See [provenance](PROVENANCE.md).
 
