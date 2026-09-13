@@ -4,7 +4,7 @@
     "project": "JSPARK3",
     "name": "Tempo",
     "version": "v2",
-    "candidate": "v2.0.0",
+    "candidate": "v2.0.1",
     "status": "experimental",
     "current_daily_driver": true,
     "model": "DeepSeek-V4.1 Flash",
@@ -35,6 +35,11 @@
       "status": "PASS",
       "evidence": "evidence/fresh-install-20260913.json",
       "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
+    },
+    "operational_patch": {
+      "status": "PASS",
+      "evidence": "evidence/swap-telemetry-20260913.json",
+      "evidence_sha256": "d13f6d2a56e2f6720ae84e321f3d5bcc2cc2e24ac4e7e4788e4dc9c7cbb2aac1"
     }
   }
 }

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "release": "v2.0.1",
+  "tested_code_commit": "014d10631f15d458ec3dc022f4cc4f3eea3044c1",
+  "scope": "Host-side swap stop policy only; same inference image, source overlays, model inputs and serving arguments as the rc.2 reconstruction. Fresh matched deployment on the same three-Spark fleet. No new source build or full benchmark campaign. Nonzero swap tested with fixtures, not induced on the live fleet.",
+  "date": "2026-09-13",
+  "checks": {
+    "operational_patch": "PASS",
+    "cpu_tests_passed": 51,
+    "inference_source_hashes_all_ranks": "PASS",
+    "complete_api_requests": 5,
+    "prefix_hit_tokens": 4096.0,
+    "oom_events": 0,
+    "restarts": 0,
+    "trips": 0,
+    "service_swap_bytes_during_smoke": 0
+  },
+  "operational_tool_sha256": {
+    "tools/exl3_guard.py": "ee70915ee0087d0ef7297cd895bddea1a68a4daa6d1d79794216ca47978f5724",
+    "tools/tempo.py": "23d893687b6e8493f0846081d1bdd1faccff3104de4d2a05ae4229f717ec5ce8"
+  },
+  "fixture_swap_bytes": [
+    1,
+    3608576,
+    2147483648
+  ],
+  "requests": [
+    {
+      "name": "generation",
+      "ttft_s": 1.2505038399249315,
+      "finish_reason": "stop",
+      "sse_complete": true
+    },
+    {
+      "name": "uncached_prefix",
+      "ttft_s": 16.29014040599577,
+      "finish_reason": "stop",
+      "sse_complete": true
+    },
+    {
+      "name": "repeated_prefix",
+      "ttft_s": 0.3568809749558568,
+      "finish_reason": "stop",
+      "sse_complete": true
+    },
+    {
+      "name": "tool_call",
+      "ttft_s": 0.45401600701734424,
+      "finish_reason": "tool_calls",
+      "sse_complete": true
+    },
+    {
+      "name": "tool_continuation",
+      "ttft_s": 0.47538054012693465,
+      "finish_reason": "stop",
+      "sse_complete": true
+    }
+  ],
+  "historical_source_build_receipt": "fresh-install-20260913.json"
+}

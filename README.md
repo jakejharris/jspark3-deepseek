@@ -4,7 +4,7 @@ DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. Our current three-Spark daily dr
 
 Built on **tonyd2wild and Kai's Spark serving work**, and **bot-lab-21's EXL3 experts using WestWaters' Pollard method**.
 
-Version: **v2.0.0** · experimental · public release published. Historical measurements are complete. Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS. Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
+Version: **v2.0.1** · experimental · public release published. Historical measurements are complete. Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS. Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
 
 ## Fit check
 
@@ -34,6 +34,10 @@ Budget at least 550 GB free storage per host for verified model files, sparse En
 - Configured 300K context, C8 capacity and native vision are not certified by the throughput cohort.
 - Uncached TTFT uses warmed kernels; post-first-output rates include transport/finalization and speculative chunks.
 - One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke are separately recorded release gates.
+
+## v2.0.1 operational update
+
+Swap is now reported without automatically stopping the service. Both the local guards and fleet relay accept nonzero swap; existing low-memory and service-failure checks remain. No weights, inference settings or benchmark values changed. [Upgrade instructions](docs/OPERATIONS.md#upgrading-from-v200) · [Patch validation](evidence/swap-telemetry-20260913.json). Source-build/install evidence above remains the original rc.2 reconstruction; this patch has separate operational validation.
 
 ## How it works
 

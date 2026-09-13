@@ -72,6 +72,10 @@ Budget at least 550 GB free storage per host for verified model files, sparse En
 - Uncached TTFT uses warmed kernels; post-first-output rates include transport/finalization and speculative chunks.
 - One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke are separately recorded release gates.
 
+## v2.0.1 operational update
+
+Swap is now reported without automatically stopping the service. Both the local guards and fleet relay accept nonzero swap; existing low-memory and service-failure checks remain. No weights, inference settings or benchmark values changed. [Upgrade instructions](docs/OPERATIONS.md#upgrading-from-v200) · [Patch validation](evidence/swap-telemetry-20260913.json). Source-build/install evidence above remains the original rc.2 reconstruction; this patch has separate operational validation.
+
 ## How it works
 
 TP3, DSpark width 4, APC with retention 512, solo prefill 4096/shared mixed cap 2048, automatic KV at GMU 0.80, active cap 8 and buffered 264-byte Engram rows with row cache 0. The package includes all 15 final source overlays, pinned builds/downloads, lossless storage preparation, guarded lifecycle, bounded smoke and redacted diagnostics. It trains nothing and does not change model quantization.
