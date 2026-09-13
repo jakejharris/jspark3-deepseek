@@ -25,14 +25,13 @@ def test_pack_preserves_bytes_and_refuses_overwrite(tmp_path):
 
 def guard_row():
  now=datetime.now(timezone.utc).isoformat();return dict(trip=False,running=True,restart_count=0,oom=False,cid='a'*64,started_at='start',resources={'memory.swap.current':0,'memavailable_bytes':8*1024**3},guard=dict(utc=now,cid='a'*64,state='WATCHING',docker=dict(started_at='start')))
-@pytest.mark.parametrize('fault',['stale','future','cid','incarnation','swap','floor','restart','trip'])
+@pytest.mark.parametrize('fault',['stale','future','cid','incarnation','floor','restart','trip'])
 def test_relay_refuses_bad_peer(fault):
  row=guard_row();assert tempo.guard_ok(row)
  if fault=='stale':row['guard']['utc']=(datetime.now(timezone.utc)-timedelta(seconds=16)).isoformat()
  elif fault=='future':row['guard']['utc']=(datetime.now(timezone.utc)+timedelta(seconds=8)).isoformat()
  elif fault=='cid':row['guard']['cid']='b'*64
  elif fault=='incarnation':row['guard']['docker']['started_at']='other'
- elif fault=='swap':row['resources']['memory.swap.current']=1
  elif fault=='floor':row['resources']['memavailable_bytes']=3*1024**3
  elif fault=='restart':row['restart_count']=1
  else:row['trip']=True
@@ -68,3 +67,10 @@ def test_diagnostics_drops_unknown_fields_and_private_values(monkeypatch):
  monkeypatch.setattr(tempo,'digest',lambda _: 'release-hash')
  raw=json.dumps(tempo.redacted_diagnostics([row]));assert 'SECRET' not in raw and 'PRIVATE' not in raw and 'prompt' not in raw and 'credential' not in raw
  assert json.loads(raw)['ranks'][0]['resources']['events']=={'oom':0}
+
+@pytest.mark.parametrize('swap_bytes',[1,3608576,2*1024**3])
+def test_relay_accepts_swap_without_other_faults(swap_bytes):
+ row=guard_row();row['resources']['memory.swap.current']=swap_bytes
+ assert tempo.guard_ok(row)
+ row['resources']['memavailable_bytes']=3*1024**3
+ assert not tempo.guard_ok(row)

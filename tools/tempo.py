@@ -36,7 +36,7 @@ def parallel(c,action,receipts=None,**extra):
 
 def guard_ok(row):
  g=row.get('guard') or {};age=(datetime.now(timezone.utc)-datetime.fromisoformat(g.get('utc','1970-01-01T00:00:00+00:00'))).total_seconds()
- return (not row['trip'] and row['running'] and row['restart_count']==0 and not row['oom'] and -5<=age<=15 and g.get('cid')==row['cid'] and g.get('state')=='WATCHING' and g.get('docker',{}).get('started_at')==row['started_at'] and row['resources']['memory.swap.current']==0 and row['resources']['memavailable_bytes']>=4*1024**3)
+ return (not row['trip'] and row['running'] and row['restart_count']==0 and not row['oom'] and -5<=age<=15 and g.get('cid')==row['cid'] and g.get('state')=='WATCHING' and g.get('docker',{}).get('started_at')==row['started_at'] and row['resources']['memavailable_bytes']>=4*1024**3)
 
 def stop(c,receipts):
  failures=[]

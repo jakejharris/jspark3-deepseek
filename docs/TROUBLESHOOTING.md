@@ -1,6 +1,6 @@
 # Tempo troubleshooting
 
-Version: v2.0.0.
+Version: v2.0.1.
 
 ## Fit and preflight
 
@@ -34,7 +34,7 @@ A short request can still wait behind an existing long prefill. Historical inver
 
 ## Memory pressure
 
-4–5 GiB MemAvailable is HOLD; stop new tests and drain. Below4GiB, any service swap, OOM, rank restart or stale guard trips the owned service. Check cgroup counters separately from host-wide swap, since optional desktop/Pi processes use resources too. Do not drop all host page caches, prune Docker, kill unrelated desktops or change GMU to hide a failure. Automatic KV capacity varies by boot; configured300K is not a maximum-capacity claim.
+4–5 GiB MemAvailable is HOLD; stop new tests and drain. Below 4 GiB, OOM, rank restart or stale guard trips the owned service. Service swap is telemetry-only in v2.0.1: it does not stop a rank or its peers. If memory.swap.max differs from the requested Docker limit, the mismatch remains visible as a warning; this patch does not resolve the underlying limit drift. Check cgroup counters separately from host-wide swap, since optional desktop/Pi processes use resources too. Do not drop all host page caches, prune Docker, kill unrelated desktops or change GMU to hide a failure. Automatic KV capacity varies by boot; configured300K is not a maximum-capacity claim.
 
 ## Optional Pi and images
 

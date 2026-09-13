@@ -1,12 +1,16 @@
 # Tempo operations
 
-Version: v2.0.0.
+Version: v2.0.1.
 
 The portable lifecycle creates exactly three labeled containers and records their full IDs and fresh Docker `StartedAt`. Mutations resolve those exact IDs, verify the deployment label and incarnation, and never use broad Docker name patterns. It retains stopped containers, caches and all model/user data. A fresh start needs a fresh namespace because the entrypoint release file is single-use.
 
-The archived L5-P service used an EXL3 guard. Its intended behavior is retained: per-rank persistent guards sample host MemAvailable and service cgroup memory/swap/events; **below 4 GiB available**, any service swap, new OOM event, rank death/restart/incarnation change, or telemetry blindness causes an exact-container emergency stop. **4–5 GiB is HOLD**: stop new tests and drain work; this is not a promotion band. At least 5 GiB observed throughout a test is required for its memory pass. Host swap belonging to other processes is not automatically attributed to this service.
+Per-rank persistent guards sample host MemAvailable and service cgroup memory, swap and events. **Swap usage is telemetry-only:** nonzero service swap does not stop a rank or cause the relay to stop its peers. Current/peak swap, host paging deltas and memory pressure remain visible. This replaces the inherited experiment policy that stopped the fleet on any service swap.
 
-The controller's persistent systemd user relay checks all three local guard heartbeats. It propagates a trip to peers and stops owned ranks if a peer fails, identity drifts or heartbeats become stale (15 seconds). Rank guards remain local if the controller is briefly disconnected; keep the controller and relay running for coupling. A controller outage is not a validated operating mode: restore the relay or stop the owned service through the saved configuration. Systemd must be configured to restart failed guard/relay processes; both units use `Restart=on-failure`. No Mia guard is installed or reinstated.
+The existing emergency checks remain: **below 4 GiB available**, OOM events, rank death/restart/incarnation change, or telemetry blindness cause an exact-container stop. **4–5 GiB is HOLD** for benchmark qualification. A benchmark memory pass still requires at least 5 GiB observed throughout the run and zero service swap; that annotation is not an automatic serving shutdown. Host swap belonging to other processes is not attributed to the model service.
+
+The Docker memory allocation and requested swap limit are unchanged. If the actual cgroup swap limit differs from Docker's configuration, the guard reports the mismatch. Telemetry-only handling does not increase the configured swap allowance.
+
+The controller's persistent systemd user relay checks all three local guard heartbeats. It propagates a trip to peers and stops owned ranks if a peer fails, identity drifts or heartbeats become stale (15 seconds). Rank guards remain local if the controller is briefly disconnected; keep the controller and relay running for coupling. A controller outage is not a validated operating mode: restore the relay or stop the owned service through the saved configuration. Local guard units use `Restart=no`; the controller relay uses `Restart=on-failure`. No Mia guard is installed or reinstated.
 
 The new lifecycle and relay are operational adaptations to make the final source/configuration portable. They replace campaign registration and private parent-state lookup; they are not benchmarked scheduler changes. The final scheduler, Engram reader and other 15 overlays are byte-identical to the archived runtime. Fresh reconstruction still requires its own runtime validation.
 
@@ -27,3 +31,26 @@ python3 tools/tempo.py diagnostics --config config.json
 ```
 
 The output is a local, readable `diagnostics-redacted.json`: candidate version, release manifest checksum, rank ordinal, running/restart/OOM/trip flags, host MemAvailable, and service cgroup memory/swap/event counters. It excludes prompts, raw responses, logs, environment, credentials, URLs, hostnames, IPs, container IDs, private paths and desktop files by an explicit allowlist. Inspect it before attaching it to an issue. Nothing uploads automatically. Full `smoke.json`, rendered commands and ownership receipts are local operational records and are not the default diagnostic attachment.
+
+## Upgrading from v2.0.1
+
+This is a host-side operational patch. Existing compatible installations reuse the same inference image, weights and packed Engram stores; no image rebuild, download or repack is needed. Both the controller and all rank hosts need the new tools. Replacing a file alone does not update an already-running Python guard or relay.
+
+1. Save your current configuration, exact container IDs and logs. Stage a separate checkout of `v2.0.1` on the controller and each rank host:
+   ```bash
+   git clone --branch v2.0.1 https://github.com/jakejharris/jspark3-deepseek.git tempo-v2.0.1
+   ```
+2. Copy your existing configuration to that checkout. Keep the image ID/provenance, model, Engram, packed, work and state-directory settings. Set each host's `recipe` to its new checkout's absolute path and choose a fresh `deployment`, such as `tempo-v201-001`. Preserve the old frozen config for stopping the outgoing service. Existing `verified-inputs.json` seals remain usable because source inputs and store paths are unchanged.
+3. Coordinate active clients. From the old controller checkout, stop only the recorded old deployment with its saved config:
+   ```bash
+   python3 tools/tempo.py stop --config /absolute/path/to/old-config.json
+   ```
+4. From the new controller checkout, run:
+   ```bash
+   python3 tools/tempo.py render --config config.json
+   python3 tools/tempo.py preflight --resources --config config.json
+   python3 tools/tempo.py start --config config.json
+   ```
+   Start releases the loading barrier; it does not mean the API is ready. Once loading finishes, run `health`, `native` and the bounded `smoke.py` checks from the install guide. Confirm the new guard/relay units use the new checkout. Old containers and logs stay intact.
+
+The smoke benchmark still flags service swap as a qualification failure; it does not stop serving. Inspect the reported swap and latency before interpreting a benchmark result. Do not restart archived containers or mix old and new rank incarnations.

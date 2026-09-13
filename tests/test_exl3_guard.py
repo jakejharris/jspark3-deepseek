@@ -92,13 +92,24 @@ def _trip_case(tmp_path, reason, **fixture_kw):
     return receipts[0]
 
 
-def test_trips_on_service_swap_nonzero(tmp_path):
-    receipt = _trip_case(tmp_path, "SERVICE_SWAP_NONZERO",
-                         cg={"swap_current": 2**20})
-    assert receipt["argv"][:2] == ["docker", "stop"]
-    assert receipt["argv"][-1] == CID          # exact CID only
-    assert receipt["argv"][2] == "-t"
-    assert receipt["dry_run"] is True
+@pytest.mark.parametrize("swap_bytes", [1, 3608576, 2 * GIB])
+def test_service_swap_is_telemetry_only(tmp_path, swap_bytes):
+    fx = make_fixture(tmp_path / "fx")
+    cg = make_cgroup(tmp_path / "cg", CID, swap_current=swap_bytes, swap_max="max")
+    rc, rows, err = run_guard(fx, cg, tmp_path=tmp_path)
+    assert rc == 0, err
+    assert not any(r["kind"] in ("trip", "stop_receipt") for r in rows)
+    sample = next(r for r in rows if r["kind"] == "sample")
+    assert sample["state"] == "WATCHING"
+    assert sample["cgroup"]["swap_current_bytes"] == swap_bytes
+    assert sample["window_max_swap_bytes"] == swap_bytes
+    assert sample["promotion_eligible"] is False  # benchmark annotation only
+    assert any(r["kind"] == "warn" and "memory.swap.max=max" in r["detail"] for r in rows)
+
+
+def test_swap_does_not_mask_actual_oom(tmp_path):
+    _trip_case(tmp_path, "CGROUP_OOM_EVENTS",
+               cg={"swap_current": 3608576, "events": {"oom_kill": 1}})
 
 
 def test_trips_on_headroom_emergency(tmp_path):

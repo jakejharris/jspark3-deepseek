@@ -4,7 +4,7 @@
     "project": "JSPARK3",
     "name": "Tempo",
     "version": "v2",
-    "candidate": "v2.0.0",
+    "candidate": "v2.0.1",
     "status": "experimental",
     "current_daily_driver": true,
     "model": "DeepSeek-V4.1 Flash",
@@ -35,13 +35,18 @@
       "status": "PASS",
       "evidence": "evidence/fresh-install-20260913.json",
       "evidence_sha256": "950a11f15d0bfd456bebcfff35dc61ca8be2d7316497538210cf3f25a1cdf373"
+    },
+    "operational_patch": {
+      "status": "PASS",
+      "evidence": "evidence/swap-telemetry-20260913.json",
+      "evidence_sha256": "d13f6d2a56e2f6720ae84e321f3d5bcc2cc2e24ac4e7e4788e4dc9c7cbb2aac1"
     }
   },
   "links": {
-    "install": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0/docs/INSTALL.md",
-    "source": "https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.0",
-    "release": "https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.0",
-    "evidence": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.0/docs/BENCHMARKS.md",
+    "install": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/INSTALL.md",
+    "source": "https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.1",
+    "release": "https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.1",
+    "evidence": "https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/BENCHMARKS.md",
     "huggingface": "https://huggingface.co/jakejharris/jspark3-tempo",
     "website": "https://jakejh.com/jspark3/deepseek/"
   },
