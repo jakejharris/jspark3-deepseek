@@ -35,6 +35,8 @@ Version: {tag} · experimental · publication {i['publication_status']}.
 
 Validation: {validation}
 
+v2.0.2 only clarifies which model files Tempo downloads. The model files, image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results retain their original scope.
+
 **[Start here / Install]({links['install']})** · [GitHub source]({links['source']}) · [Full evidence]({links['evidence']})
 
 Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a management network and dual-port RoCE triangle. Weights, sparse Engram and packed rows occupy approximately 400 GB per host. Budget at least 550 GB free local storage per host including preparation headroom, plus an additional 100 GB for image build/cache on the build host. See the exact fit check before downloading.
@@ -74,6 +76,10 @@ Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://hug
 - Uncached TTFT uses warmed kernels; post-first-output rates include transport/finalization and speculative chunks.
 - One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke are separately recorded release gates.
 
+## v2.0.2 documentation update
+
+This release only clarifies which model files Tempo downloads. The model files, container image, build inputs, serving settings and runtime tools are unchanged from v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results keep their original dates and release identities.
+
 ## v2.0.1 operational update
 
 Swap is now reported without automatically stopping the service. Both the local guards and fleet relay accept nonzero swap; existing low-memory and service-failure checks remain. No weights, inference settings or benchmark values changed. [Upgrade instructions](docs/OPERATIONS.md#upgrading-from-v200) · [Patch validation](evidence/swap-telemetry-20260913.json). Source-build/install evidence above remains the original rc.2 reconstruction; this patch has separate operational validation.
@@ -91,7 +97,10 @@ Original recipe code and prose are Apache-2.0. Dependencies and weights keep the
  outputs={'README.md':readme,'release/summary.json':json.dumps(summary,indent=2,ensure_ascii=False)+'\n','docs/BENCHMARKS.md':md,'huggingface/README.md':hf}
  # Version references and validation wording follow identity; prose remains editable.
  for name in ['docs/INSTALL.md','docs/OPERATIONS.md','docs/PROVENANCE.md','docs/TROUBLESHOOTING.md','docs/PI.md','benchmarks/README.md']:
-  body=re.sub(r'v2\.0\.0(?:-rc\.\d+)?',tag,(ROOT/name).read_text())
+  body=re.sub(r'^(Version: (?:\*\*)?)v2\.\d+\.\d+(?:-rc\.\d+)?',lambda m:m[1]+tag,(ROOT/name).read_text(),flags=re.MULTILINE)
+  if name=='docs/INSTALL.md':
+   body=re.sub(r'(?<=--branch )v2\.\d+\.\d+(?:-rc\.\d+)?',tag,body)
+   body=re.sub(r'(?<=--tag jspark3-tempo:)v2\.\d+\.\d+(?:-rc\.\d+)?',tag,body)
   if name=='docs/INSTALL.md':body=re.sub(r'^Version:.*$',f'Version: **{tag}** · experimental · {validation}',body,flags=re.MULTILINE)
   outputs[name]=body
  return outputs

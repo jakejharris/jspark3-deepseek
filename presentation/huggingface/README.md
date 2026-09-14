@@ -14,22 +14,26 @@ tags:
 **DeepSeek-V4.1 Flash on three DGX Sparks. Our current three-Spark daily driver.**
 
 <p>
-  <a href="https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.1"><img src="https://img.shields.io/badge/release-v2.0.1%20Tempo-0a7c3f?style=for-the-badge&logo=github&logoColor=white" alt="release: v2.0.1 Tempo"></a>
-  <a href="https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/INSTALL.md"><img src="https://img.shields.io/badge/hardware-3%C3%97%20DGX%20Spark-76b900?style=for-the-badge&logo=nvidia&logoColor=white" alt="hardware: 3× DGX Spark"></a>
-  <a href="https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/BENCHMARKS.md"><img src="https://img.shields.io/badge/configured%20context-300%2C000%20tokens-1f6feb?style=for-the-badge" alt="configured context: 300,000 tokens"></a>
-  <a href="https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.1"><img src="https://img.shields.io/badge/serving-vLLM%20%C2%B7%20TP3-8250df?style=for-the-badge" alt="serving: vLLM · TP3"></a>
-  <a href="https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/LICENSE"><img src="https://img.shields.io/badge/recipe%20license-Apache--2.0-d73a49?style=for-the-badge" alt="recipe license: Apache-2.0"></a>
+  <a href="https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.2"><img src="https://img.shields.io/badge/release-v2.0.2%20Tempo-0a7c3f?style=for-the-badge&logo=github&logoColor=white" alt="release: v2.0.2 Tempo"></a>
+  <a href="https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/INSTALL.md"><img src="https://img.shields.io/badge/hardware-3%C3%97%20DGX%20Spark-76b900?style=for-the-badge&logo=nvidia&logoColor=white" alt="hardware: 3× DGX Spark"></a>
+  <a href="https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/BENCHMARKS.md"><img src="https://img.shields.io/badge/configured%20context-300%2C000%20tokens-1f6feb?style=for-the-badge" alt="configured context: 300,000 tokens"></a>
+  <a href="https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.2"><img src="https://img.shields.io/badge/serving-vLLM%20%C2%B7%20TP3-8250df?style=for-the-badge" alt="serving: vLLM · TP3"></a>
+  <a href="https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/LICENSE"><img src="https://img.shields.io/badge/recipe%20license-Apache--2.0-d73a49?style=for-the-badge" alt="recipe license: Apache-2.0"></a>
 </p>
 
 EXL3 experts and vLLM, with changes to prompt reuse, prefill scheduling and Engram reads. Built on **tonyd2wild and Kai’s serving work** and **bot-lab-21’s EXL3 experts using WestWaters’ Pollard method**.
 
 **This page hosts the serving recipe.** The model files are downloaded separately by the install guide. Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately. The 300,000-token context is configured, not certified capacity.
 
-**[Start here / Install](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/INSTALL.md)** · [Versioned release](https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.1) · [Project page](https://jakejh.com/jspark3/deepseek/)
+**[Start here / Install](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/INSTALL.md)** · [Versioned release](https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.2) · [Project page](https://jakejh.com/jspark3/deepseek/)
+
+## v2.0.2 documentation update
+
+This release only clarifies which model files Tempo downloads. The model files, container image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Publication is ready.
 
 ## v2.0.1 update
 
-Swap usage is now reported without automatically shutting down the three-Spark service. Existing checks for low memory and actual service failures remain. No new weights or inference settings. [Upgrade instructions](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/OPERATIONS.md#upgrading-from-v200) · [Patch validation](./swap-telemetry-20260913.json).
+Swap usage is now reported without automatically shutting down the three-Spark service. Existing checks for low memory and actual service failures remain. No new weights or inference settings. [Upgrade instructions](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/OPERATIONS.md#upgrading-from-v200) · [Patch validation](./swap-telemetry-20260913.json).
 
 ## Measured on our three Sparks
 
@@ -82,20 +86,20 @@ Historical L5-P results, September 2026. Different workloads measure different p
 
 Generation rates use **(completion tokens − 1) ÷ (HTTP duration − TTFT)**. They include transport, finalization and speculative chunks; they are not GPU-only decode. The Work repeat starts fresh Pi sessions with the same initial payload and server caches retained; later tool trajectories diverge. Active cap: 8.
 
-[Full measurements, definitions and limitations](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/BENCHMARKS.md) · [Machine-readable results](./benchmarks.json)
+[Full measurements, definitions and limitations](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/BENCHMARKS.md) · [Machine-readable results](./benchmarks.json)
 
 ## Before you download
 
 Exactly **three ARM64 GB10 Sparks with 128 GB unified memory each**, local NVMe, Docker/NVIDIA runtime and a working dual-port RoCE-v2 triangle. The controller needs Linux, Python, SSH and persistent systemd user services.
 
-Budget **at least 550 GB free local storage per host**, including preparation headroom, plus **100 GB additional image/build cache space on the build host**. Read the [fit check and configuration worksheet](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/INSTALL.md) first.
+Budget **at least 550 GB free local storage per host**, including preparation headroom, plus **100 GB additional image/build cache space on the build host**. Read the [fit check and configuration worksheet](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/INSTALL.md) first.
 
 ## What the recipe includes
 
 - Pinned source builds, verified model downloads, all 15 final source overlays and lossless packed Engram preparation.
 - TP3, DSpark width 4, prefix caching with retention 512, solo prefill 4096 and shared mixed-prefill budget 2048.
 - A guarded fleet launcher, bounded API smoke, redacted diagnostics and recovery instructions.
-- An optional [Pi setup](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/PI.md) and [Work benchmark](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/benchmarks/work/README.md).
+- An optional [Pi setup](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/PI.md) and [Work benchmark](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/benchmarks/work/README.md).
 
 The [fresh-install receipt](./fresh-install-20260913.json) records a five-stage source build, 46 CPU checks, eight completed API requests and a separate Pi smoke with three successful tool calls. This was a new installation on the same fleet using fully rehashed cached inputs; the historical benchmark campaign was not rerun.
 
@@ -109,10 +113,10 @@ The [fresh-install receipt](./fresh-install-20260913.json) records a five-stage 
 
 ## Release files and credits
 
-Recipe **v2.0.1**, experimental. [Download the recipe archive](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/v2.0.1.tar.gz) · [SHA256SUMS](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/SHA256SUMS) · [Release binding](./release-receipt.json).
+Recipe **v2.0.2**, experimental. [Download the recipe archive](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/v2.0.2.tar.gz) · [SHA256SUMS](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/SHA256SUMS) · [Release binding](./release-receipt.json).
 
-The recipe archive is identical to the GitHub release. v2.0.1 changes the host-side swap stop policy. The original source-build evidence, weights and historical benchmark data are unchanged; the operational patch has its own validation receipt.
+At publication, the recipe archive will be identical to the GitHub release. v2.0.2 clarifies the model download instructions; v2.0.1 introduced the host-side swap stop policy. The original source-build evidence, weights and historical benchmark data are unchanged; the operational patch keeps its own validation receipt.
 
-Original Tempo code and prose are Apache-2.0; dependencies and weights keep their own terms. Credit to DeepSeek-AI, tonyd2wild, Kai, bot-lab-21, WestWaters, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/THIRD_PARTY_NOTICES.md).
+Original Tempo code and prose are Apache-2.0; dependencies and weights keep their own terms. Credit to DeepSeek-AI, tonyd2wild, Kai, bot-lab-21, WestWaters, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/THIRD_PARTY_NOTICES.md).
 
 Previous daily driver: [JSPARK3 v1.1 — Cadence](https://huggingface.co/jakejharris/jspark3). The animated three-node mark and card styling are reused from that release.
