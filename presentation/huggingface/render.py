@@ -73,9 +73,13 @@ tags:
 
 EXL3 experts and vLLM, with changes to prompt reuse, prefill scheduling and Engram reads. Built on **tonyd2wild and Kai’s serving work** and **bot-lab-21’s EXL3 experts using WestWaters’ Pollard method**.
 
-**Serving recipe only — no model weights are mirrored here.** This repository is not a `from_pretrained()` model ID. The install guide downloads the pinned target, EXL3 experts and bundled DSpark draft from upstream. The 300,000-token context is configured, not certified capacity.
+**This page hosts the serving recipe.** The model files are downloaded separately by the install guide. Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately. The 300,000-token context is configured, not certified capacity.
 
 **[Start here / Install]({links['install']})** · [Versioned release]({links['release']}) · [Project page]({links['website']})
+
+## v2.0.2 documentation update
+
+This release only clarifies which model files Tempo downloads. The model files, container image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Publication is {data['publication_status']}.
 
 ## v2.0.1 update
 
@@ -120,7 +124,7 @@ The [fresh-install receipt](./fresh-install-20260913.json) records a five-stage 
 
 Recipe **{version}**, experimental. [Download the recipe archive](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/{version}.tar.gz) · [SHA256SUMS](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/SHA256SUMS) · [Release binding](./release-receipt.json).
 
-The recipe archive is identical to the GitHub release. v2.0.1 changes the host-side swap stop policy. The original source-build evidence, weights and historical benchmark data are unchanged; the operational patch has its own validation receipt.
+At publication, the recipe archive will be identical to the GitHub release. v2.0.2 clarifies the model download instructions; v2.0.1 introduced the host-side swap stop policy. The original source-build evidence, weights and historical benchmark data are unchanged; the operational patch keeps its own validation receipt.
 
 Original Tempo code and prose are Apache-2.0; dependencies and weights keep their own terms. Credit to DeepSeek-AI, tonyd2wild, Kai, bot-lab-21, WestWaters, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries]({blob}/THIRD_PARTY_NOTICES.md).
 

@@ -4,7 +4,7 @@ DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. Our current three-Spark daily dr
 
 Built on **tonyd2wild and Kai's Spark serving work**, and **bot-lab-21's EXL3 experts using WestWaters' Pollard method**.
 
-Version: **v2.0.1** · experimental · public release published. Historical measurements are complete. Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS. Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
+Version: **v2.0.2** · experimental · public release ready. Historical measurements are complete. Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS. Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
 
 ## Fit check
 
@@ -13,6 +13,8 @@ Exactly three ARM64 DGX Sparks (GB10, 128 GB unified memory each), local NVMe, d
 Budget at least 550 GB free storage per host for verified model files, sparse Engram, packed rows and preparation headroom; the build host needs additional image/cache space. CPU compilation requires 40 GiB available RAM, and serving preflight requires 100 GiB available per host after the outgoing model stops. See the guide's exact worksheet before downloading.
 
 **[Start here / Install](docs/INSTALL.md)**
+
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
 
 ## Measured results
 
@@ -35,6 +37,10 @@ Budget at least 550 GB free storage per host for verified model files, sparse En
 - Uncached TTFT uses warmed kernels; post-first-output rates include transport/finalization and speculative chunks.
 - One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke are separately recorded release gates.
 
+## v2.0.2 documentation update
+
+This release only clarifies which model files Tempo downloads. The model files, container image, build inputs, serving settings and runtime tools are unchanged from v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results keep their original dates and release identities.
+
 ## v2.0.1 operational update
 
 Swap is now reported without automatically stopping the service. Both the local guards and fleet relay accept nonzero swap; existing low-memory and service-failure checks remain. No weights, inference settings or benchmark values changed. [Upgrade instructions](docs/OPERATIONS.md#upgrading-from-v200) · [Patch validation](evidence/swap-telemetry-20260913.json). Source-build/install evidence above remains the original rc.2 reconstruction; this patch has separate operational validation.
@@ -45,6 +51,6 @@ TP3, DSpark width 4, APC with retention 512, solo prefill 4096/shared mixed cap 
 
 [Provenance](docs/PROVENANCE.md) · [Operations](docs/OPERATIONS.md) · [Troubleshooting](docs/TROUBLESHOOTING.md) · [Research harness](benchmarks/README.md) · [Optional Pi](docs/PI.md)
 
-Weights are downloaded separately from pinned upstream sources. The target, EXL3 experts and bundled DeepSeek DSpark drafter are identified separately in the manifest. The Hugging Face package is a serving recipe, not a loadable model or weight mirror.
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately. The JSPARK3 Tempo page on Hugging Face hosts the recipe, not the model files.
 
 Original recipe code and prose are Apache-2.0. Dependencies and weights keep their own terms. Credit to DeepSeek-AI, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries](THIRD_PARTY_NOTICES.md).

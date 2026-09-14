@@ -1,6 +1,6 @@
 # Research harness
 
-Version: v2.0.1.
+Version: v2.0.2.
 
 The ordinary installer runs `tools/smoke.py`. The larger original, parameterized API/quality/cache/concurrency harness is retained under `historical/` for research use. It is not run automatically and does not launch or stop model services. Read `historical/README-harness.md` for the explicit manifest interface and each suite's command.
 

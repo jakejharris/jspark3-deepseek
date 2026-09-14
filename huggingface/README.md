@@ -9,15 +9,17 @@ tags:
 
 DeepSeek-V4.1 Flash on three DGX Sparks. Our current three-Spark daily driver.
 
-**This repository contains a serving recipe, not loadable model weights.** It is not a `from_pretrained()` model ID. Download the pinned target, EXL3 experts and bundled DSpark draft from their upstream source as described in the guide. No weights are mirrored here.
+**This repository contains a serving recipe, not loadable model weights.** It is not a `from_pretrained()` model ID. Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
 
 Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts using WestWaters' Pollard method; credit also to DeepSeek, vLLM, turboderp and cuda-exl3 contributors.
 
-Version: v2.0.1 · experimental · publication published.
+Version: v2.0.2 · experimental · publication ready.
 
 Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS.
 
-**[Start here / Install](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/INSTALL.md)** · [GitHub source](https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.1) · [Full evidence](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/BENCHMARKS.md)
+v2.0.2 only clarifies which model files Tempo downloads. The model files, image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results retain their original scope.
+
+**[Start here / Install](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/INSTALL.md)** · [GitHub source](https://github.com/jakejharris/jspark3-deepseek/tree/v2.0.2) · [Full evidence](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/docs/BENCHMARKS.md)
 
 Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a management network and dual-port RoCE triangle. Weights, sparse Engram and packed rows occupy approximately 400 GB per host. Budget at least 550 GB free local storage per host including preparation headroom, plus an additional 100 GB for image build/cache on the build host. See the exact fit check before downloading.
 
@@ -38,4 +40,4 @@ Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a managem
 - Work counts unfinished output and does not score quality. Mia active cap 4 differs from Tempo cap 8.
 - Native vision and optional Pi desktop use are separate from the throughput cohort.
 
-Recipe code is Apache-2.0; this does not relicense upstream code or weights. [License boundaries](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/THIRD_PARTY_NOTICES.md). The identical release archive and SHA256SUMS accompany this card at publication.
+Recipe code is Apache-2.0; this does not relicense upstream code or weights. [License boundaries](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.2/THIRD_PARTY_NOTICES.md). The identical release archive and SHA256SUMS accompany this card at publication.

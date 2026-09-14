@@ -1,6 +1,6 @@
 # Install Tempo
 
-Version: **v2.0.1** · experimental · fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS.
+Version: **v2.0.2** · experimental · fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS.
 
 This is the single installation guide shared by GitHub, the website and Hugging Face. Commands below are run from a checkout of this exact candidate. An unpublished candidate may be supplied as a local archive; public clone URLs become usable only after publication.
 
@@ -45,7 +45,7 @@ The final command must return the Docker server version without a password promp
 **Controller**, an empty directory:
 
 ```bash
-git clone --branch v2.0.1 https://github.com/jakejharris/jspark3-deepseek.git
+git clone --branch v2.0.2 https://github.com/jakejharris/jspark3-deepseek.git
 cd jspark3-deepseek
 python3 tools/release_check.py
 cp recipe/config.example.json config.json
@@ -86,7 +86,7 @@ Checkpoint: `python3 tools/release_check.py` passes on all three hosts. Recovery
 
 ```bash
 python3 tools/fetch_sources.py --destination /srv/tempo/build-inputs
-python3 tools/build_image.py --inputs /srv/tempo/build-inputs --work /srv/tempo/image-build --tag jspark3-tempo:v2.0.1
+python3 tools/build_image.py --inputs /srv/tempo/build-inputs --work /srv/tempo/image-build --tag jspark3-tempo:v2.0.2
 ```
 
 Use your chosen absolute paths. The downloader verifies all eight public inputs and rehashes existing files before reuse. It never substitutes a newer revision. Partial archive downloads are restarted; completed archives are retained. Build stages have no network access; base-image pull happens first. Expected stages: vLLM stable extension → FlashInfer → MXFP8 JIT → sparse MLA JIT → cuda-exl3 → 15 final source overlays. Compiler output is retained in `/receipts/stageN.build.log` in each successful image layer. Docker build output marks each checkpoint. A failed stage stops; retrying the same unchanged build reuses completed Docker layers. Changes to the stage wrapper or compiler inputs invalidate those layers and require recompilation.
@@ -98,6 +98,8 @@ Read `/srv/tempo/image-build/image.json`, enter its `image_id` in the shared con
 Checkpoint: same exact image ID on all ranks, source-build label present. Recovery: [build stopped](TROUBLESHOOTING.md#build-or-loading-stopped). Do not infer native health from build success.
 
 ## 4. Prepare model files without changing quantization
+
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
 
 **Each Spark**, in its recipe directory (substitute your paths):
 

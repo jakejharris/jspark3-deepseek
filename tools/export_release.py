@@ -27,13 +27,15 @@ tags:
 
 DeepSeek-V4.1 Flash on three DGX Sparks. Our current three-Spark daily driver.
 
-**This repository contains a serving recipe, not loadable model weights.** It is not a `from_pretrained()` model ID. Download the pinned target, EXL3 experts and bundled DSpark draft from their upstream source as described in the guide. No weights are mirrored here.
+**This repository contains a serving recipe, not loadable model weights.** It is not a `from_pretrained()` model ID. Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
 
 Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts using WestWaters' Pollard method; credit also to DeepSeek, vLLM, turboderp and cuda-exl3 contributors.
 
 Version: {tag} · experimental · publication {i['publication_status']}.
 
 Validation: {validation}
+
+v2.0.2 only clarifies which model files Tempo downloads. The model files, image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results retain their original scope.
 
 **[Start here / Install]({links['install']})** · [GitHub source]({links['source']}) · [Full evidence]({links['evidence']})
 
@@ -58,6 +60,8 @@ Budget at least 550 GB free storage per host for verified model files, sparse En
 
 **[Start here / Install](docs/INSTALL.md)**
 
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
+
 ## Measured results
 
 {hf_table}
@@ -72,6 +76,10 @@ Budget at least 550 GB free storage per host for verified model files, sparse En
 - Uncached TTFT uses warmed kernels; post-first-output rates include transport/finalization and speculative chunks.
 - One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke are separately recorded release gates.
 
+## v2.0.2 documentation update
+
+This release only clarifies which model files Tempo downloads. The model files, container image, build inputs, serving settings and runtime tools are unchanged from v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results keep their original dates and release identities.
+
 ## v2.0.1 operational update
 
 Swap is now reported without automatically stopping the service. Both the local guards and fleet relay accept nonzero swap; existing low-memory and service-failure checks remain. No weights, inference settings or benchmark values changed. [Upgrade instructions](docs/OPERATIONS.md#upgrading-from-v200) · [Patch validation](evidence/swap-telemetry-20260913.json). Source-build/install evidence above remains the original rc.2 reconstruction; this patch has separate operational validation.
@@ -82,14 +90,17 @@ TP3, DSpark width 4, APC with retention 512, solo prefill 4096/shared mixed cap 
 
 [Provenance](docs/PROVENANCE.md) · [Operations](docs/OPERATIONS.md) · [Troubleshooting](docs/TROUBLESHOOTING.md) · [Research harness](benchmarks/README.md) · [Optional Pi](docs/PI.md)
 
-Weights are downloaded separately from pinned upstream sources. The target, EXL3 experts and bundled DeepSeek DSpark drafter are identified separately in the manifest. The Hugging Face package is a serving recipe, not a loadable model or weight mirror.
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately. The JSPARK3 Tempo page on Hugging Face hosts the recipe, not the model files.
 
 Original recipe code and prose are Apache-2.0. Dependencies and weights keep their own terms. Credit to DeepSeek-AI, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries](THIRD_PARTY_NOTICES.md).
 '''
  outputs={'README.md':readme,'release/summary.json':json.dumps(summary,indent=2,ensure_ascii=False)+'\n','docs/BENCHMARKS.md':md,'huggingface/README.md':hf}
  # Version references and validation wording follow identity; prose remains editable.
  for name in ['docs/INSTALL.md','docs/OPERATIONS.md','docs/PROVENANCE.md','docs/TROUBLESHOOTING.md','docs/PI.md','benchmarks/README.md']:
-  body=re.sub(r'v2\.0\.0(?:-rc\.\d+)?',tag,(ROOT/name).read_text())
+  body=re.sub(r'^(Version: (?:\*\*)?)v2\.\d+\.\d+(?:-rc\.\d+)?',lambda m:m[1]+tag,(ROOT/name).read_text(),flags=re.MULTILINE)
+  if name=='docs/INSTALL.md':
+   body=re.sub(r'(?<=--branch )v2\.\d+\.\d+(?:-rc\.\d+)?',tag,body)
+   body=re.sub(r'(?<=--tag jspark3-tempo:)v2\.\d+\.\d+(?:-rc\.\d+)?',tag,body)
   if name=='docs/INSTALL.md':body=re.sub(r'^Version:.*$',f'Version: **{tag}** · experimental · {validation}',body,flags=re.MULTILINE)
   outputs[name]=body
  return outputs
