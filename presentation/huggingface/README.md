@@ -23,7 +23,7 @@ tags:
 
 EXL3 experts and vLLM, with changes to prompt reuse, prefill scheduling and Engram reads. Built on **tonyd2wild and Kai’s serving work** and **bot-lab-21’s EXL3 experts using WestWaters’ Pollard method**.
 
-**Serving recipe only — no model weights are mirrored here.** This repository is not a `from_pretrained()` model ID. The install guide downloads the pinned target, EXL3 experts and bundled DSpark draft from upstream. The 300,000-token context is configured, not certified capacity.
+**This page hosts the serving recipe.** The model files are downloaded separately by the install guide. Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately. The 300,000-token context is configured, not certified capacity.
 
 **[Start here / Install](https://github.com/jakejharris/jspark3-deepseek/blob/v2.0.1/docs/INSTALL.md)** · [Versioned release](https://github.com/jakejharris/jspark3-deepseek/releases/tag/v2.0.1) · [Project page](https://jakejh.com/jspark3/deepseek/)
 

@@ -17,6 +17,20 @@ The vLLM input now uses the public codeload tarball for the identical commit rat
 | cuda-exl3 | `6a1ffc34866e23f484574ce1922a8bca93eb33b2` |
 | Full image/build inputs | [sources.json](../release/sources.json) |
 
+## Where the model files come from
+
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
+
+| Download | Repository and revision |
+|---|---|
+| All model downloads, including the bundled draft | [bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), [b60193e](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d) |
+| Original DeepSeek model, recorded for credit and verification; no separate download | [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/tree/2bc89ac599031fa673cab993f1df02fc4a98c673), [2bc89ac](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/tree/2bc89ac599031fa673cab993f1df02fc4a98c673) |
+
+Every model download URL selected by this release's preparation tools uses the
+bot-lab-21 revision above. The tools then prepare the files for three Sparks
+and check them against the release's recorded hashes.
+The JSPARK3 Tempo page on Hugging Face hosts the recipe, not model files.
+
 The model tree must match52 exact file hashes. Shards47/48 are represented by full-hash verified owned sparse ranges plus an unchanged projection sidecar; there is no whole-shard hash claim for sparse files. All six complete264-byte-row packed payloads are pinned. Packing changes physical layout, not mathematical values or quantization. The draft is bundled DSpark, sharing the checkpoint revision; there is no separately selected draft revision or weight upload.
 
 Runtime defaults: TP3, GMU0.80 with automatic KV sizing, configured context300000, active cap8, solo prefill4096, shared mixed-prefill budget2048, retention512/APC, block128, width4 DSpark probabilistic/block sampling with adaptive verification off, graph sizes4/5/8/10/12/15/16/20/24/25/28/30/32/35/40, buffered packed Engram,32 disk threads/chunk16, row cache0. Full argv/environment is authoritative in `release/runtime.json`. Host addresses, RDMA names, directories and ports are the documented configuration differences.

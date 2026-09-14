@@ -9,7 +9,7 @@ tags:
 
 DeepSeek-V4.1 Flash on three DGX Sparks. Our current three-Spark daily driver.
 
-**This repository contains a serving recipe, not loadable model weights.** It is not a `from_pretrained()` model ID. Download the pinned target, EXL3 experts and bundled DSpark draft from their upstream source as described in the guide. No weights are mirrored here.
+**This repository contains a serving recipe, not loadable model weights.** It is not a `from_pretrained()` model ID. Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
 
 Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts using WestWaters' Pollard method; credit also to DeepSeek, vLLM, turboderp and cuda-exl3 contributors.
 

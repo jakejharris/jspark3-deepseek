@@ -99,6 +99,8 @@ Checkpoint: same exact image ID on all ranks, source-build label present. Recove
 
 ## 4. Prepare model files without changing quantization
 
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
+
 **Each Spark**, in its recipe directory (substitute your paths):
 
 ```bash

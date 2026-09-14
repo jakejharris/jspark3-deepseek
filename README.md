@@ -14,6 +14,8 @@ Budget at least 550 GB free storage per host for verified model files, sparse En
 
 **[Start here / Install](docs/INSTALL.md)**
 
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
+
 ## Measured results
 
 | Measurement | Result | Conditions |
@@ -45,6 +47,6 @@ TP3, DSpark width 4, APC with retention 512, solo prefill 4096/shared mixed cap 
 
 [Provenance](docs/PROVENANCE.md) · [Operations](docs/OPERATIONS.md) · [Troubleshooting](docs/TROUBLESHOOTING.md) · [Research harness](benchmarks/README.md) · [Optional Pi](docs/PI.md)
 
-Weights are downloaded separately from pinned upstream sources. The target, EXL3 experts and bundled DeepSeek DSpark drafter are identified separately in the manifest. The Hugging Face package is a serving recipe, not a loadable model or weight mirror.
+Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately. The JSPARK3 Tempo page on Hugging Face hosts the recipe, not the model files.
 
 Original recipe code and prose are Apache-2.0. Dependencies and weights keep their own terms. Credit to DeepSeek-AI, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries](THIRD_PARTY_NOTICES.md).
