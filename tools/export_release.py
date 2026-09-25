@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def render():
  i=json.loads((ROOT/'release/identity.json').read_text()); b=json.loads((ROOT/'release/benchmarks.json').read_text());tag=i['identity']['candidate'];base='https://github.com/jakejharris/jspark3-deepseek'
+ pub='published' if i['publication_status']=='published' else 'publication '+i['publication_status']
  validation='; '.join(key.replace('_',' ')+': '+row['status'] for key,row in i['validation'].items())+'.'
  links=dict(install=f'{base}/blob/{tag}/docs/INSTALL.md',source=f'{base}/tree/{tag}',release=f'{base}/releases/tag/{tag}',evidence=f'{base}/blob/{tag}/docs/BENCHMARKS.md',huggingface='https://huggingface.co/jakejharris/jspark3-tempo',website='https://jakejh.com/jspark3/deepseek/')
  summary=dict(**i,links=links,selected_metrics=[{k:m[k] for k in ['id','label','value','unit','conditions','estimator','samples','cohort','cache_state','timing_boundary','concurrency','active_cap']} for m in b['metrics']],benchmarks_sha256=hashlib.sha256((ROOT/'release/benchmarks.json').read_bytes()).hexdigest())
@@ -31,7 +32,7 @@ DeepSeek-V4.1 Flash on three DGX Sparks. A named JSPARK3 release: our DeepSeek e
 
 Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts using WestWaters' Pollard method; credit also to DeepSeek, vLLM, turboderp and cuda-exl3 contributors.
 
-Version: {tag} · experimental · publication {i['publication_status']}.
+Version: {tag} · experimental · {pub}.
 
 Validation: {validation}
 
@@ -50,7 +51,7 @@ DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. JSPARK3 Tempo is a named release
 
 Built on **tonyd2wild and Kai's Spark serving work**, and **bot-lab-21's EXL3 experts using WestWaters' Pollard method**.
 
-Version: **{tag}** · experimental · public release {i['publication_status']}. Historical measurements are complete. Validation: {validation} Numbered JSPARK3 releases are the main line and run GLM-5.3 Flash: [jakejharris/jspark3](https://github.com/jakejharris/jspark3).
+Version: **{tag}** · experimental · {pub}. Historical measurements are complete. Validation: {validation} Numbered JSPARK3 releases are the main line and run GLM-5.3 Flash: [jakejharris/jspark3](https://github.com/jakejharris/jspark3).
 
 ## Fit check
 

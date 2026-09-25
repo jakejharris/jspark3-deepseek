@@ -13,7 +13,7 @@ DeepSeek-V4.1 Flash on three DGX Sparks. A named JSPARK3 release: our DeepSeek e
 
 Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts using WestWaters' Pollard method; credit also to DeepSeek, vLLM, turboderp and cuda-exl3 contributors.
 
-Version: v2.0.3 · experimental · publication published.
+Version: v2.0.3 · experimental · published.
 
 Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS.
 

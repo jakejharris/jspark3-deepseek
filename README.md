@@ -4,7 +4,7 @@ DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. JSPARK3 Tempo is a named release
 
 Built on **tonyd2wild and Kai's Spark serving work**, and **bot-lab-21's EXL3 experts using WestWaters' Pollard method**.
 
-Version: **v2.0.3** · experimental · public release published. Historical measurements are complete. Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS. Numbered JSPARK3 releases are the main line and run GLM-5.3 Flash: [jakejharris/jspark3](https://github.com/jakejharris/jspark3).
+Version: **v2.0.3** · experimental · published. Historical measurements are complete. Validation: fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS. Numbered JSPARK3 releases are the main line and run GLM-5.3 Flash: [jakejharris/jspark3](https://github.com/jakejharris/jspark3).
 
 ## Fit check
 
