@@ -3,14 +3,12 @@
   "identity": {
     "project": "JSPARK3",
     "name": "Tempo",
-    "version": "v2",
-    "candidate": "v2.0.2",
+    "candidate": "v2.0.3",
     "status": "experimental",
-    "current_daily_driver": true,
     "model": "DeepSeek-V4.1 Flash",
     "hardware": "3 × NVIDIA DGX Spark (GB10, 128 GB each)"
   },
-  "publication_status": "ready",
+  "publication_status": "published",
   "limitations": [
     "Experimental serving recipe; historical measurements come from one three-Spark fleet.",
     "Functional code passed 2/4 tasks; this is not a broad quality ranking.",

@@ -1,6 +1,6 @@
 # Tempo operations
 
-Version: v2.0.2.
+Version: v2.0.3.
 
 The portable lifecycle creates exactly three labeled containers and records their full IDs and fresh Docker `StartedAt`. Mutations resolve those exact IDs, verify the deployment label and incarnation, and never use broad Docker name patterns. It retains stopped containers, caches and all model/user data. A fresh start needs a fresh namespace because the entrypoint release file is single-use.
 
@@ -31,6 +31,10 @@ python3 tools/tempo.py diagnostics --config config.json
 ```
 
 The output is a local, readable `diagnostics-redacted.json`: candidate version, release manifest checksum, rank ordinal, running/restart/OOM/trip flags, host MemAvailable, and service cgroup memory/swap/event counters. It excludes prompts, raw responses, logs, environment, credentials, URLs, hostnames, IPs, container IDs, private paths and desktop files by an explicit allowlist. Inspect it before attaching it to an issue. Nothing uploads automatically. Full `smoke.json`, rendered commands and ownership receipts are local operational records and are not the default diagnostic attachment.
+
+## v2.0.3 naming update
+
+v2.0.3 changes names and documentation only. Existing v2.0.1 and v2.0.2 installations need no download, image rebuild, tool replacement or service restart.
 
 ## v2.0.2 documentation update
 

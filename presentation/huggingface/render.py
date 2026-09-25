@@ -29,7 +29,7 @@ def render():
             src += f'&logo={logo}&logoColor=white'
         return f'  <a href="{href}"><img src="{src}" alt="{alt}"></a>'
     badges = '\n'.join([
-        badge('release', version + ' Tempo', '0a7c3f', links['release'], 'github'),
+        badge('recipe', 'Tempo ' + version, '0a7c3f', links['release'], 'github'),
         badge('hardware', '3× DGX Spark', '76b900', links['install'], 'nvidia'),
         badge('configured context', '300,000 tokens', '1f6feb', links['evidence']),
         badge('serving', 'vLLM · TP3', '8250df', links['source']),
@@ -62,10 +62,10 @@ tags:
 
 <div style="display:flex;align-items:center;gap:14px;margin:6px 0 12px;">
 <img src="https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/assets/jspark3-mark.svg" width="48" height="48" alt="JSPARK3: three connected nodes" style="flex-shrink:0;">
-<h1 style="margin:0;font-size:2em;line-height:1.15;letter-spacing:-0.02em;">JSPARK3 <span style="font-weight:500;color:#8b8b90;">v2 — Tempo</span></h1>
+<h1 style="margin:0;font-size:2em;line-height:1.15;letter-spacing:-0.02em;">JSPARK3 <span style="font-weight:500;color:#8b8b90;">Tempo</span></h1>
 </div>
 
-**DeepSeek-V4.1 Flash on three DGX Sparks. Our current three-Spark daily driver.**
+**DeepSeek-V4.1 Flash on three DGX Sparks. A named JSPARK3 release: our DeepSeek experiment.**
 
 <p>
 {badges}
@@ -77,9 +77,13 @@ EXL3 experts and vLLM, with changes to prompt reuse, prefill scheduling and Engr
 
 **[Start here / Install]({links['install']})** · [Versioned release]({links['release']}) · [Project page]({links['website']})
 
+## v2.0.3 naming update
+
+Tempo was first published as "JSPARK3 v2". It is now JSPARK3 Tempo, a named release. Numbered JSPARK3 versions belong to the main line, which runs GLM-5.3 Flash. The recipe keeps its v2.0.x numbers, so existing links and tags still work. Nothing that runs changed since v2.0.1.
+
 ## v2.0.2 documentation update
 
-This release only clarifies which model files Tempo downloads. The model files, container image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Publication is {data['publication_status']}.
+This release only clarifies which model files Tempo downloads. The model files, container image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart.
 
 ## v2.0.1 update
 
@@ -124,11 +128,11 @@ The [fresh-install receipt](./fresh-install-20260913.json) records a five-stage 
 
 Recipe **{version}**, experimental. [Download the recipe archive](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/{version}.tar.gz) · [SHA256SUMS](https://huggingface.co/jakejharris/jspark3-tempo/resolve/main/SHA256SUMS) · [Release binding](./release-receipt.json).
 
-At publication, the recipe archive will be identical to the GitHub release. v2.0.2 clarifies the model download instructions; v2.0.1 introduced the host-side swap stop policy. The original source-build evidence, weights and historical benchmark data are unchanged; the operational patch keeps its own validation receipt.
+The recipe archive is identical to the GitHub release. v2.0.3 renames Tempo; v2.0.2 clarifies the model download instructions; v2.0.1 introduced the host-side swap stop policy. The original source-build evidence, weights and historical benchmark data are unchanged; the operational patch keeps its own validation receipt.
 
 Original Tempo code and prose are Apache-2.0; dependencies and weights keep their own terms. Credit to DeepSeek-AI, tonyd2wild, Kai, bot-lab-21, WestWaters, vLLM, turboderp, cuda-exl3, FlashInfer and NVIDIA contributors. [Full credits and license boundaries]({blob}/THIRD_PARTY_NOTICES.md).
 
-Previous daily driver: [JSPARK3 v1.1 — Cadence](https://huggingface.co/jakejharris/jspark3). The animated three-node mark and card styling are reused from that release.
+Numbered JSPARK3 releases are the main line and run GLM-5.3 Flash: [jakejharris/jspark3](https://huggingface.co/jakejharris/jspark3). The animated three-node mark and card styling are reused from JSPARK3 v1.1 (Cadence).
 '''
     return body
 
