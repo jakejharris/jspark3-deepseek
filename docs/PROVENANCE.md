@@ -1,6 +1,6 @@
 # Tempo provenance and reproduction scope
 
-Version: v2.0.2.
+Version: v2.0.3.
 
 The final L5-P runtime is the source of this release. `release/patches.json` lists15 final file overlays, each with its pinned upstream preimage SHA256 (or explicit expected absence) and final SHA256. All15 public-source preimages were checked against the pinned vLLM/cuda-exl3 archives. All15 final files also match the archived serving implementation. `apply_patches.py` verifies the entire preimage set before writing any overlay. There is no need for a private parent boot or incremental patch chain.
 

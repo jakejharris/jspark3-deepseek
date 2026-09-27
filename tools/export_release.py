@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def render():
  i=json.loads((ROOT/'release/identity.json').read_text()); b=json.loads((ROOT/'release/benchmarks.json').read_text());tag=i['identity']['candidate'];base='https://github.com/jakejharris/jspark3-deepseek'
+ pub='published' if i['publication_status']=='published' else 'publication '+i['publication_status']
  validation='; '.join(key.replace('_',' ')+': '+row['status'] for key,row in i['validation'].items())+'.'
  links=dict(install=f'{base}/blob/{tag}/docs/INSTALL.md',source=f'{base}/tree/{tag}',release=f'{base}/releases/tag/{tag}',evidence=f'{base}/blob/{tag}/docs/BENCHMARKS.md',huggingface='https://huggingface.co/jakejharris/jspark3-tempo',website='https://jakejh.com/jspark3/deepseek/')
  summary=dict(**i,links=links,selected_metrics=[{k:m[k] for k in ['id','label','value','unit','conditions','estimator','samples','cohort','cache_state','timing_boundary','concurrency','active_cap']} for m in b['metrics']],benchmarks_sha256=hashlib.sha256((ROOT/'release/benchmarks.json').read_bytes()).hexdigest())
@@ -23,19 +24,19 @@ tags:
   - dgx-spark
   - deepseek
 ---
-# JSPARK3 v2 — Tempo
+# JSPARK3 Tempo
 
-DeepSeek-V4.1 Flash on three DGX Sparks. Our current three-Spark daily driver.
+DeepSeek-V4.1 Flash on three DGX Sparks. A named JSPARK3 release: our DeepSeek experiment.
 
 **This repository contains a serving recipe, not loadable model weights.** It is not a `from_pretrained()` model ID. Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard/tree/b60193e0609147553145d1538d935925f2763c1d), including the bundled DSpark draft that helps generate answers faster. The official DeepSeek release listed in the provenance table is where this model comes from; you do not need to download it separately.
 
 Built on tonyd2wild and Kai's Spark serving work, and bot-lab-21's EXL3 experts using WestWaters' Pollard method; credit also to DeepSeek, vLLM, turboderp and cuda-exl3 contributors.
 
-Version: {tag} · experimental · publication {i['publication_status']}.
+Version: {tag} · experimental · {pub}.
 
 Validation: {validation}
 
-v2.0.2 only clarifies which model files Tempo downloads. The model files, image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results retain their original scope.
+v2.0.3 renames the release from "JSPARK3 v2" to JSPARK3 Tempo. The model files, image, build inputs, settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart. Validation receipts and benchmark results retain their original scope.
 
 **[Start here / Install]({links['install']})** · [GitHub source]({links['source']}) · [Full evidence]({links['evidence']})
 
@@ -44,13 +45,13 @@ Exactly three GB10 Sparks with 128 GB unified memory each, local NVMe, a managem
 {hf_table}
 
 '''+ '\n'.join('- '+x for x in i['limitations'])+f'\n\nRecipe code is Apache-2.0; this does not relicense upstream code or weights. [License boundaries]({base}/blob/{tag}/THIRD_PARTY_NOTICES.md). The identical release archive and SHA256SUMS accompany this card at publication.\n'
- readme=f'''# JSPARK3 v2 — Tempo
+ readme=f'''# JSPARK3 Tempo
 
-DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. Our current three-Spark daily driver, using EXL3 experts and vLLM with changes to prompt reuse, prefill scheduling and Engram reads.
+DeepSeek-V4.1 Flash on three NVIDIA DGX Sparks. JSPARK3 Tempo is a named release: our DeepSeek experiment, using EXL3 experts and vLLM with changes to prompt reuse, prefill scheduling and Engram reads.
 
 Built on **tonyd2wild and Kai's Spark serving work**, and **bot-lab-21's EXL3 experts using WestWaters' Pollard method**.
 
-Version: **{tag}** · experimental · public release {i['publication_status']}. Historical measurements are complete. Validation: {validation} Previous daily driver: [JSPARK3 v1.1 — Cadence (GLM-5.3 Flash)](https://github.com/jakejharris/jspark3).
+Version: **{tag}** · experimental · {pub}. Historical measurements are complete. Validation: {validation} Numbered JSPARK3 releases are the main line and run GLM-5.3 Flash: [jakejharris/jspark3](https://github.com/jakejharris/jspark3).
 
 ## Fit check
 
@@ -75,6 +76,10 @@ Tempo downloads its model files from [bot-lab-21's DeepSeek release](https://hug
 - Configured 300K context, C8 capacity and native vision are not certified by the throughput cohort.
 - Uncached TTFT uses warmed kernels; post-first-output rates include transport/finalization and speculative chunks.
 - One-fleet historical results do not establish universal gains or independent reproduction. Fresh install/smoke are separately recorded release gates.
+
+## v2.0.3 naming update
+
+Tempo was first published as "JSPARK3 v2". It is now JSPARK3 Tempo, a named release. Numbered JSPARK3 versions belong to the main line, which runs GLM-5.3 Flash. Tempo keeps its own recipe numbers (v2.0.x), so existing tags, links and install commands keep working. Nothing that runs changed: model files, container image, build inputs, serving settings and runtime tools match v2.0.1. Existing installations need no download, rebuild or restart.
 
 ## v2.0.2 documentation update
 

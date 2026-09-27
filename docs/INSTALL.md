@@ -1,6 +1,6 @@
 # Install Tempo
 
-Version: **v2.0.2** · experimental · fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS.
+Version: **v2.0.3** · experimental · fresh source build: PASS; fresh install: PASS; fresh runtime smoke: PASS; operational patch: PASS.
 
 This is the single installation guide shared by GitHub, the website and Hugging Face. Commands below are run from a checkout of this exact candidate. An unpublished candidate may be supplied as a local archive; public clone URLs become usable only after publication.
 
@@ -21,7 +21,7 @@ Controller -- SSH / management LAN --> rank 0 (HTTP :8888)
                          rank 2
 ```
 
-Per host: 256.96 GB model shards plus metadata/315 MB projection sidecar, 67.59 GB allocated sparse Engram ranges, and 67.59 GB packed rows. Sparse files appear about 203 GB in `ls`; use `du` for allocated storage. Preparation requires another **100 GiB free beyond the packed output**. Budget **at least 550 GB free local storage per host**, and an additional 100 GB for image build/cache on the build host. Hardlinks avoid a second 257 GB model copy on the same filesystem. Cross-filesystem copies need that extra space. Never delete an existing daily driver's weights to make room.
+Per host: 256.96 GB model shards plus metadata/315 MB projection sidecar, 67.59 GB allocated sparse Engram ranges, and 67.59 GB packed rows. Sparse files appear about 203 GB in `ls`; use `du` for allocated storage. Preparation requires another **100 GiB free beyond the packed output**. Budget **at least 550 GB free local storage per host**, and an additional 100 GB for image build/cache on the build host. Hardlinks avoid a second 257 GB model copy on the same filesystem. Cross-filesystem copies need that extra space. Never delete the weights of a model you are still serving to make room.
 
 Source compilation is CPU-only but needs **40 GiB MemAvailable**, with a **32 GiB build cgroup cap and no swap allowance**. Serving starts only after **100 GiB MemAvailable** on every host. This is a startup admission floor, separate from the inherited 4/5 GiB serving guard bands. Plan an exclusive service transition if another model is loaded. Stop only that service's recorded exact containers through its owner; Tempo never stops unrelated containers.
 
@@ -45,7 +45,7 @@ The final command must return the Docker server version without a password promp
 **Controller**, an empty directory:
 
 ```bash
-git clone --branch v2.0.2 https://github.com/jakejharris/jspark3-deepseek.git
+git clone --branch v2.0.3 https://github.com/jakejharris/jspark3-deepseek.git
 cd jspark3-deepseek
 python3 tools/release_check.py
 cp recipe/config.example.json config.json
@@ -86,7 +86,7 @@ Checkpoint: `python3 tools/release_check.py` passes on all three hosts. Recovery
 
 ```bash
 python3 tools/fetch_sources.py --destination /srv/tempo/build-inputs
-python3 tools/build_image.py --inputs /srv/tempo/build-inputs --work /srv/tempo/image-build --tag jspark3-tempo:v2.0.2
+python3 tools/build_image.py --inputs /srv/tempo/build-inputs --work /srv/tempo/image-build --tag jspark3-tempo:v2.0.3
 ```
 
 Use your chosen absolute paths. The downloader verifies all eight public inputs and rehashes existing files before reuse. It never substitutes a newer revision. Partial archive downloads are restarted; completed archives are retained. Build stages have no network access; base-image pull happens first. Expected stages: vLLM stable extension → FlashInfer → MXFP8 JIT → sparse MLA JIT → cuda-exl3 → 15 final source overlays. Compiler output is retained in `/receipts/stageN.build.log` in each successful image layer. Docker build output marks each checkpoint. A failed stage stops; retrying the same unchanged build reuses completed Docker layers. Changes to the stage wrapper or compiler inputs invalidate those layers and require recompilation.
@@ -136,7 +136,7 @@ Checkpoint: two complete packed payload hashes pass per rank. Then seal the veri
 python3 tools/seal_inputs.py --config config.json --rank 0
 ```
 
-This fully rechecks the 52 model files and all sparse/packed ranges, then records size/inode/mtime so startup can detect changed inputs without repeating hours of hashing. The seal is host-local under `work`; it is not portable proof by itself. Reusing preexisting downloads or a daily-driver store requires this exact full check. Sealing can read hundreds of GB; run it before the transition window.
+This fully rechecks the 52 model files and all sparse/packed ranges, then records size/inode/mtime so startup can detect changed inputs without repeating hours of hashing. The seal is host-local under `work`; it is not portable proof by itself. Reusing preexisting downloads or a store from an existing deployment requires this exact full check. Sealing can read hundreds of GB; run it before the transition window.
 
 ## 6. Preflight and controlled start
 
