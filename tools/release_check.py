@@ -15,14 +15,25 @@ def audit():
  for name,want in render().items():
   assert (ROOT/name).read_text()==want,'Generated drift: '+name
  identity=read('release/identity.json')
- for key in ['fresh_source_build','fresh_install','fresh_runtime_smoke']:
-  row=identity['validation'][key];assert row['status'] in ['PENDING','PASS','FAIL'],key
+ fresh_gates={'fresh_source_build','fresh_install','fresh_runtime_smoke'}
+ validation=identity['validation']
+ assert fresh_gates <= validation.keys(),'Missing fresh validation gate'
+ for key,row in validation.items():
+  assert key in fresh_gates | {'operational_patch'},'Unsupported validation gate: '+key
+  assert row['status'] in ['PENDING','PASS','FAIL'],key
   if row['status']=='PASS':
    assert row['evidence'] and row['evidence'].startswith('evidence/') and '..' not in Path(row['evidence']).parts,key
    assert digest(ROOT/row['evidence'])==row['evidence_sha256'],key
    receipt=read(row['evidence'])
-   assert receipt['validated_commit'] and receipt['validated_manifest_sha256'] and receipt['validated_candidate'],key
    assert receipt['checks'][key]=='PASS',key
+   if key in fresh_gates:
+    assert receipt['validated_commit'] and receipt['validated_manifest_sha256'] and receipt['validated_candidate'],key
+   else:
+    assert receipt.get('tested_code_commit') and receipt.get('release'),key
+    tool_hashes=receipt.get('operational_tool_sha256',{})
+    assert set(tool_hashes)=={'tools/exl3_guard.py','tools/tempo.py'},key
+    for name,want in tool_hashes.items():
+     assert digest(ROOT/name)==want,key+': tool hash drift: '+name
  metrics=read('release/benchmarks.json')['metrics'];assert len({m['id'] for m in metrics})==len(metrics)
  for m in metrics:
   for field in ['id','value','unit','estimator','samples','cohort','cache_state','timing_boundary','concurrency','active_cap','source_sha256','caveats']:assert field in m,(m['id'],field)
