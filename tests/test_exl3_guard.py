@@ -231,7 +231,7 @@ def test_emergency_boundary_is_exclusive_at_4_gib(tmp_path):
 
 
 def test_swap_limit_anomaly_is_warned_not_silent(tmp_path):
-    """spark2's recorded memory.swap.max=max anomaly must be visible."""
+    """An unbounded memory.swap.max limit must be visible."""
     fx = make_fixture(tmp_path / "fx")
     cg = make_cgroup(tmp_path / "cg", CID, swap_max="max")
     rc, rows, err = run_guard(fx, cg, tmp_path=tmp_path)
